@@ -1,0 +1,161 @@
+/*Fix dropdown-menu*/
+.subnav {
+	z-index: 1000;
+	}
+#header{
+	z-index: 1000;
+	}
+.dropdown-menu{
+	overflow: visible;
+	*position:absolute;
+	*z-index: 2000;
+	}
+.nav .dropdown-menu ul.span6{
+	margin:0;
+	}
+.hero {
+	height:670px;
+	}
+html[lang='es'] .hero .intro {
+  top: 80px;
+  }
+
+/*banner*/
+.banner .header3 span {
+  font-size:17px;
+  }
+html[lang='es'] .banner .header3 span {
+  font-size:14px;
+  }
+html[lang='es'] #footer .footer-bottom a {
+ 	font-size:8px;
+  }
+/*siderail*/
+#siderail li {
+	width:275px;
+	}
+
+/*QAT*/
+#wizard #addPeople .circle_plus.changeHouseholdSize {
+  position:relative;
+  left:10px;
+  }
+#wizard #counter input {
+  height:50px!important;
+  width:50px;
+  padding:10px 0 0;
+  }
+/*Topic*/
+.all-topics .card ul li .header3 {
+	font-size:16px;
+	}
+.row-fluid .span6.card {
+	margin-left:2px!important;
+	}
+/*marketplace*/
+.marketplace .hero p {
+	font-size:16px;
+	line-height:24px;
+	}
+.marketplace .hero .btn-group .btn-primary {
+	background-color:#000;
+	}
+/*social*/
+#wizard-results .social .social-share {
+	margin-left: 64%;
+	}
+.audience-container .social .social-share {
+	margin-left: 64%;
+	}
+html[lang='es'] #wizard-results .social .social-share, .audience-container .social .social-share {
+  margin-left: 61%;
+  }
+.print.btn-grey {
+  min-height:22px !important;
+  max-height:22px !important;
+  }
+/*footer*/
+#footer .languages ul li {
+  width:50%;
+  float:left;
+  }
+#footer .calendar-text {
+  width:60px;
+  font-size:12px;
+  }
+#footer .calendar {
+  width:116px;
+  }
+#footer .timespan {
+	font-size: 10px;
+	width:130px;
+	}
+#footer .timespan .countdown {
+	font-size:28px;
+	margin-left:-56px;
+	}
+/* 404 */
+.fourofour .search.white, .search .search.white {
+  top: -3px;
+  }
+
+#learn-nav .glyphicons.search.white {
+  top: 0px;
+  }
+.btn-search img {
+	float:right;
+	text-indent:0;
+	width:15px;
+	height:15px;
+	position:relative;
+	bottom:0;
+	right:10px;
+	z-index:10001;
+	}
+.glyphicons.search i:before {
+	display: none;
+	}
+
+/*fonts*/
+@font-face {
+  font-family: 'Bitter';
+  src: url('../fonts/Bitter-Regular-webfont.eot');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Light-webfont.eot');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Italic-webfont.eot');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Semibold-webfont.eot');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Bold-webfont.eot');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Glyphicons';
+    src: url('../fonts/glyphicons-regular.eot');
+    font-weight: normal;
+    font-style: normal;
+}

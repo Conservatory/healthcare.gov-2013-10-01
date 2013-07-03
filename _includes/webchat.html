@@ -1,0 +1,52 @@
+<style>
+#webchat {
+  position:fixed;
+  text-decoration:none;
+  width:180px;
+  right:0;
+  bottom:0;
+  padding:0 25px;
+  color:#fff;
+  background:#063346;
+  z-index:3000;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  }
+#webchat:focus {
+  text-decoration:underline;
+  }
+#webchat.es {
+  width:214px;
+  }
+#webchat h1 {
+  font-size:14px;
+  }
+#webchat .icon {
+  position:absolute;
+  top:14px;
+  right:5px;;
+  }
+.icon.chat-window {
+  background-position:-15px -102px;
+  }
+</style>
+
+<!--googleoff: all-->
+<a id='webchat' href='#' class='hidden-phone {% if page.lang == "es" %}es{% endif %}' role='complementary'>
+  {% if page.lang == 'es' %}
+  <h2 class='header4'>Preguntas? Chat en Vivo</h2>
+  {% else %}
+  <h2 class='header4'>Questions? Live Chat</h2>
+  {% endif %}
+  <span class='icon icon-large chat-window' href='#' role='link'>Open chat in new window</span>
+</a>
+<!--googleon: all-->
+
+<script>
+{% include js/webchat.js %}
+startChat('#webchat');
+</script>

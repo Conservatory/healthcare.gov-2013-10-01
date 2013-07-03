@@ -1,0 +1,154 @@
+---
+layout: default
+experience: learn
+---
+{% assign connect = site.tags.connect[0] %}
+{% assign f = site.tags.footer[0] %}
+{% assign T = site.tags.translations[0] %}
+
+<div class='basic-container connect' role='main'>
+  <h1 class='header2'>{{page.title}}</h1>
+  <div class='row-fluid'>
+    {% include social.html %}
+  </div>
+
+  <div class='row-fluid connect-all'>
+    <div class='span6 block twitter'>
+        <a name='twitter' class='aname'><h2 class='header4'>Twitter</h2></a>
+        {% if page.lang == 'es' %}
+          <a href='https://twitter.com/CuidadoDeSalud' class="twitter-follow-button" data-show-count="false" title='Follow Healthcare.gov'>Follow @CuidadoDeSalud</a>
+          <a class='twitter-timeline' href='https://twitter.com/CuidadoDeSalud' data-chrome='noheader' data-widget-id='345650388785065984' title='Tweets by @HealthCareGov'>Tweets by @HealthCareGov</a>
+        {% else %}
+          <a href="https://twitter.com/healthcaregov" class="twitter-follow-button" data-show-count="false" title='Follow Healthcare.gov'>Follow @healthcaregov</a>
+          <a class="twitter-timeline" href="https://twitter.com/HealthCareGov" data-chrome='noheader' data-widget-id='330370185523499008' title='Tweets by @HealthCareGov'>Tweets by @HealthCareGov</a>
+        {% endif %}
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.async=true;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div class='span6 facebook block'>
+      <a name='facebook'><h2 class='header4'>Facebook</h2></a>
+      {% if page.lang == 'es' %}
+        <div class='fb-like-box' data-href='https://www.facebook.com/Cuidadodesaludgov' data-show-faces='false' data-stream='true' data-width='100%' data-height='458' data-header='false' title='Facebook timeline'></div>
+      {% else %}
+        <div class='fb-like-box' data-href='https://www.facebook.com/Healthcare.gov' data-show-faces='false' data-stream='true' data-width='100%' data-height='458' data-header='false' title='Facebook timeline'></div>
+      {% endif %}
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.async=true;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    </div>
+  </div>
+  <div class='row-fluid connect-all'>
+    <div class='span6 youtube block'>
+      <a name='youtube' class='aname'><h2 class='header4'>YouTube</h2></a>
+      <iframe title='YouTube embedded video: {{connect.[page.lang].connect.social.video-title}}' width='100%' height='280' src='{{connect.[page.lang].connect.social.video}}' frameborder='0' allowfullscreen wmode='Opaque'></iframe>
+      <a href='http://www.youtube.com/HealthCareGov'>{{connect.[page.lang].connect.social.video-text}}</a>
+    </div>
+    <div class='span6 mostshared block'>
+      <h2 class='header4'>Google +</h2>
+      {% if page.lang == 'es' %}
+        <div class="g-plus" data-href='https://plus.google.com/112755994883163074657' data-rel='publisher'></div>
+      {% else %}
+        <div class='g-plus' data-href='https://plus.google.com/112755994883163074657' data-rel='publisher'></div>
+      {% endif %}
+      <script type="text/javascript">(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>
+      <ul>
+        {% for item in connect.[page.lang].connect.google %}
+          <li>
+          {% if item.link contains 'http://' or item.link contains 'https://' %}
+              <a href='{{item.link}}'>{{item.link}}</a>
+          {% else %}
+              <a href='{{site.baseurl}}{{item.link}}'>{{item.title}}</a>
+          {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <hr class='dark-thick pad'>
+  <div class='header2'>{{connect.[page.lang].connect.social.involve}}</div>
+  <div class='row-fluid get-involved'>
+    <div class='span4'>
+      <div class='events block'>
+        <h2 class='header4'>{{connect.[page.lang].connect.social.events}}</h2>
+        <!-- item -->
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.timeline[0].link}}' class='calendar'>
+          <div class="calendar-box">
+            <span class="top">{{T.[page.lang].blog.abbr.October}}</span>
+            <span class="bottom">1</span>
+          </div>
+          <p class='calendar-text'>{{f.[page.lang].footer.timeline[0].title}}</p>
+        </a>
+        <!-- item -->
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.timeline[1].link}}' class='calendar'>
+          <div class="calendar-box">
+            <span class="top">{{T.[page.lang].blog.abbr.January}}</span>
+            <span class="bottom">1</span>
+          </div>
+          <p class='calendar-text'>{{f.[page.lang].footer.timeline[1].title}}</p>
+        </a>
+        <!-- item -->
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.timeline[2].link}}' class='calendar'>
+          <div class="calendar-box">
+            <span class="top">{{T.[page.lang].blog.abbr.March}}</span>
+            <span class="bottom">31</span>
+          </div>
+          <p class='calendar-text'>{{f.[page.lang].footer.timeline[2].title}}</p>
+        </a>
+      </div>
+      <div class='signup block'>
+        <h2 class='header4'>{{connect.[page.lang].connect.social.signup}}</h2>
+        <p>{{connect.[page.lang].connect.social.signupfor}}</p>
+        <p class='header5'>{{connect.[page.lang].connect.social.email}}</p>
+        <form class='form-inline'>
+          <input title='{{T.[page.lang].utility.altemailsignup}}'  id='connect-email' type='text' placeholder='{{T.[page.lang].email.address}}' data-email>
+          <a title='{{T.[page.lang].email.action}}' type='button' class='btn btn-large btn-green signup' href='{{site.baseurl}}/subscribe'>{{T.[page.lang].email.action}}</a>
+        </form>
+      </div>
+    </div>
+    <div class='span4'> 
+      <div class='findhelp block'>
+        {% include state-dropdown.html %}
+      </div>
+    </div>
+    <div class='span4'> 
+      <div class='education block'>
+        <h2 class='header4'>{{connect.[page.lang].connect.education.title}}</h2>
+        <ul class='links'>
+          {% for item in connect.[page.lang].connect.education.links %}
+            <li><a href='{{item.link}}'>{{item.item}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      </div>
+      <div class='span4'>
+      <div class='google block'>
+        <h2 class='header4'>{{connect.[page.lang].connect.social.mostshared}}</h1>
+        <ul class='links'>
+        {% for item in connect.[page.lang].connect.mostshared %}
+          <li>
+          {% if item.link contains 'http://' or item.link contains 'https://' %}
+              <a href='{{item.link}}'>{{item.title}}</a>
+          {% else %}
+              <a href='{{site.baseurl}}{{item.link}}'>{{item.title}}</a>
+          {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+  </div>     
+  {% include was-this-helpful.html %} 
+  </div>
+</div>
+
+<script>
+{% include js/article-router.js %}
+
+if(isMobile.any()){
+  $("<hr class='dark'>").insertBefore('.social-share');
+  $("<hr class='dark'>").insertAfter('.social-share');
+}
+</script>

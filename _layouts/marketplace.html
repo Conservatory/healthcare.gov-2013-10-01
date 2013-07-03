@@ -1,0 +1,137 @@
+---
+layout: default
+experience: marketplace
+class: hero
+---
+{% capture individual %}health-insurance-marketplace{% endcapture %}
+{% capture shop %}businesses{% endcapture %}
+{% capture now %}{{site.time | date: "%y%m%d"}}{% endcapture %}
+{% assign m = site.tags.marketplace[0] %}
+
+<div class='temp-content'>{{content}}</div>
+
+{% unless page.title == null %}
+{% include banner.html %}
+<div role='main'>
+<div class="hero {% if page.url contains 'shop'%}shop{% endif %}">
+  <div class='container'>
+    <div class='limiter'>
+      <div class="btn-group pull-right" data-toggle="buttons-radio">
+        <button type="button" class="btn btn-primary left {% if page.url contains 'individual' %}active{% endif %}" data-view='individual'>{{m.[page.lang].marketplace.toggle[0]}}</button>
+        <button type="button" class="btn btn-primary right {% if page.url contains 'shop' %}active{% endif %}" data-view='shop'>{{m.[page.lang].marketplace.toggle[1]}}</button>
+      </div>
+    </div>
+    <div class='intro'>
+      <h1>{{page.title}}</h1>
+    </div>
+  </div>
+</div>
+<div class='why'>
+  <div class='row-fluid'>
+    {% include state-dropdown.html %}
+  </div>
+</div>
+<div class='how'>
+  <div class='container'>
+  <div class='row-fluid'>
+    <hr class='dark pad hidden-phone'>
+      <div class='marketplace-article'>
+        <div class='equal-height clearfix'>
+        {% for item in page.articles %}
+          {% assign post = site.match[page.lang][item] %}
+          {% capture then %}{{post.date | date: "%y%m%d"}}{% endcapture %}
+          {% assign distance = now | minus: then %} 
+          {% if post.title %}
+            <div class='span4 card transition'>
+              <a href='{{site.baseurl}}{{post.url}}' title='{%if distance < 100 %}New:{%if post.lang == "es"%}Neuvo:{%endif%}{% endif %} {{post.title}}'>
+                <span class='new {%if distance < 100 %}active{% endif %} {%if post.lang == "es"%}es{%endif%}'></span>
+                <h2 class='header3'>{{post.title}}</h2>
+                <div class='topic-content hidden-phone'>{{post.bite | truncatewords: 26 }}</div>
+              </a>
+              <div data-title='{{post.title | replace:"'","\'"}}' data-url='{{post.url}}'>
+                {% include social.html %}
+              </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+        {% if page.lang == 'en' and page.url contains 'individual' %}
+          <a href='{{site.baseurl}}/{{individual}}' class='seeall center'>{{m.[page.lang].marketplace.seeall[0]}}</a>
+        {% elsif page.lang == 'es' and page.url contains 'individual' %}
+          <a href='{{site.baseurl}}/es/{{individual}}' class='seeall center'>{{m.[page.lang].marketplace.seeall[0]}}</a>
+        {% elsif page.lang == 'en' and page.url contains 'shop' %}
+          <a href='{{site.baseurl}}/{{shop}}' class='seeall center'>{{m.[page.lang].marketplace.seeall[1]}}</a>
+        {% else %}
+          <a href='{{site.baseurl}}/es/{{shop}}' class='seeall center'>{{m.[page.lang].marketplace.seeall[1]}}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+{% include js/article-router.js %}
+
+function makeMarketplaceContent(callback){
+  // populate hero
+  $('.temp-content li').each(function(i,d){
+    $('.hero .intro').append('<p>' + $(d).text() + '</p>');
+  });
+  // group the section
+  $('.temp-content h3').each(function(i,d){
+    $(d).addClass('header2').nextUntil('h3').not('h2').wrapAll('<div class="subsection-content"></div>');
+  });
+  $('.subsection-content').each(function(i,d){
+    $(d).prev('h3').andSelf().wrapAll('<div class="subsection"></div>');
+  });
+  $('.temp-content h2').each(function(i,d){
+    $(d).addClass('center header1').nextUntil('h2').andSelf().wrapAll('<div id="section' + (i+1) + '"></div>');
+  });
+
+  // move the section
+  $('#section1').prependTo('.why .row-fluid');
+  $('#section1 .subsection').addClass('span12').each(function(i,d){
+    $(d).prepend('<span class="illustration why'+ (i+1)+'"></span>');
+    $(d).after('<hr class="dark pad">');
+  });
+  $('#section1 hr:last').remove();
+
+  $('#section2').prependTo('.how .row-fluid');
+  $('#section2').addClass('clearfix');
+  $('#section2 .subsection').addClass('span3').each(function(i,d){
+    $(d).prepend('<span class="span1 illustration how'+(i+1)+' {% if page.url contains "shop" %}shop{% endif %}"></span>');
+  });
+  $('.state-dropdown').appendTo('#section1 .subsection:last');
+  $('#section3').prependTo('.how .row-fluid .marketplace-article');
+
+  // toggle button, deciding which post to pull
+  $('.btn-group button').click(function(e){
+    e.preventDefault();
+    {% if page.lang == 'es' %}
+    var orgPath = '{{site.baseurl}}/es/marketplace/';
+    {% else %}
+    var orgPath = '{{site.baseurl}}/marketplace/';
+    {% endif %}
+    var view = $(this).data('view');
+    window.location.pathname = orgPath + view;
+  });
+
+  callback();
+};
+
+makeMarketplaceContent(function(){
+  $('.temp-content').remove();
+});
+
+$('.how .equal-height').equalHeights();
+
+if(isMobile.any()){
+  $('.why .row-fluid.container').removeClass('container');
+  $('.how').after($('.marketplace-article'));
+  $('.how').remove();
+  $('.why .span12').addClass('clearfix');
+  $('.text-right').removeClass('text-right');
+  $('.right').removeClass('pull-left').addClass('pull-right');
+}
+</script>
+{% endunless %}

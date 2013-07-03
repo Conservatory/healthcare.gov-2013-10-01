@@ -1,0 +1,28 @@
+---
+lang: en
+number_of_items: 40
+---
+{% assign t = site.tags.translations[0] %}<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xml:base="{{site.siteurl}}{{site.baseurl}}" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>{{t.[page.lang].blog.title}} - {{t.[page.lang].utility.sitename}}</title>
+  {% if page.lang == 'en' %}
+  {% capture rsslink %}{{site.siteurl}}{{site.baseurl}}/blog{% endcapture %}
+  {% else %}
+  {% capture rsslink %}{{site.siteurl}}{{site.baseurl}}/{{page.lang}}/blog{% endcapture %}
+  {% endif %}
+  <link>{{rsslink}}</link>
+  <description>{{t.[page.lang].blog.title}}</description>
+  <language>{{page.lang}}</language>
+  {% assign count = 0 %}{% for item in site.blogposts %}{% if item.lang == page.lang and count < page.number_of_items %}
+  <item>
+    <title>{{item.title | xml_escape}}</title>
+    <link>{{site.siteurl}}{{site.baseurl}}{{item.url}}</link>
+    <description>{{item.content | markdownify | xml_escape}}</description>
+    <pubDate>{{item.date | date_to_rfc822}}</pubDate>
+    <dc:creator>{{t.[page.lang].utility.sitename}}</dc:creator>
+    <guid isPermaLink="true">{{site.siteurl}}{{site.baseurl}}{{item.url}}</guid>
+  </item>
+  {% assign count = count | plus: 1 %}{% endif %}{% if count == page.number_of_items %}{% break %}{% endif %}{% endfor %}
+</channel>
+</rss>

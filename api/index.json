@@ -1,0 +1,3 @@
+---
+---
+[{% for item in site.posts %}{% if item.layout == 'basic' or item.layout == 'basic-nav-left' or item.tags contains 'question' or item.categories contains 'glossary' %}{% unless item.categories contains 'es' or item.lang == 'es' %}{% include post.json %},{% endunless %}{% endif %}{% endfor %}false]

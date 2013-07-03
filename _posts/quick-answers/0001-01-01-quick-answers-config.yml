@@ -1,0 +1,376 @@
+---
+published: true
+results: 
+  explainer: 
+    title: 
+      en: "Why are we asking these questions?"
+      es: "¿Por qué estamos haciendo estas preguntas?"
+    link: 
+      en: "why-are-we-asking-these-questions"
+      es: "es/why-are-we-asking-these-questions"
+  email: 
+    label: 
+      en: "Get E-mail Updates"
+      es: Noticias por Correo Electrónico
+    info: 
+      en: "To receive e-mail updates and stay informed about key dates and information about the Marketplace."
+      es: Para recibir noticias al día por correo electrónico y estar informado sobre fechas claves e información importante sobre el Mercado.
+  response: 
+    learn: 
+      en: Learn more about
+      es: Más información
+    edit: 
+      en: EDIT
+      es: EDITAR
+    start: 
+      en: START OVER
+      es: EMPEZAR OTRA VEZ
+    answered: 
+      en: YOU ANSWERED
+      es: USTED CONTESTÓ
+    type: 
+      en: Type
+      es: Tipo
+    state: 
+      en: State
+      es: Estado
+    age: 
+      en: Age
+      es: Edad
+    gender: 
+      en: Gender
+      es: Sexo
+    insured: 
+      en: Insured
+      es: Asegurado
+    condition: 
+      en: Health Condition
+      es: Condición Médica
+    more: 
+      en: Additional Info
+      es: Info. Adicional
+  results: 
+    en: Your Results
+    es: Sus Resultados
+  options: 
+    en: Options You Might Be Eligible For
+    es: "Opciones para las que puede que sea elegible:"
+  checklist: 
+    label: 
+      en: Your Next Steps
+      es: Sus pasos siguientes
+    button: 
+      en: Your customized checklist
+      es: Su lista de verificación personalizada
+    print: 
+      en: Print Your Checklist
+      es: Imprima su Lista de Cotejo
+    info: 
+      en: "Based on your answers, we've created a customized checklist to help you get ready."
+      es: "Basándonos en sus respuestas, hemos creado una lista de verificación personalizada para ayudarlo a prepararse."
+  "top-info": 
+    en: Top Information for You
+    es: Información de gran importancia para usted
+buttons: 
+  next: 
+    en: Next
+    es: Siguiente
+  back: 
+    en: Back
+    es: Regresar
+  update: 
+    en: Update
+    es: Actualizar
+  cancel: 
+    en: Cancel
+    es: Cancelar
+intro: 
+  title: 
+    en: "Get your options & info"
+    es: Obtenga sus opciones e información
+  intro: 
+    en: "Answer a few quick questions and you'll get:"
+    es: "Conteste unas cuantas preguntas breves y obtendrá:"
+  bullets: 
+    en: 
+      - A list of coverage options you may qualify for (specific plans and prices available Oct. 1)
+      - Answers that will help you make good decisions
+      - A personalized checklist to help you get ready to apply
+    es: 
+      - Una lista de opciones de cobertura para las que usted puede calificar (planes y precios específicos disponibles el 1 de octubre)
+      - Respuestas que le ayudarán a tomar buenas decisiones
+      - Una lista de verificación personalizada para ayudarle a preparar su solicitud
+audience: 
+  label: 
+    en: "Which best describes you?"
+    es: "¿Qué le describe mejor?"
+  options: 
+    - value: family
+      en: "I'm looking for coverage for myself or my family"
+      es: Estoy buscando cobertura para mí o mi familia
+      returns: null
+    - value: business
+      en: "I'm looking for coverage for a small business I own or operate"
+      es: Estoy buscando cobertura para un negocio pequeño del cual soy propietario o manejo
+      returns: 
+        - link: "how-can-i-get-ready-for-shop"
+        - link: "how-do-i-choose-insurance-thats-right-for-my-business"
+state: 
+  label: 
+    family: 
+      en: "What state do you live in?"
+      es: "¿En qué estado vive?"
+    business: 
+      en: "What state is your operation based in?"
+      es: "¿En qué estado se basa su negocio?"
+  placeholder: 
+    en: Select a State
+    es: Seleccione un Estado
+  returns: "what-is-the-marketplace-in-my-state"
+age: 
+  label: 
+    en: "How old are you?"
+    es: "¿Qué edad tiene?"
+  options: 
+    - value: under30
+      en: Under 30
+      es: Menos de 30 años
+      returns: 
+        - link: "can-i-keep-my-child-on-my-insurance-until-age-26"
+        - link: "can-i-buy-a-catastrophic-plan"
+    - value: 30to64
+      en: "30-64"
+      es: "30-64 años"
+      returns: null
+    - value: 65plus
+      en: 65+
+      es: 65 años +
+      returns: 
+        - link: "if-i-have-medicare-do-i-need-to-do-anything"
+gender: 
+  label: 
+    en: "What's your gender?"
+    es: "¿Cuál es su sexo?"
+  options: 
+    - value: male
+      en: Male
+      es: Hombre
+      returns: null
+    - value: female
+      en: Female
+      es: Mujer
+      returns: 
+        - link: "what-if-im-pregnant-or-plan-to-get-pregnant"
+        - link: "what-are-my-preventive-care-benefits"
+          section: part2
+status: 
+  label: 
+    en: "Do you have health coverage? (Choose just one)"
+    es: "¿Tiene cobertura médica? (Escoja solamente una opción)"
+  options: 
+    - value: "employer-stay"
+      en: "I'm staying with my plan"
+      es: Deseo quedarme con mi plan
+      returns: 
+        - link: "what-if-i-have-job-based-health-insurance"
+        - link: "how-does-the-health-care-law-protect-me"
+        - link: "what-are-my-preventive-care-benefits"
+      group: 1
+    - value: "employer-explore"
+      en: I want to find out about other plans
+      es: Quiero información sobre otros planes
+      returns: 
+        - link: "what-if-i-have-job-based-health-insurance"
+        - link: "what-is-the-health-insurance-marketplace"
+      group: 1
+    - value: "employer-leave"
+      en: I may lose my coverage soon
+      es: Puede que pierda mi cobertura pronto
+      returns: 
+        - link: "what-if-i-am-losing-my-job-based-insurance"
+        - link: "how-does-the-health-care-law-protect-me"
+        - link: "what-is-the-health-insurance-marketplace"
+      group: 1
+    - value: "self-eligible"
+      en: "I'm eligible for insurance through my employer or a family member's employer"
+      es: Tengo cobertura médica a través de mi empleador o del empleador de un miembro de la familia
+      returns: 
+        - link: "what-is-the-health-insurance-marketplace"
+        - link: "can-i-keep-my-current-health-insurance-plan"
+        - link: "how-does-the-health-care-law-protect-me"
+      group: 2
+    - value: "self-ineligible"
+      en: "I'm <b>not</b> eligible for insurance through my employer or a family member's employer"
+      es: "<b>No</b> soy elegible para recibir seguro a través de mi empleador o el empleador de un miembro de la familia"
+      returns: 
+        - link: "what-is-the-health-insurance-marketplace"
+        - link: "can-i-keep-my-current-health-insurance-plan"
+        - link: "how-does-the-health-care-law-protect-me"
+      group: 2
+    - value: "no-eligible"
+      en: "I'm eligible for insurance through my employer or a family member's employer"
+      es: Soy elegible para recibir seguro a través de mi empleador o el empleador de un miembro de la familia
+      returns: 
+        - link: "what-is-the-health-insurance-marketplace"
+        - link: "how-can-i-save-money-on-marketplace-coverage"
+        - link: "why-should-i-have-health-insurance"
+        - link: "what-if-someone-doesnt-have-health-coverage-in-2014"
+      group: 3
+    - value: "no-ineligible"
+      en: "I'm <b>not</b> eligible for insurance through my employer or a family member's employer"
+      es: "<b>No</b> soy elegible para recibir seguro a través de mi empleador o el empleador de un miembro de la familia"
+      returns: 
+        - link: "what-is-the-health-insurance-marketplace"
+        - link: "how-can-i-save-money-on-marketplace-coverage"
+        - link: "why-should-i-have-health-insurance"
+        - link: "what-if-someone-doesnt-have-health-coverage-in-2014"
+      group: 3
+  groups: 
+    - value: 1
+      en: "<b>I have health coverage</b> through my employer or a family member's employer"
+      es: "<b>Tengo cobertura médica</b> a través de mi empleador o del empleador de un miembro de la familia"
+      returns: 
+        - link: "what-if-i-want-to-change-individual-insurance-plans"
+    - value: 2
+      en: "<b>I have health coverage</b> that I bought myself or that a family member bought"
+      es: "<b>Tengo cobertura médica</b> que he comprado yo mismo o que ha comprado un miembro de la familia"
+    - value: 3
+      en: "<b>I don't have health coverage</b>"
+      es: "<b>No tengo cobertura médica</b>"
+condition: 
+  label: 
+    en: "Pre-existing conditions are covered starting in 2014. Do you want more information on this change and how it affects coverage?"
+    es: "A partir de 2014 los problemas de salud preexistentes serán cubiertos. ¿Desea más información sobre el tema y cómo afectará su cobertura?"
+  options: 
+    - value: "no"
+      en: "No"
+      es: "No"
+      returns: null
+    - value: "yes"
+      en: "Yes"
+      es: Sí
+      returns: 
+        - link: "what-if-i-have-a-pre-existing-health-condition"
+additional: 
+  label: 
+    en: "Do you want information on any of the following situations? This will help us provide relevant material about coverage options."
+    es: "¿Desea información para alguna de las situaciones siguientes? Esto nos permitirá facilitarle material relevante sobre sus opciones de cobertura."
+  options: 
+    - value: dependent
+      en: Dependent under 18
+      es: Dependiente menor de 18 años
+      returns: 
+        - link: "what-are-my-preventive-care-benefits"
+          section: part3
+        - link: "are-my-children-eligible-for-chip"
+          "screener-check": true
+          blurb: chip
+        - link: "do-i-qualify-for-medicaid"
+          "screener-check": true
+          blurb: medicaid
+    - value: "self-employed"
+      en: "Self-Employed"
+      es: Empleado por propia cuenta
+      returns: 
+        - link: "what-if-im-self-employed"
+    - value: disability
+      en: Disability
+      es: Incapacidad
+      returns: 
+        - link: "how-does-the-health-care-law-protect-me"
+        - link: "what-are-my-preventive-care-benefits"
+        - link: "what-if-i-have-a-pre-existing-health-condition"
+    - value: pregnancy
+      en: Pregnancy
+      es: Embarazo
+      returns: 
+        - link: "what-if-im-pregnant-or-plan-to-get-pregnant"
+        - link: "are-my-children-eligible-for-chip"
+          "screener-check": true
+          blurb: chip
+        - link: "do-i-qualify-for-medicaid"
+          "screener-check": true
+          blurb: medicaid
+    - value: veteran
+      en: Veteran
+      es: Veterano
+      returns: 
+        - link: "if-im-a-military-veteran-what-do-i-need-to-know-about-the-marketplace"
+    - value: "am-indian"
+      en: American Indian or Alaska Native
+      es: Indio Americano o Nativo de Alaska
+      returns: 
+        - link: "if-im-an-american-indian-or-alaska-native-what-do-i-need-to-know-about-the-marketplace"
+employees: 
+  label: 
+    en: "How many full-time equivalent employees do you have?"
+    es: "¿Cuántos empleados tiene a tiempo completo?"
+  options: 
+    - value: none
+      en: "None. I'm self-employed"
+      es: Ninguno. Trabajo por cuenta propia
+      returns: 
+        - link: "what-if-im-self-employed"
+        - link: "how-can-i-save-money-on-marketplace-coverage"
+    - value: under25
+      en: Under 25
+      es: Menos de 25
+      returns: 
+        - link: "what-do-small-businesses-need-to-know"
+        - link: "what-is-the-shop-marketplace"
+        - link: "will-i-qualify-for-small-business-health-care-tax-credits"
+    - value: under50
+      en: Under 50
+      es: Menos de 50
+      returns: 
+        - link: "what-is-considered-a-small-business"
+        - link: "what-do-small-businesses-need-to-know"
+        - link: "what-is-the-shop-marketplace"
+    - value: 50plus
+      en: 50+
+      es: 50+
+      returns: 
+        - link: "what-do-large-business-owners-need-to-know"
+currently: 
+  label: 
+    en: "Do you currently offer insurance to your employees?"
+    es: "¿Le ofrece seguro a sus empleados actualmente?"
+  options: 
+    - value: "yes-keep"
+      en: "Yes, and I plan to keep the coverage I have"
+      es: "Sí, y pienso quedarme con la cobertura que tengo"
+      returns: 
+        - link: "what-if-i-already-insure-my-employees"
+    - value: "yes-explore"
+      en: "Yes, and I want to explore my options"
+      es: "Sí, y quiero explorar mis opciones"
+      returns: 
+        - link: "what-if-i-already-insure-my-employees"
+    - value: "no"
+      en: "No"
+      es: "No"
+      returns: 
+        - link: "do-i-have-to-offer-health-coverage-to-my-employees"
+householdSize: 
+  label: 
+    en: "How many people will be on your Federal tax return for 2014? (If you don’t file taxes, count the number of people who live with you, including yourself.)"
+    es: " ¿Cuántos van a estar en su declaración de impuestos Federal para el 2014? (Si no presenta declaración de impuestos, cuente el número de personas que viven con usted, incluyéndose usted mismo.)"
+screener: 
+  label: 
+    en: "Based on your best guess, will your total household income in 2014 be below"
+    es: "Según su mejor estimación, ¿espera que los ingresos totales de su casa estén por debajo de"
+  options: 
+    - value: "yes"
+      en: "Yes"
+      es: Sí
+      returns: 
+        - link: "where-can-i-get-free-or-low-cost-care"
+    - value: "no"
+      en: "No"
+      es: "No"
+    - value: unsure
+      en: "I don't know"
+      es: No lo sé
+tag: "quick-answers"
+---
+

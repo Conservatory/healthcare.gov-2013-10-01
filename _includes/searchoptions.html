@@ -1,0 +1,51 @@
+<!--googleoff: all-->
+{% assign u = site.tags.translations[0] %}
+<button type='image' class='btn btn-blue btn-search' value='search' src='{{site.baseurl}}/images/invisible.png'>{{u.[page.lang].utility.altsearchbutton}}
+    {% if mobile == true %}<span class='icon icon-large magnifying-glass'><i></i></span>{% else %}<span class='glyphicons search white'><i></i></span>{% endif%}
+    <!--[if IE]>
+        <img src='{{site.baseurl}}/images/search@2x.png'/>
+    <![endif]-->
+</button>
+<input type='hidden' name='output' value='xml_no_dtd'>
+<input type='hidden' name='site' value='healthcare{% if page.lang != "en" %}_{{page.lang}}{% endif %}'>
+<input type='hidden' name='proxystylesheet' value='json'>
+<input type='hidden' name='client' value='json'>
+<input type='hidden' name='lr' value='lang_{{page.lang}}'>
+<input type='hidden' name='ie' value='UTF-8'>
+<input type='hidden' name='oe' value='UTF-8'>
+<input type='hidden' name='access' value='p'>
+<input type='hidden' name='sort' value='date:D:L:d1'>
+<input type='hidden' name='start' value='0'>
+<input type='hidden' name='num' value='6'>
+<input type='hidden' name='getfields' value='search-title.content-type.topics'>
+<!--googleon: all-->
+
+<script>
+$(function() {
+    // Autocomplete for site search
+    $('.nav-search').typeahead({
+        source: function(query, process) {
+            var self = this.$menu,
+                element = this.$element[0];
+            return $.ajax({
+                cache: true,
+                data: {query: query},
+                dataType: 'jsonp',
+                url: '{{site.searchurl}}' + '/suggest?q=' + query + '&max=8&site=healthcare{% if page.lang != "en" %}_{{page.lang}}{% endif %}&client=json&access=p&format=os',
+                success: function(d) {
+                    self.attr('data-search',element.id);
+                    return process(d[1]);
+                }
+            });
+        }
+    });
+    
+    $('ul.typeahead').mousedown(function(e) {
+        e.preventDefault();
+        var parent = $(this).attr('data-search');
+        setTimeout(function() {
+            $('#'+parent).next('.btn-search').trigger('click');
+        },200);
+    });
+});
+</script>

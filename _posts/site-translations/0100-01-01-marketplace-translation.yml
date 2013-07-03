@@ -1,0 +1,19 @@
+---
+en:
+    marketplace:
+        toggle:
+          - 'Individuals & Families'
+          - 'Small Business Owners'
+        seeall:
+          - 'See all Marketplace Articles'
+          - 'Read all SHOP articles'
+es:
+    marketplace:
+        toggle:
+          - 'Individuos y Familias'
+          - 'Propietarios de Negocios'
+        seeall:
+          - 'Ver Todos los Artículos del Mercado'
+          - 'Leer Todos los SHOP Artículos'
+tag: marketplace
+---

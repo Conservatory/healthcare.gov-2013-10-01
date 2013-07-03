@@ -1,0 +1,131 @@
+body,
+.audience-container,
+.basic-container {
+  padding:0!important;
+  margin:0!important;
+  background:#fff;
+  border:0px solid #fff;
+  }
+.basic-container.blog {
+  padding:0 15px;
+  }
+h1,
+h2,
+h3,
+.nav-left h1 {
+  margin:10px 0;
+  }
+.article,
+.card,
+.nav-left .tab-content {
+  padding:0;
+  margin:0;
+  background:#fff;
+  -webkit-box-shadow:none;
+     -moz-box-shadow:none;
+          box-shadow:none;
+  }
+.article p, 
+.article ul,
+.article ol {
+  font:16px/24px 'Open Sans',sans-serif;
+  }
+/* Elements displayed/not displayed */
+hr,
+input,
+textarea,
+iframe,
+select,
+#header,
+#learn-nav,
+#footer,
+#siderail,
+.social-share,
+.print,
+.btn,
+.nav-left .nav-tabs,
+.below-article,
+.dropdown,
+.part-dropdown,
+.blog-pagination,
+.visible-phone,
+.extras h2,
+.qa-edit,
+.qa-reset {
+  display:none!important;
+  }
+.nav-left h2 {
+  font-size:22px;
+  }
+.print-only,
+.tab-content > .tab-pane,
+.nav-left .tab-pane {
+  display:block!important;
+  }
+.nav-left .tab-pane {
+  padding-bottom:10px;
+  border-bottom:1px solid #e2e2e2;
+  margin-bottom:25px;
+  }
+.nav-left .tab-pane:last-child {
+  border-bottom:0;
+  }
+.print-only.logo {
+  padding-left:15px;
+  }
+/* Page Specifics */
+.audience-container p {
+  max-width:100%;
+  }
+#wizard-results .article {
+  padding:0;
+  }
+#wizard-results h2.header2 {
+  margin-top:-40px;
+  }
+#qa-menu li {
+  padding:5px 0;
+  border:0;
+  }
+/* Topic Snippet */
+.article-topic {
+  margin-top:-60px;
+  border-bottom:6px solid #e2e2e2;
+  }
+.article-topic .header4 span {
+  float:left;
+  padding:6px 6px 0 0;
+  }
+.article-topic ul li,
+.article-topic ul li a {
+  display:inline-block;
+  }
+.article-topic ul li {
+  margin:10px 10px 0 0;
+  }
+.extras {
+  background:#e2e2e2;
+  }
+/* Show URL */
+.article p a:link,
+.article p a:visited,
+.article li a:link,
+.article li a:visited {
+  color:#333;
+  text-decoration:none;
+  }
+.article p a:link[href^="http://"]:after,
+.article p a[href^="http://"]:visited:after,
+.article li a:link[href^="http://"]:after,
+.article li a[href^="http://"]:visited:after {
+  content: " (" attr(href) ") ";
+  font-size: 11px;
+  }
+.article p a[href^="http://"],
+.article li a[href^="http://"] {
+  color:#000;
+  }
+.article-topic a:after,
+.below-article a:after {
+  display:none!important;
+  }

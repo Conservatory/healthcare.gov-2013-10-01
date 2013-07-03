@@ -1,0 +1,66 @@
+---
+layout: default
+class: widget
+---
+
+{% assign w = site.tags.widgets[0] %}
+{% assign u = site.tags.translations[0] %}
+
+<div id='widget' class='{{page.widget}}'>
+  <div class='logo-header'>
+    <img src='{{site.baseurl}}/images/logo-HIM{% if page.lang != "en" %}-{{page.lang}}{% endif %}.jpg' alt='{{w.title.[page.lang]}}' />
+  </div>
+  <div id='content'>
+    <h3 class='intro'>{{w.[page.widget].intro.[page.lang]}}</h3>
+    {% if page.widget == 'quick-answers' %}<hr class='dark'>{% endif %}
+    <form>
+    
+      {% if page.widget == 'quick-answers' %}
+      <fieldset>
+        <legend>{{w.[page.widget].label.[page.lang]}}</legend>
+        {% for item in w.[page.widget].options %}
+        <input type='radio' name='audience' id='audience-{{item[0]}}' value='{{item[0]}}'>
+        <label class='radio-label' for='audience-{{item[0]}}'>
+          <span></span>
+          {{item[1].[page.lang]}}
+        </label>
+        {% endfor %}
+      </fieldset>
+      
+      {% elsif page.widget == 'subscribe' %}
+      <fieldset>
+        <input title='{{u.[page.lang].utility.altemailsignup}}' name='signup' type='text' placeholder='{{w.[page.widget].input.[page.lang]}}'>
+      </fieldset>
+      {% endif %}
+      <a type='button' class='btn btn-large btn-green btn-widget' data-lang='{{page.lang}}' href='{{site.baseurl}}{% if page.lang != "en" %}/{{page.lang}}{% endif %}/{{page.widget}}/'>{{w.[page.widget].button.[page.lang]}}</a>
+    </form>
+  </div>
+</div>
+
+<script>
+    var qatValues = {};
+    
+    if (window.location.hash !== '') {
+        var routes = window.location.hash.substr(1).split('/')
+            .reduce(function(memo, value) {
+                memo[value.split('=')[0]] = value.split('=')[1];
+                return memo;
+            }, {});
+            
+        _(routes).each(function(value, route) {
+            if (route === 'state') {
+                qatValues.state = value;
+            }
+        });
+    }
+    
+    $('input[name="audience"]').on('click',function(e) {
+        qatValues.audience = $(e.target).val();
+        $.cookie('quickAnswers', qatValues, { expires: 30, path: '/' });
+        $('a.btn-widget').attr('href','{{site.url}}{% if page.lang != "en" %}/{{page.lang}}{% endif %}/quick-answers/#' + qatValues.audience + '-2');
+    });
+    
+    $('input[name="signup"]').on('keyup', function(e) {
+        $('a.btn-widget').attr('href','{{site.url}}{% if page.lang != "en" %}/{{page.lang}}{% endif %}/subscribe/#address=' + $(e.target).val());
+    });
+</script>

@@ -1,0 +1,249 @@
+---
+published: true
+en: 
+  global: 
+    learn: Learn
+    "learn-url": /
+    insurance: Get Insurance
+    "insurance-url": /marketplace/individual
+    "banner-title": "Welcome to the new <span>HealthCare.gov!</span>"
+    banner: "We've changed to help you get ready for the launch of the Health Insurance Marketplace on October 1. [Learn about our changes](/blog/welcome-to-the-new-healthcare-gov/)—including where to find some content that used to appear on this site."
+  learn: 
+    families: "Individuals &amp; Families"
+    "families-url": /families
+    businesses: Small Businesses
+    "businesses-url": "/small-businesses"
+    all: All Topics
+    "all-url": "/all-topics"
+    search: Search
+    "search-next": Next
+    "search-results": Results
+    "no-results": No Results
+  email: 
+    title: "GET IMPORTANT NEWS & UPDATES"
+    action: Sign up
+    address: Email Address
+    createaccount: Create an Account
+    answer: START NOW
+    text: Email
+    alttext: Email this page
+  siderail: 
+    interest: May Interest You
+    related: Related Content
+    popular: Most Popular
+  topics: 
+    more: More articles on
+    result: Result
+    "collection-result": Results
+    next: Next
+    topic: Topic
+  social: 
+    share: Share
+    shares: Shares
+    "days-ago": days ago
+    facebooktext: Like this page on Facebook
+    twittertext: Tweet this page
+  questions: 
+    title: More answers
+    select: Pick a question
+  languages: 
+    title: Other Language Resources
+  glossary: 
+    title: Glossary
+  state: 
+    title: Get State Information
+    select: Select Your State
+    options: 
+      - Consumer Assistance in
+      - Medicaid in
+      - Health Insurance Marketplace in
+      - CHIP in
+  blog: 
+    title: Health Insurance Blog
+    by: By
+    continue: Continue Reading
+    recent: Recent Posts
+    "top-posts": Top Posts
+    "category-label": Categories
+    January: January
+    February: February
+    March: March
+    April: April
+    May: May
+    June: June
+    July: July
+    August: August
+    September: September
+    October: October
+    November: November
+    December: December
+    abbr: 
+      January: Jan
+      February: Feb
+      March: Mar
+      April: Apr
+      May: May
+      June: Jun
+      July: Jul
+      August: Aug
+      September: Sep
+      October: Oct
+      November: Nov
+      December: Dec
+  qat:
+    step1: Get Started
+    step2: Basic Info for Individuals and Families
+    step2business: Basic Info for Businesses
+    step3: Current Coverage
+    step4: Status and Conditions
+    step5: Household Income
+  utility:
+    sitename: Healthcare.gov
+    marketplacename: Health Insurance Marketplace
+    altemailsignup: Email Signup Text Box
+    altdropdown: "All Topics expanded. To navigate menu, press Tab."
+    altsearch: Site Search
+    altsearchbutton: Search
+    altsearchtext: Enter text to search
+    taskbar: Quick links to information
+    footerheader: Footer
+    qatalert: Please make selections before proceeding
+    print: Print
+    printbutton: Print
+    gotobutton: Go to Part
+    part: Part
+    skipnav: Skip Navigation
+    begincontent: Beginning of content
+    qatitle: "Get your options & info"
+    connect: Connect With Us
+    subscribe: Get Email Updates
+    help: Help
+    helpcenter: Help Center
+    accessibility: Accessibility
+    privacy: Privacy Policy
+    developers: For Developers
+es: 
+  global: 
+    learn: Aprender
+    "learn-url": /es/
+    insurance: Obtener un Seguro
+    "insurance-url": /es/marketplace/individual
+    "banner-title": "Bienvenidos al nuevo <span>CuidadoDeSalud.gov!</span>"
+    banner: "Hemos hecho cambios para ayudarle con la preparación del lanzamiento del Mercado de Seguros de Salud el 1 de octubre. [Conozca nuestros cambios](/es/blog/welcome-to-the-new-healthcare-gov/)—incluyendo dónde encontrar algún contenido que solía aparecer en este sitio."
+  learn: 
+    families: Individuos y Familias
+    "families-url": /es/families
+    businesses: Pequeñas Empresas
+    "businesses-url": "/es/small-businesses"
+    all: Todos los Temas
+    "all-url": "/es/all-topics"
+    search: Buscar
+    "search-next": Próximos
+    "search-results": Resultados
+    "no-results": Sin Resultados
+  email: 
+    title: RECIBA ACTUALIZACIONES Y NOTICIAS IMPORTANTES
+    action: Registrese
+    address: Dirección de correo electrónico
+    createaccount: Crear una Cuenta
+    answer: Empiece Ahora
+    text: Correo electrónico
+    alttext: Enviar este página por correo electrónico
+  siderail: 
+    interest: Le Puede Interesar
+    related: Contenido Relacionado
+    popular: Más Popular
+  topics: 
+    more: Ver Más
+    result: Resultado
+    "collection-result": Resultados
+    next: Próximo
+    topic: Tema
+  social: 
+    share: Acción
+    shares: Acciónes
+    "days-ago": días
+    facebooktext: Síguenos en Facebook
+    twittertext: Síguenos en Twitter
+  questions: 
+    title: Más respuestas
+    select: Seleccione una Situación
+  languages: 
+    title: Otros Recursos de Idiomas
+  glossary: 
+    title: Glosario
+  state: 
+    title: Obtenga Información Estatal
+    select: Seleccione Su Estado
+    options: 
+      - Ayuda al Consumidor de
+      - Medicaid en
+      - El Mercado de Seguros Médicos de
+      - CHIP en
+  blog: 
+    title: Blog Seguro de Salud
+    by: Por
+    continue: Seguir Leyendo
+    recent: Reciente
+    "top-posts": Entradas Más Populares
+    "category-label": Categorías
+    January: enero
+    February: febrero
+    March: marzo
+    April: abril
+    May: mayo
+    June: junio
+    July: julio
+    August: agosto
+    September: septiembre
+    October: octubre
+    November: noviembre
+    December: diciembre
+    abbr: 
+      January: enero
+      February: feb
+      March: marzo
+      April: abr
+      May: mayo
+      June: jun
+      July: jul
+      August: agosto
+      September: set
+      October: oct
+      November: nov
+      December: dic
+  qat:
+    step1: Get Started
+    step2: Basic Info for Individuals and Families
+    step2business: Basic Info for Businesses
+    step3: Current Coverage
+    step4: Status and Conditions
+    step5: Household Income
+  utility:
+    sitename: CuidadoDeSalud.gov
+    marketplacename: Mercado de Seguros Médicos
+    altemailsignup: Casillero para correo electrónico
+    altdropdown: "Todos los temas están ampliados. Para recorrer el menú, oprima tab"
+    altsearch: Búsqueda en el sitio
+    altsearchbutton: Búsque
+    altsearchtext: Ingrese el texto para su búsqueda
+    taskbar: Enlaces rápidos a la información
+    footerheader: Pie de página
+    qatalert: Por favor realice las selecciones antes de proceder
+    print: Imprimir
+    printbutton: Imprima
+    gotobutton: Vaya a la parte
+    part: Parte
+    skipnav: Omitir Navegación
+    begincontent: Contenido
+    qatitle: "Obtenga sus opciones e información"
+    connect: Conectar
+    subscribe: Obtener actualizaciones
+    help: Ayuda
+    helpcenter: Centro de Ayuda
+    accessibility: Accesibilidad
+    privacy: Política de Privacidad
+    developers: Para los desarrolladores
+tag: translations
+---
+

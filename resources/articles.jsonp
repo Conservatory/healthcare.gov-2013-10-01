@@ -1,0 +1,12 @@
+---
+---
+articles([
+{% for post in site.posts %}{% if post.layout == 'basic' OR post.layout == 'basic-nav-left' %}
+  {
+    "name": "{{post.url | split: '/' | last | replace: '-',' ' | capitalize}}",
+    "value": "{{post.url | split: '/' | last}}",
+    "lang": "{{post.lang}}"
+  },
+{% endif %}{% endfor %}
+false
+])

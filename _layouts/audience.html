@@ -1,0 +1,116 @@
+---
+layout: default
+---
+  {% assign q = site.tags.audience[0] %}
+  {% assign T = site.tags.translations[0] %}
+{% capture now %}{{site.time | date: "%y%m%d"}}{% endcapture %}
+<div class='audience-container top'>
+  <div class="row-fluid" role='main'>
+    <div class="span6">
+      <!-- Headers are not getting explicit .header class. Using .audience-container h1 or h2 -->
+      {{content}}
+      <div class='row-fluid'></div>
+      {% if page.lang == 'es' %}
+        <a type="submit" href='{{site.baseurl}}/es/quick-answers' class="btn btn-large btn-green signup audience-btn">{{q.[page.lang].audience.top.action}}</a>
+      {% else %}
+        <a type="submit" href='{{site.baseurl}}/quick-answers' class="btn btn-large btn-green signup audience-btn">{{q.[page.lang].audience.top.action}}</a>
+      {% endif %}
+    </div>
+    <!-- mobile -->
+    <div class='row-fluid visible-phone'>
+      <hr class="dark">
+      {% include social.html %}
+      {% include print.html %}
+      <hr class="dark">
+    </div>
+    <div class='row-fluid hidden-phone social'>
+      {% include social.html %}
+      {% include print.html %}
+    </div>    
+    <div class="span6 video">
+      <iframe title='YouTube Embedded Video: {{page.video-title}}' width="100%" width="500" height="317" src="{{page.video}}?wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="audience-container middle">
+  
+  {% if page.title == 'Small Businesses' %}
+    {% assign taglist = 'businesses' %}
+  {% elsif page.title == 'Families' %}
+    {% assign taglist = 'health-insurance-basics, other-health-insurance-programs' %}
+  {% endif %}
+ 
+  {% if page.title == 'Small Businesses' %}
+    <p><strong>{{q.[page.lang].audience.top.already-business}}</strong></p>
+     <a href='{{site.baseurl}}/{{q.[page.lang].audience.top.find-business-link}}' class=''>{{q.[page.lang].audience.top.find-business}}</a>
+    </p>
+      
+  {% elsif page.title == 'Families' %}
+    <p><strong>{{q.[page.lang].audience.top.already-family}}</strong></p>
+     <a href='{{site.baseurl}}/{{q.[page.lang].audience.top.find-family-link}}' class=''>{{q.[page.lang].audience.top.find-family}}</a>
+    </p>
+     
+  {% endif %}
+  
+  <hr class="dark-thick top clearfix">
+  <div class='row-fluid card-category' role='navigation'>
+    <div class="span4">
+      {% if page.title == 'Small Businesses' %}
+          <h2 class='header4'>{{q.[page.lang].audience.marketplace-business}}</h2>
+        {% elsif page.title == 'Families' %}
+          <h2 class='header4'>{{q.[page.lang].audience.marketplace-family}}</h2>
+      {% endif %}
+      <hr class="dark">
+      {% for item in page.marketplace %}
+        {% assign post = site.match[page.lang][item] %}
+        {% capture then %}{{post.date | date: "%y%m%d"}}{% endcapture %}
+        {% assign distance = now | minus: then %}
+        {% if post.title-short %}
+        <a href='{{site.baseurl}}{{post.url}}' class='landing span4 card transition' title='{%if distance < 100 %}New:{%if post.lang == "es"%}Neuvo:{%endif%}{% endif %} {{post.title-short | replace: "'", "\'"}}'>
+          <span class='new {%if distance < 100 %}active{% endif %} {%if post.lang == "es"%}es{%endif%}'></span>
+          <span class='header3'>{{post.title-short}}</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="span4">
+      <h2 class='header4'>{{T.[page.lang].siderail.popular}}</h2>
+      <hr class="dark">
+      {% for item in page.popular %}
+        {% assign post = site.match[page.lang][item] %}
+        {% capture then %}{{post.date | date: "%y%m%d"}}{% endcapture %}
+        {% assign distance = now | minus: then %}
+        {% if post.title-short %}
+        <a href='{{site.baseurl}}{{post.url}}' class='landing span4 card transition' title='{%if distance < 100 %}New:{%if post.lang == "es"%}Neuvo:{%endif%}{% endif %} {{post.title-short | replace: "'", "\'"}}'>
+          <span class='new {%if distance < 100 %}active{% endif %} {%if post.lang == "es"%}es{%endif%}'></span>
+          <span class='header3'>{{post.title-short}}</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="span4">
+      <h2 class='header4'>{{T.[page.lang].siderail.interest}}</h2>
+      <hr class="dark">
+      {% for item in page.interest %}
+        {% assign post = site.match[page.lang][item] %}
+        {% capture then %}{{post.date | date: "%y%m%d"}}{% endcapture %}
+        {% assign distance = now | minus: then %}
+        {% if post.title-short %}
+        <a href='{{site.baseurl}}{{post.url}}' class='landing span4 card transition' title='{%if distance < 100 %}New:{%if post.lang == "es"%}Neuvo:{%endif%}{% endif %} {{post.title-short | replace: "'", "\'"}}'>
+          <span class='new {%if distance < 100 %}active{% endif %} {%if post.lang == "es"%}es{%endif%}'></span>
+          <span class='header3'>{{post.title-short}}</span>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% capture now %}{{site.time | date: "%y%m%d"}}{% endcapture %}
+  {% include was-this-helpful.html %}
+  </div>
+</div>
+<script>
+if(isMobileDevice.any()){$('.social-share').addClass('mobile')}
+</script>

@@ -1,0 +1,10 @@
+---
+layout: default
+experience: learn
+---
+<div class='basic-container page'>
+  <div class='article{% if page.class %} {{page.class}}{% endif %}'>
+    {{content}}
+  </div>
+  {% include was-this-helpful.html %} 
+</div>

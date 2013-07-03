@@ -1,0 +1,16 @@
+#wizard input[type="checkbox"],
+#wizard input[type="radio"],
+#search-filter input[type="checkbox"],
+#widget input[type="checkbox"],
+#widget input[type="radio"] {
+  left:auto;
+  }
+#wizard label span,
+#search-filter label span,
+#widget label span {
+  background-image:none;
+  }
+#footer .calendar-text {
+  font-size:10px;
+  }
+  

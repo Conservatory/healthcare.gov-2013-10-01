@@ -1,0 +1,76 @@
+---
+layout: default
+experience: learn
+---
+{% assign t = site.tags.translations[0] %}
+{% capture tag %}{{page.url | split:'/' | last}}{% endcapture %}
+
+<div class='basic-container'>
+  <h1 class='header2 topic-header'>{{page.title}}</h1>
+  <p class='result'></p>
+  <div class='row-fluid'>
+    <!-- promoted -->
+    {% assign cardCount = 0 %}
+    {% for post in site.tags.promote %}
+    {% unless post.categories contains 'blog' %}
+    {% if post.lang == page.lang and post.topics contains tag %}
+    <div class='span6 card topic promote transition {% if cardCount < 10 %}display{% else %}nodisplay{% endif %}'>
+      <a class='topic-content' href='{{site.baseurl}}{{post.url}}'>
+        <h2 class='header3'>{{post.title}}</h2>
+        <div class='hidden-phone'>
+          {% if post.bite %}
+          {{post.bite}}
+          {% else %}
+          {{post.content | markdownify | truncatewords: 26}}
+          {% endif %}
+        </div>
+      </a>
+      <div data-title='{{post.title | replace:"'","\'"}}' data-url='{{post.url}}'>
+        {% include social.html %}
+      </div>
+    </div>
+    {% assign cardCount = cardCount | plus: 1 %}
+    {% endif %}
+    {% endunless %}
+    {% endfor %}
+    <!-- remaining unpromoted -->
+    {% for post in site.topics[tag] %}
+    {% unless post.tags contains 'promote' or post.categories contains 'blog' %}
+    {% if post.lang == page.lang %}
+    <div class='span6 card topic transition {% if cardCount < 10 %}display{% else %}nodisplay{% endif %}'>
+      <a class='topic-content' href='{{site.baseurl}}{{post.url}}'>
+        <h2 class='header3'>{{post.title}}</h2>
+        <div class='hidden-phone'>
+          {% if post.bite %}
+          {{post.bite}}
+          {% else %}
+          {{post.content | markdownify | truncatewords: 26}}
+          {% endif %}
+        </div>
+      </a>
+      <div data-title='{{post.title | replace:"'","\'"}}' data-url='{{post.url}}' data-open='true'>
+        {% include social.html %}
+      </div>
+    </div>
+    {% assign cardCount = cardCount | plus: 1 %}
+    {% endif %}
+    {% endunless %}
+    {% endfor %}
+  </div>
+  {% assign resultCount = cardCount %}
+  {% if cardCount > 10 %}
+    {% include next-ten.html %}
+  {% endif %}
+  {% include was-this-helpful.html %}
+</div>
+
+<script>
+    //not showing heading from the posts on this page
+    $('.topic-content .hidden-phone').find('h2').remove();
+
+    $('.result').html('{{resultCount}} {{t.[page.lang].topics.collection-result}}');
+    
+    if(isMobile.any()){
+        $('.result').after("<hr class='dark-thick'>");
+      }
+</script>

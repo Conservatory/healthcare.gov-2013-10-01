@@ -1,0 +1,40 @@
+{% assign t = site.tags.translations[0] %}
+
+<div class='row-fluid'>
+  <div class='span12 card {% if cardCount < 3 %}display{% else %}nodisplay{% endif %}'>
+    <h2 class='header3'><a href='{{site.baseurl}}{{post.url}}'>{{post.title}}</a></h2>
+    <hr class='dark'>
+    
+    <div class='blog-attribute'>
+      {% if page.lang == 'es' %}
+      {% capture day %}{{post.date | date: "%d"}}{% endcapture %}
+      {% capture month %}{{post.date | date: "%B"}}{% endcapture %}
+      {% capture year %}{{post.date | date: "%Y"}}{% endcapture %}
+      <div class='blog-date'>el {{day}} de {{t.[page.lang].blog.[month]}} de {{year}}</div>
+      {% else %}
+      <div class='blog-date'>{{post.date | date: "%B %d, %Y"}}</div>
+      {% endif %}
+      
+      {% if post.author %}
+      <div class='blog-author'>{{t.[page.lang].blog.by}} {{post.author}}</div>
+      {% endif %}
+    </div>
+    
+    <div class='row-fluid'>
+      {% if post.image %}
+      <div class='span3 feature-image'>
+        <img src='{{post.image}}' width='100%' />
+      </div>
+      <div class='span9'>
+      {% else %}
+      <div class='span12'>
+      {% endif %}
+        {% if post.bite %}<div class='blog-body'>{{post.bite}}</div>
+        {% else %}<div class='blog-body'>{{post.content | markdownify | truncatewords: 50 | replace:'<h2>', '<h3>' | replace:'</h2>', '</h3>'}}</div>
+        {% endif %}
+        <p class='continue-link'>{{t.[page.lang].blog.continue}} <a href='{{site.baseurl}}{{post.url}}'>{{post.title}}</a></p>
+      </div>
+    </div>
+    <div data-title='{{post.title | replace:"'","\'"}}' data-url='{{post.url}}' data-open='true'>{% include social.html %}</div>
+  </div>
+</div>

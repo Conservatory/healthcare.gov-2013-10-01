@@ -1,0 +1,28 @@
+---
+---
+{
+{% for lang in site.languages %}
+"{{lang.value}}": [
+{% for post in site.blogposts %}
+  {% if post.tags contains 'promote' %}
+  {% if post.topics contains page.tag or page.tag == null %}
+  {% if post.lang == lang.value %}
+    { "title": "{{post.title | replace:'"','\"'}}", "url": "{{site.baseurl}}{{post.url}}"}, 
+  {% endif %}
+  {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% for post in site.blogposts %}
+  {% unless post.tags contains 'promote' %}
+  {% if post.topics contains page.tag or page.tag == null %}
+  {% if post.lang == lang.value %}
+    { "title": "{{post.title | replace:'"','\"'}}", "url": "{{site.baseurl}}{{post.url}}"}, 
+  {% endif %}
+  {% endif %}
+  {% endunless %}
+{% endfor %}
+false]
+{% unless forloop.last %},{% endunless %}
+{% endfor %}
+}

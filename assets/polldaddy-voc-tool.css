@@ -1,0 +1,744 @@
+/*
+
+Plain White v1.0
+
+*/
+body
+{
+    margin:0;
+  font-size:14px;
+	line-height:18px;
+	background:#FDDC58;
+	color:#444;
+	font-family:'Open Sans', sans-serif;
+}
+
+p
+{
+	float:left;
+	margin:7px 12px 17px;
+}
+
+.rank-label
+{
+	background:url('/images/ico-move.png') no-repeat 14px 12px;
+	padding:10px 10px 10px 38px;
+	border:1px #ccc dotted;
+	border-radius:12px;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	display:block;
+	-webkit-transition:all .25s ease-in-out 0;
+}
+
+.rank-label:hover
+{
+	cursor:move;
+	background-color:#FDDC58;
+	background-color:rgba(255,255,255,0.5);
+}
+
+.rank-label:active
+{
+	box-shadow:0 0 10px #2b81c1;
+}
+
+.PDF_pageOuter
+{
+	margin:0;
+	padding:30px 0;
+}
+
+.PDF_pageInner
+{
+	background:#FDDC58;
+	padding:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+/*clearfix*/
+}
+
+.survey-page-2 .PDF_pageInner,.survey-page-3 .PDF_pageInner,.survey-page-4 .PDF_pageInner
+{
+  padding-bottom:0\9;
+}
+
+.survey-start .PDF_pageInner,.survey-page-1 .PDF_pageInner
+{
+	width:315px;
+}
+
+.PDF_pageInner:before,/*clearfix*/
+.PDF_pageInner:after
+{
+	display:table;
+	line-height:0;
+	content:"";
+}
+
+.PDF_pageInner:after
+{
+/*clearfix*/
+	clear:both;
+}
+
+.PDF_question
+{
+	max-height:100px;
+	max-height:none\9;
+}
+
+.PDF_question,.PDF_questionErr
+{
+	background-color:#FDDC58;
+}
+
+.PDF_questionErr
+{
+	background-color:#FDDC58;
+}
+
+.qContent
+{
+	font-size:14px;
+	line-height:20px;
+}
+
+.qNumber
+{
+	float:right;
+	font-size:12px;
+	line-height:12px;
+	background-color:#FDDC58;
+	padding:6px;
+	margin-left:20px;
+	display:none;
+}
+
+.qText
+{
+	margin:9px 0 9px 14px;
+	font-size:14px;
+	line-height:14px;
+	float:left;
+	text-transform:uppercase;
+	color:#444;
+	font-weight:700;
+	letter-spacing:0;
+}
+.survey-page-2 .qText,.survey-page-3 .qText,.survey-page-4 .qText
+{
+  float:none\9;
+}
+
+.qNote
+{
+	padding:5px 0 0;
+	font-size:14px;
+	font-weight:700;
+}
+
+.qNote p
+{
+	font-weight:600;
+}
+
+.PDF_mand /* Mandatory span */
+{
+	display:none;
+}
+
+.PDF_questionDivide
+{
+	border-top:1px solid #ccc;
+	margin-top:30px;
+	height:25px;
+	display:none;
+}
+
+.sBut
+{
+	background-image:url('/S_But.gif');
+	width:154px;
+	height:33px;
+	text-align:center;
+}
+
+.sBut P
+{
+	padding-top:6px;
+	margin:0;
+}
+
+.sBut A
+{
+	font-size:18px;
+	color:#FFF;
+	text-decoration:none;
+	display:block;
+}
+
+/* ---------------------- all Questions ---------------------------------- */
+.PDF_err,.PDF_errMain
+{
+	font-size:12px;
+	color:#C00;
+	padding:4px 4px 4px 48px;
+	font-weight:bold;
+	background:#FEE url('/images/surveys/arrow.gif') no-repeat 20px center;
+}
+
+.PDF_errMain
+{
+	background:#FEE url('/images/surveys/error.png') no-repeat 20px center;
+}
+
+.PDF_noteMain
+{
+	font-size:12px;
+	color:#333;
+	padding:4px 4px 4px 48px;
+	background:#FDFFD9 url('/images/surveys/note.gif') no-repeat 20px center;
+}
+
+.PDF_QT100,.PDF_QT200,.PDF_QT400,.PDF_QT800,.PDF_QT900,.PDF_QT1000,.PDF_QT1200,.PDF_QT1400,.PDF_QT1500
+{
+	float:right;
+}
+
+#pd-question-1
+{
+	float:left;
+}
+
+/* ---------------------- Page Header (QT1900) ---------------------------------- */
+.PDF_QT1900
+{
+}
+
+.PDF_QT1900 H2
+{
+	font-size:36px;
+	margin:0 0 26px;
+	line-height:48px!important;
+}
+
+.PDF_QT1900 P
+{
+}
+
+/* ---------------------- QT 100 ---------------------------------- */
+.PDF_QT100 .small,.PDF_QT100 .medium,.PDF_QT100 .large
+{
+	font-size:14px;
+	padding:2px;
+	width:150px;
+}
+
+.PDF_QT100 .medium
+{
+	width:300px;
+}
+
+.PDF_QT100 .large
+{
+	width:450px;
+}
+
+/* ---------------------- QT 200 ---------------------------------- */
+.PDF_QT200 .small,.PDF_QT200 .medium,.PDF_QT200 .large
+{
+	border:1px solid #CCC;
+	height:60px;
+	font-size:12px;
+	padding:3px;
+	width:600px;
+}
+
+.PDF_QT200 .medium
+{
+	height:90px;
+}
+
+.PDF_QT200 .large
+{
+	height:185px;
+	width:290px;
+	margin:0 9px 6px 0;
+}
+
+/* ---------------------- QT 400 ---------------------------------- */
+.PDF_QT400
+{
+	margin:-2px 0 0 20px;
+	float:left;
+}
+
+.survey-page-2 .PDF_QT400
+{
+	margin:-2px 0 10px 20px;
+	float:left;
+}
+
+.PDF_QT400 UL
+{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+.PDF_QT400 LI
+{
+	margin:5px 0;
+	float:left;
+	font-weight:500;
+}
+
+.survey-page-2 .PDF_QT400 LI,.survey-page-3 .PDF_QT400 LI
+{
+	width:400px;
+}
+
+#pd-question-2 .PDF_QT400 LI,#pd-question-3 .PDF_QT400 LI
+{
+	float:none;
+}
+
+.PDF_QT400 INPUT
+{
+	margin:0 6px 0 0;
+	margin:0\9;
+}
+
+.PDF_QT400 SELECT
+{
+	font-size:12px;
+	padding:2px;
+	min-width:200px;
+}
+
+.PDF_QT400 SELECT[multiple="true"]
+{
+	min-height:100px;
+}
+
+.PDF_QT400 label[for='q_3547527_other']
+{
+	float:left;
+	margin-top:5px;
+}
+
+#q_3547527_other
+{
+	width:57%!important;
+	float:left;
+	border-radius:1px;
+	height:36px;
+	border:none;
+	box-shadow:inset 0 0 9px -1px #A3A3A3;
+	-moz-box-shadow:inset 0 0 9px -1px #A3A3A3;
+	-webkit-box-shadow:inset 0 0 9px -1px #A3A3A3;
+}
+
+.PDF_QT400 LABEL
+{
+	font-size:14px;
+	padding:0 16px 0 0;
+}
+
+.PDF_QT400 .other
+{
+	font-size:12px;
+	padding:1px;
+	width:300px;
+}
+
+/* ---------------------- QT 800 ---------------------------------- */
+.PDF_QT800
+{
+}
+
+.PDF_QT800 DIV
+{
+	float:left;
+	padding:0 10px 0 0;
+}
+
+.PDF_QT800 LABEL
+{
+	font-size:10px;
+	color:#666;
+	line-height:20px;
+}
+
+.PDF_QT800 .title,.firstName,.lastName,.suffix
+{
+	padding:3px;
+	font-size:14px;
+}
+
+.PDF_QT800 .title
+{
+	width:40px;
+}
+
+.PDF_QT800 .firstName
+{
+	width:130px;
+}
+
+.PDF_QT800 .lastName
+{
+	width:130px;
+}
+
+.PDF_QT800 .suffix
+{
+	width:40px;
+}
+
+/* ---------------------- QT 900 ---------------------------------- */
+.PDF_QT900
+{
+}
+
+.PDF_QT900 DIV
+{
+	float:left;
+	padding:0 10px 0 0;
+}
+
+.PDF_QT900 LABEL
+{
+	font-size:10px;
+	color:#666;
+	line-height:20px;
+}
+
+.PDF_QT900 .a,.b,.c,.d,.e,SELECT
+{
+	padding:3px;
+	font-size:14px;
+/*width: 142px;*/
+}
+
+.PDF_QT900 SELECT
+{
+	padding:3px;
+	width:154px;
+}
+
+.PDF_QT900 .a,.b
+{
+	width:306px;
+}
+
+/* ---------------------- QT 950 ---------------------------------- */
+.PDF_QT950 label
+{
+	font-size:10px;
+	color:#666;
+	line-height:20px;
+}
+
+.PDF_QT950 select
+{
+	font-size:10px;
+	height:2.5em;
+	margin-bottom:5px;
+}
+
+.PDF_QT950
+{
+	margin-top:10px;
+}
+
+.PDF_QT950 input
+{
+	border:1px solid #AAA;
+	background-color:#EEE;
+	padding:2px;
+	font-size:14px;
+	width:200px;
+	padding:5px;
+}
+
+/* ---------------------- QT 1000 ---------------------------------- */
+.PDF_QT1000
+{
+}
+
+.PDF_QT1000 DIV
+{
+	float:left;
+}
+
+.PDF_QT1000 LABEL
+{
+	font-size:10px;
+	color:#666;
+	line-height:20px;
+}
+
+.PDF_QT1000 .mm,.dd,.yyyy,.h,.mins
+{
+	font-size:12px;
+	width:60px;
+}
+
+.PDF_QT1000 .yyyy
+{
+	margin:0 10px 0 0;
+	width:40px;
+}
+
+.PDF_QT1000 .h,.mins
+{
+}
+
+.PDF_QT1000 IMG /* calendar icon */
+{
+	padding:0 0 0 5px;
+}
+
+/* ---------------------- QT 1200 ---------------------------------- */
+.PDF_QT1200 TABLE
+{
+	width:100%;
+}
+
+.PDF_QT1200 TH
+{
+	text-align:center;
+}
+
+.PDF_QT1200 TD
+{
+	text-align:center;
+	padding:4px;
+}
+
+.PDF_QT1200 .alt
+{
+	background-color:#EEE;
+}
+
+.PDF_QT1200 .title
+{
+	text-align:left;
+}
+
+/* ---------------------- QT 1400 ---------------------------------- */
+.PDF_QT1400
+{
+}
+
+.PDF_QT1400 INPUT
+{
+	padding:3px;
+	font-size:14px;
+	width:300px;
+}
+
+.PDF_QT1400 LABEL
+{
+	font-size:10px;
+	color:#666;
+	line-height:20px;
+}
+
+/* ---------------------- QT 1500 ---------------------------------- */
+.PDF_QT1500
+{
+}
+
+.PDF_QT1500 INPUT
+{
+	padding:3px;
+	font-size:14px;
+	width:300px;
+}
+
+.PDF_QT1500 LABEL
+{
+	font-size:10px;
+	color:#666;
+	line-height:20px;
+}
+
+/*-----------System Styles --------------------*/
+.cf
+{
+	margin:0;
+	padding:0;
+	clear:both;
+}
+
+/*-----------Start Page--------------------*/
+.PDF_startPage
+{
+}
+
+.PDF_startPageMsg
+{
+}
+
+.button
+{
+	vertical-align:top;
+	text-align:right;
+	margin-top:7px;
+	height:0;
+	box-shadow:0 1px 5px 0 #8A8A8A;
+	-moz-box-shadow:0 1px 5px 0 #8A8A8A;
+}
+
+.button input,.button a.previous-page
+{
+	font-size:12px;
+	font-weight:400;
+	line-height:24px!important;
+	color:#FFF;
+	padding:0 13px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	margin:0;
+	cursor:pointer;
+	background:#14517a;
+	background:-webkit-gradient(linear,left top,left bottom,from(# #14517a),to(#14517a));
+	background:-webkit-linear-gradient(top,#4985B4,#096396);
+	background:-moz-linear-gradient(top,#4985B4,#096396);
+	background:-ms-linear-gradient(top,#4985B4,#096396);
+	background:-o-linear-gradient(top,#4985B4,#096396);
+	border:none;
+}
+
+.button:hover
+{
+	border-top-color:#28597a;
+	background:#28597a;
+	color:#ccc;
+}
+
+.button:active
+{
+	border-top-color:#1b435e;
+	background:#1b435e;
+}
+
+.survey-start .button,.survey-page-1 .button,.survey-page-2 .button,.survey-page-3 .button,.survey-page-4 .button
+{
+	position:relative;
+	bottom:0;
+	margin:0 auto;
+	width:88px;
+	top:6px;
+}
+
+.survey-start .button input,.survey-page-1 .button input,.survey-page-2 .button input,.survey-page-3 .button input,.survey-page-4 .button input
+{
+	font-size:13px;
+	font-weight:400;
+	line-height:24px!important;
+	color:#FFF;
+	padding:2px 13px;
+	border-radius:0 0 4px 4px;
+	-moz-border-radius:0 0 4px 4px;
+	-webkit-border-radius:0 0 4px 4px;
+	margin:0;
+	cursor:pointer;
+	background-color:#01749D;
+	border:1px solid #01749D;
+	width:83px;
+	text-transform:uppercase;
+}
+
+.survey-start .button,.survey-page-1 .button
+{
+	border-radius:0 0 4px 4px;
+	-moz-border-radius:0 0 4px 4px;
+	-webkit-border-radius:0 0 4px 4px;
+}
+
+.PDF_question:nth-child(2)
+{
+	float:none;
+}
+
+.button a.previous-page
+{
+	text-decoration:none;
+	display:inline-block;
+	font-weight:normal;
+	color:#666;
+}
+
+.button input::-moz-focus-inner
+{
+	padding:0;
+	border:none;
+	text-align:right;
+}
+
+.button input::-moz-focus-inner
+{
+	padding:0;
+	border:none;
+}
+
+.PDF_progress
+{
+	margin:5px auto;
+	text-align:right;
+	text-transform:uppercase;
+	font-size:10px;
+	padding-right:10px;
+	color:#666;
+}
+
+.PDF_progress:last-of-type
+{
+	padding-right:32px;
+}
+
+.survey-start .PDF_QT400,.survey-page-1 .PDF_QT400
+{
+	margin-top:0;
+	float:left;
+}
+
+.qContent .qtext
+{
+	margin:0;
+}
+
+.survey-page-2 .button,.survey-page-3 .button,.survey-page-4 .button
+{
+  top:15px\9;
+}
+
+.survey-finished a
+{
+	float:left;
+	float:none\9;
+}
+
+.survey-finished .PDF_question
+{
+	float:none;
+}
+
+.survey-finished .PDF_QT1900 H2
+{
+	font-size:36px;
+	margin:0;
+	line-height:48px!important;
+	text-align:center;
+}
+
+.PDF_pageOuter
+{
+	margin:0;
+	padding:0 0 30px;
+}

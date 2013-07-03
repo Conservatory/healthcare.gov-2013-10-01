@@ -1,0 +1,127 @@
+---
+published: true
+en: 
+  connect: 
+    social: 
+      title: Connect with Us
+      mostshared: Most Shared Pages
+      involve: Get Ready for the Health Insurance Marketplace
+      events: Key Dates
+      signup: Get Email Updates
+      signupfor: Sign up for email and text updates on the Health Insurance Marketplace.
+      email: Email Address
+      video: "https://www.youtube-nocookie.com/embed/E45xOGIcGWo?list=PLUslxKz-YuCjD-9VRKOQkd4GHoZDrbMaV"
+      "video-title": "The Marketplace for Individuals & Families"
+      "video-text": See all videos and subscribe
+    mostshared: 
+      - title: "What is the Health Insurance Marketplace?"
+        link: "/what-is-the-health-insurance-marketplace"
+      - title: "How do I choose a Marketplace insurance plan?"
+        link: "/how-do-i-choose-marketplace-insurance/"
+      - title: "Will I qualify for lower costs on monthly premiums?"
+        link: "/will-i-qualify-to-save-on-monthly-premiums/"
+      - title: "How can I get ready to enroll in the Marketplace?"
+        link: "/how-can-i-get-ready-to-enroll-in-the-marketplace/"
+      - title: "What key dates do I need to know?"
+        link: "/what-key-dates-do-i-need-to-know"
+    google: 
+      - title: Welcome to the new HealthCare.gov
+        link: "/blog/welcome-to-the-new-healthcare-gov/"
+      - title: Introducing the Health Insurance Marketplace
+        link: "/blog/introducing-the-health-insurance-marketplace/"
+      - title: 10 ways the health care law protects you
+        link: "/blog/10-ways-the-health-care-law-protects-you/"
+    help: 
+      title: The Marketplace in Your State
+      links: 
+        - item: Volunteers
+          link: "#"
+        - item: Assisters
+          link: "#"
+        - item: Navigators
+          link: "#"
+    education: 
+      title: "Education & Outreach"
+      dropdown: 
+        - item: Visit Marketplace.CMS.gov
+          link: "http://marketplace.cms.gov"
+        - item: "Publications & Articles"
+          link: "http://marketplace.cms.gov/getofficialresources/publications-and-articles/publications-and-articles.html"
+        - item: Training Materials
+          link: "http://marketplace.cms.gov/getofficialresources/training-materials/training-materials-links.html"
+      links: 
+        - item: Get official Marketplace resources
+          link: "http://marketplace.cms.gov/"
+        - item: Publications and Articles
+          link: "http://marketplace.cms.gov/getofficialresources/publications-and-articles/publications-and-articles.html"
+        - item: Training Materials
+          link: "http://marketplace.cms.gov/getofficialresources/training-materials/training-materials-links.html"
+        - item: Spanish Materials
+          link: "http://marketplace.cms.gov/getofficialresources/spanish-materials/spanish-materials.html"
+        - item: Other Languages
+          link: "http://marketplace.cms.gov/getofficialresources/other-languages/other-languages-materials.html"
+    comments: 
+      title: "Share Your Stories, Code and Comments"
+      blog: HealthCare.gov Blog
+es: 
+  connect: 
+    social: 
+      title: Conéctate y Participa
+      mostshared: Páginas más compartidos
+      involve: Prepárese para el mercado de Seguros de Salud
+      events: Fechas Clave
+      signup: Obtener actualizaciones
+      signupfor: Registrarse para el correo electrónico en el mercado de Seguros de Salud.
+      email: Email
+      video: "https://www.youtube-nocookie.com/embed/DZdUnrc2pQQ?list=PLUslxKz-YuCjM_0-hByKRcmc5mzRV-cDu"
+      "video-title": El Mercado de Seguros Medicos para Individuales y Familias
+      "video-text": Ver todos los vídeos y suscribirse
+    mostshared: 
+      - title: "¿Qué es el Mercado de los seguros médicos?"
+        link: "/es/what-is-the-health-insurance-marketplace"
+      - title: "¿Cómo hago para escoger un plan en el Mercado de seguros?"
+        link: "/es/how-do-i-choose-marketplace-insurance"
+      - title: "¿Ahorraré dinero en mis primas mensuales?"
+        link: "/es/will-i-qualify-to-save-on-monthly-premiums"
+    google: 
+      - title: Bienvenido a la nueva HealthCare.gov
+        link: "/es/blog/welcome-to-the-new-healthcare-gov/"
+      - title: Al presentar el mercado de Seguros de Salud
+        link: "/es/blog/introducing-the-health-insurance-marketplace/"
+      - title: 10 formas de la ley de salud que protege
+        link: "/es/blog/10-ways-the-health-care-law-protects-you/"
+    help: 
+      title: El mercado en su estado
+      links: 
+        - item: Voluntarios
+          link: "#"
+        - item: Assisters
+          link: "#"
+        - item: Navegantes
+          link: "#"
+    education: 
+      title: Educación y Divulgación
+      dropdown: 
+        - item: Obtener recursos oficiales del mercado
+          link: "http://marketplace.cms.gov"
+        - item: Publicaciones y Artículos
+          link: "http://marketplace.cms.gov/getofficialresources/publications-and-articles/publications-and-articles.html"
+        - item: Materiales de Capacitación
+          link: "http://marketplace.cms.gov/getofficialresources/training-materials/training-materials-links.html"
+      links: 
+        - item: Obtenga Recursos Oficiales del Mercado
+          link: "http://marketplace.cms.gov/"
+        - item: Publicaciones y Artículos
+          link: "http://marketplace.cms.gov/getofficialresources/publications-and-articles/publications-and-articles.html"
+        - item: Materiales de Entrenamiento
+          link: "http://marketplace.cms.gov/getofficialresources/training-materials/training-materials-links.html"
+        - item: Materiales en Español
+          link: "http://marketplace.cms.gov/getofficialresources/spanish-materials/spanish-materials.html"
+        - item: Otras Idiomas
+          link: "http://marketplace.cms.gov/getofficialresources/other-languages/other-languages-materials.html"
+    comments: 
+      title: "Compartir tus experiencias, Código y Comentarios"
+      blog: HealthCare.gov Blog
+tag: connect
+---
+

@@ -1,0 +1,3 @@
+---
+---
+{"articles": [{% for post in site.posts %}{% if post.layout == 'basic' or post.layout == 'basic-nav-left' %}{{post | json}},{% endif %}{% endfor %}false]}

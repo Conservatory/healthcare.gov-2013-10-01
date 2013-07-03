@@ -1,0 +1,13 @@
+---
+---
+callback({
+{% for tag in site.tags %}
+{% capture t %}{{tag[0]}}{% endcapture %}
+  "{{t}}": [
+    {% for post in site.tags[t] %}
+    {{post | json}}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% unless forloop.last %},{% endunless %}
+{% endfor %}
+})

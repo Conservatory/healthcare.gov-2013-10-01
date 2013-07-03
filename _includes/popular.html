@@ -1,0 +1,39 @@
+{% assign t = site.tags.translations[0] %}
+
+<div id='popular-content'>
+  <h2 class='header4'>{{t.[page.lang].siderail.popular}}</h2>
+  <ul>
+  </ul>
+</div>
+
+<script type='text/javascript'>
+$(function() {
+    $('#popular-content ul').html(app.popularContent['{{page.lang}}'].join(''));
+    function insertPop() {
+        $('#popular-content li a').each(function() {
+            var url = $(this).attr('href');
+            
+            if ($('#siderail [href="' + url + '"]').length > 1) {
+                $(this).remove();
+            }
+        });
+        
+        $('#popular-content li a').slice(3).remove();
+        $('#popular-content').show();
+    }
+    
+    function waitForInterested() {
+        if (!app.interested) {
+            setTimeout(function(){ waitForInterested(); }, 100);
+        } else {
+            insertPop();
+        }
+    }
+    
+    if ($('#interested-content').length) {
+        waitForInterested();
+    } else {
+        insertPop();
+    }
+});
+</script>

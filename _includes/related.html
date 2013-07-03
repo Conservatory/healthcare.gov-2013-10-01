@@ -1,0 +1,78 @@
+{% assign t = site.tags.translations[0] %}
+<div id='related-content' role='complementary'>
+  <h2 class='header4'>{{t.[page.lang].siderail.related}}</h2>
+  <ul></ul>
+</div>
+
+<script type='text/javascript'>
+$(function() {
+    app.related = false;
+    
+    var pageData = {
+            'topics': [{% for topic in page.topics %}'{{topic}}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+            'audience': [{% for aud in page.audience %}'{{aud}}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+            'segment': [{% for seg in page.segment %}'{{seg}}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+            'insurance-status': [{% for status in page['insurance-status'] %}'{{status}}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+            'state': [{% for state in page.state %}'{{state}}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+            'condition': [{% for cond in page.condition %}'{{cond}}'{% unless forloop.last %},{% endunless %}{% endfor %}]
+        },
+        lang = '{{page.lang}}',
+        title = (lang === 'es') ? 'es-title' : 'title',
+        langUrl = (lang === 'es') ? '/es' : '',
+        postUrl,
+        relatedIndex = [],
+        relatedCount = {};
+        
+    {% for post in page.related %}
+    postUrl = "/{{post | downcase | replace:' ','-' | remove:'\"' | remove:'?'}}";
+    relatedIndex.push(postUrl);
+    {% endfor %}
+        
+    // Generate related content based on metadata
+    app.sidebar.defer(function(cb) {
+        var data = app.sidebarData;
+        $.each(data, function(i,post) {
+            var article = (post) ? post.topics.length : false;
+            
+            if (post && '{{page.url}}' != langUrl + post.url && article) {
+                var manualMatch = relatedIndex.indexOf(post.url);
+                
+                if (manualMatch > -1) {
+                    relatedIndex[manualMatch] = i;
+                } else {
+                    _(pageData).each(function(v,k) {
+                        var matches = _.intersection(v,post[k]).length;
+                        if (k === 'topics') matches *= 2;
+                        relatedCount[i] = relatedCount[i] + matches || matches;
+                    });
+                }
+            }
+            else return;
+        });
+        
+        relatedIndex = relatedIndex.concat(sortByValue(relatedCount)).slice(0,6);
+        
+        var count = 0;
+        $.each(relatedIndex, function(i,p) {
+            if (!isNaN(p) && count < 3) {
+                $('#related-content ul').append(
+                    '<li><a href="{{site.baseurl}}'
+                    + langUrl + data[p].url + '">'
+                    + data[p][title] + '</a></li>'
+                );
+                count++;
+            }
+        });
+        
+        $('#related-content').show();
+        app.related = relatedIndex;
+        if (typeof cb === 'function') cb();
+    });
+    
+    function sortByValue(object) {
+        var tuples = _.map(object, function (value, key) { return [key, value]; });
+        tuples = _.sortBy(tuples, function (tuple) { return -tuple[1]; });
+        return _.map(tuples, function(t){ return parseInt(t[0]); });
+    }
+});
+</script>

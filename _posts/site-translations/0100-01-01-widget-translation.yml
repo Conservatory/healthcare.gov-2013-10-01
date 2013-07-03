@@ -1,0 +1,33 @@
+---
+title:
+  en: "Health Insurance Marketplace"
+  es: "Mercado de Seguros Médicos"
+quick-answers:
+  intro:
+    en: "Get quick answers about your coverage options from the Health Insurance Marketplace"
+    es: "Obtenga respuestas rápidas sobre sus opciones de cobertura a través del mercado de seguros médicos"
+  label:
+    en: "Are you interested in health coverage for:"
+    es: "¿Está usted interesado en la cobertura de salud para:"
+  options:
+    family:
+      en: "Yourself and/or your family?"
+      es: "Usted y / o su familia?"
+    business:
+      en: "A small business you own and run?"
+      es: "Una pequeña empresa que posee y dirige?"
+  button:
+    en: "Get Started"
+    es: "Comience Ahora"
+subscribe:
+  intro:
+    en: "Need Health Insurance?<br>Get ready for the new Health Insurance Marketplace"
+    es: "¿Necesita usted seguro médico?<br>Prepárese para el nuevo mercado de seguros médicos"
+  input:
+    en: "Your Email Address"
+    es: "sudirección de correo electrónico"
+  button:
+    en: "Signup for Email Updates"
+    es: "Inscríbase para recibir actualizaciones por correo"
+tag: widgets
+---

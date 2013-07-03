@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<POLICIES xmlns="http://www.w3.org/2002/01/P3Pv1">
+ <POLICY name="forVistors" 
+     discuri="https://www.healthcare.gov/privacy-policy.html"
+     xml:lang="en">
+  <ENTITY>
+   <DATA-GROUP>
+    <DATA ref="#business.name">U.S. Department of Health &amp; Human Services</DATA>
+    <DATA ref="#business.contact-info.postal.street">200 Independence Avenue, S.W.</DATA>
+    <DATA ref="#business.contact-info.postal.city">Washington</DATA>
+    <DATA ref="#business.contact-info.postal.stateprov">D.C.</DATA>
+    <DATA ref="#business.contact-info.postal.postalcode">20201</DATA>
+    <DATA ref="#business.contact-info.postal.country">USA</DATA>
+    <DATA ref="#business.contact-info.telecom.telephone.intcode">1</DATA>
+    <DATA ref="#business.contact-info.telecom.telephone.loccode">800</DATA>
+    <DATA ref="#business.contact-info.telecom.telephone.number">318-2596</DATA>
+   </DATA-GROUP>
+  </ENTITY>
+  <ACCESS><nonident/></ACCESS>
+  <DISPUTES-GROUP>
+   <DISPUTES resolution-type="service"
+     service="https://chat.healthcare.gov"
+     short-description="Visit our privacy policy.">
+    <REMEDIES><correct/></REMEDIES>
+   </DISPUTES>
+  </DISPUTES-GROUP>
+  <STATEMENT>
+   <PURPOSE><admin/><develop/><individual-analysis required="opt-in"/></PURPOSE>
+   <RECIPIENT><ours/></RECIPIENT>
+   <RETENTION><legal-requirement/></RETENTION>    
+  </STATEMENT>
+ </POLICY>
+</POLICIES>

@@ -1,0 +1,304 @@
+---
+layout: default
+experience: learn
+title: "Get your options & info"
+class: qat
+---
+{% assign qa = site.tags['quick-answers'][0] %}
+{% assign t = site.tags.footer[0] %}
+{% assign tt = site.tags.translations[0] %}
+
+<div class='basic-container page'>
+  <div id='wizard' style='display:none;'>
+    <h1 class='header2'>{{qa.intro.title.[page.lang]}}</h1>
+    <div class='article'>
+      <div class='qa-step' data-step='1' data-audience='step'>
+        <h2 class='accessibility'>{{tt.[page.lang].qat.step1}}</h2>
+        <div id='qa-intro'>
+          <p>{{qa.intro.intro.[page.lang]}}</p>
+          <ul>
+            {% for bullet in qa.intro.bullets.[page.lang] %}
+            <li>{{bullet}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <form data-type='audience'>
+          <fieldset>
+          <legend>{{qa.audience.label.[page.lang]}}</legend>
+          {% for item in qa.audience.options %}
+          <input type='radio' name='audience' id='audience-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='audience-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+          </fieldset>
+        </form>
+      </div>
+      
+      <div class='qa-step qa-state-dropdown' data-step='2' data-audience='family shop'>
+        <h2 class='accessibility'>{{tt.[page.lang].qat.step2}}</h2>
+        <form>
+          <fieldset>
+          <legend>{{qa.state.label.family.[page.lang]}}</legend>
+          <!--googleoff: all-->
+          <div class='accessibility'>Select from the following list of states:</div>
+          <div class='dropdown'>
+            <label for='state-select-family' class='accessibility'>{{tt.[page.lang].state.select}}</label>
+            <select id='state-select-family' name='state' class='select state'>
+              <option disabled selected>{{qa.state.placeholder.[page.lang]}}</option>
+              {% for state in site.states %}
+                {% unless site.territories contains state %}
+                  <option value='{{state}}'>{{state}}</option>
+               {% endunless %}
+              {% endfor %}
+            </select>
+          </div>
+        </fieldset>
+          <!--googleon: all-->
+        <fieldset>
+          <legend>{{qa.age.label.[page.lang]}}</legend>
+          {% for item in qa.age.options %}
+          <input type='radio' name='age' id='age-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='age-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+        </fieldset> 
+        <fieldset>  
+          <legend>{{qa.gender.label.[page.lang]}}</legend>
+          {% for item in qa.gender.options %}
+          <input type='radio' name='gender' id='gender-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='gender-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+        </fieldset>
+        </form>
+      </div>
+      
+      <div class='qa-step' data-step='3' data-audience='family shop'>
+        <h2 class='accessibility'>{{tt.[page.lang].qat.step3}}</h2>
+        <form>
+          <fieldset>
+          <legend>{{qa.status.label.[page.lang]}}</legend>
+          {% for group in qa.status.groups %}
+          <div>{{group.[page.lang]}}</div>
+          {% for item in qa.status.options %}
+          {% if item.group == group.value %}
+          <input type='radio' name='status' id='status-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='status-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+          </fieldset>
+        </form>
+      </div>
+      
+      <div class='qa-step' data-step='4' data-audience='family shop'>
+        <h2 class='accessibility'>{{tt.[page.lang].qat.step4}}</h2>
+        <form>
+          <fieldset>
+          <legend>{{qa.additional.label.[page.lang]}}</legend>
+          {% for item in qa.additional.options %}
+          <input type='checkbox' name='additional' id='additional-{{item.value}}' value='{{item.value}}'>
+          <label class='checkbox-label' for='additional-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+        </fieldset>
+        <fieldset>
+          <legend>{{qa.condition.label.[page.lang]}}</legend>
+          {% for item in qa.condition.options %}
+          <input type='radio' name='condition' id='condition-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='condition-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+          </fieldset>
+        </form>
+      </div>
+      
+      <div id='qa-screener' class='qa-step' data-step='5' data-audience='family shop'>
+        <h2 class='accessibility'>{{tt.[page.lang].qat.step5}}</h2>
+        <form>
+          <fieldset>
+          <legend>{{qa.householdSize.label.[page.lang]}}</legend>
+          <div id='addPeople' class='row-fluid'>
+            <span class='span1'>
+              <a href='' class='circle_minus changeHouseholdSize' id='screenerHouseholdDecrease' alt='minus'><i>▬</i></a>
+            </span>
+            <span class='span1' id='counter'>
+              <label class='accessibility' for='screenerHouseholdSize'>Household Size</label>
+              <input type='text' name='householdSize' class='householdSize' id='screenerHouseholdSize' value='1'>
+            </span>
+            <span class='span1'>
+              <a href='' class='circle_plus changeHouseholdSize' id='screenerHouseholdIncrease' alt='plus'><i>+</i></a>
+            </span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>{{qa.screener.label.[page.lang]}} <span id='fplText'></span>?</legend>
+          {% for item in qa.screener.options %}
+          <input type='radio' name='screener' id='screener-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='screener-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+        </fieldset>
+        </form>
+      </div>
+      
+      <div class='qa-step qa-state-dropdown' data-step='2' data-audience='business'>
+        <h2 class='accessibility'>{{tt.[page.lang].qat.step2business}}</h2>
+        <form>
+          <fieldset>
+          <legend>{{qa.state.label.business.[page.lang]}}</legend>
+          <!--googleoff: all-->
+          <div class='dropdown'>
+            <label for='state-select-business' class='accessibility'>{{tt.[page.lang].state.select}}</label>
+            <select  id='state-select-business' name='state' class='select state'>
+              <option disabled selected>{{qa.state.placeholder.[page.lang]}}</option>
+              {% for state in site.states %}
+              <option value='{{state}}'>{{state}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          </fieldset>
+          <!--googleon: all-->
+          <fieldset>
+          <legend>{{qa.employees.label.[page.lang]}}</legend>
+          {% for item in qa.employees.options %}
+          <input type='radio' name='employees' id='employees-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='employees-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+          </fieldset>
+          <fieldset>
+          <legend>{{qa.currently.label.[page.lang]}}</legend>
+          {% for item in qa.currently.options %}
+          <input type='radio' name='currently' id='currently-{{item.value}}' value='{{item.value}}'>
+          <label class='radio-label' for='currently-{{item.value}}'>
+            <span></span>
+            {{item.[page.lang]}}
+          </label>
+          {% endfor %}
+          </fieldset>
+        </form>
+      </div>
+      
+      <div id='qa-pager'>
+        <a class='btn btn-large next pagers disabled' href='#'>{{qa.buttons.next.[page.lang]}}</a>
+        <a class='btn btn-large btn-inverse prev pagers' href='#'>{{qa.buttons.back.[page.lang]}}</a>
+        <a class='btn btn-large btn-green update edit' href='#'>{{qa.buttons.update.[page.lang]}}</a>
+        <a class='cancel edit' href='#'>{{qa.buttons.cancel.[page.lang]}}</a>
+      </div>
+    </div>
+    <p><a href='{{site.baseurl}}/{{qa.results.explainer.link.[page.lang]}}'>{{qa.results.explainer.title.[page.lang]}}</a></p>
+  </div>
+  <div id='wizard-results' style='display:none;'>
+    <h2 class='header2'>{{qa.results.results.[page.lang]}}</h2>
+    <div class='row-fluid hidden-phone social'>
+      {% include social.html %}
+      {% include print.html %}
+    </div>
+    <div class='row-fluid'>
+      <div class='span3' id='result-area'>
+        <div class='accordion visible-phone' id='accordion2'>
+          <div class='accordion-group'>
+            <div class='accordion-heading'>
+              <a class='accordion-toggle' data-toggle='collapse' data-parent='#accordion2' href='#collapseOne'>
+                <button class='btn btn-block btn-green'>Edit Your Answers</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <ul id='qa-menu'>
+        </ul>
+      </div>
+      <div class='span9' id='text-area'>
+        <div id='qa-options'>
+          <h3 class='header2'>{{qa.results.options.[page.lang]}}</h3>
+          <div class='article'>
+            {% for blurb in site.tags['qat-blurb'] %}
+            {% if blurb.lang == page.lang %}
+            {% for option in blurb.options %}
+            <div data-value='{{option.value}} {{blurb.url | split:"-" | last}}' style='display:none;'>
+              <h4>{{blurb.title}}</h4>
+              <p>{% if option.intro %}{{option.intro}}, {% endif %}{{blurb.content | remove: '<p>' | remove: '</p>'}}</p>
+              <p class='strong'>{{blurb['pre-link']}} <a href="{{site.baseurl}}/{{blurb['link-url']}}">{{blurb['link-title']}}</a></p>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div id='qa-nextsteps'>
+          <h3 class='header2'>{{qa.results.checklist.label.[page.lang]}}</h3>
+          <div class='article'>
+            <div class='row-fluid'>
+              <div class='span6 qa-checklist'>
+                <h4 class='header3'>{{qa.results.checklist.print.[page.lang]}}</h4>
+                <p>{{qa.results.checklist.info.[page.lang]}}</p>
+                <a class='btn btn-large btn-green signup checklist' id='checklistLink' target='_blank' href='{{site.baseurl}}/downloads/Marketplace_checklist.pdf'>{{qa.results.checklist.button.[page.lang]}}</a>
+              </div>
+              <div class='span6 qa-signup no-checklist'>
+                <h4 class='header3'>{{qa.results.email.label.[page.lang]}}</h4>
+                <p>{{qa.results.email.info.[page.lang]}}</p>
+                <!--googleoff: all-->
+                <form>
+                  <label for='qa-signup'><h5 class='header5'>{{t.[page.lang].footer.email.title}}</h5></label>
+                  <input title='Email Signup Text Box' id='qa-signup' type='text' data-email>
+                  <input type='submit' class='btn btn-large btn-green signup hidden-phone' value='{{tt.[page.lang].email.action}}' href='{{site.baseurl}}/subscribe'>
+                  <a type='button' class='btn btn-large btn-green signup visible-phone' href='{{site.baseurl}}/subscribe'>{{tt.[page.lang].email.action}}</a>
+                </form>
+                <!--googleon: all-->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id='qa-info'>
+          <h3 class='header2'>{{qa.results.top-info.[page.lang]}}</h3>
+          <div class='article'>
+          </div>
+        </div>
+        {% include qat/templates.html %}
+        {% include was-this-helpful.html %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type='text/javascript'>
+
+app.wizardData = {{qa | json}};
+
+$(function() {
+    $('#qa-pager .next').click(function(){
+      if ($(this).hasClass('disabled')){
+        alert('{{tt.[page.lang].utility.qatalert}}');
+        return false;
+      }
+    });
+
+    if(isMobile.any()){
+      $('#text-area').after($('#result-area'));
+      $('#qa-menu').wrap("<div id='collapseOne' class='accordion-body collapse'><div class='accordion-inner'>");
+    }
+    if(isMobileDevice.any()){$('.social-share').addClass('mobile')}
+});
+    
+</script>

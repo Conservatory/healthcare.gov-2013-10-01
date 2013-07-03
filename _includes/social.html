@@ -1,0 +1,47 @@
+{% assign w = site.tags.translations[0] %}
+<!--googleoff: all-->
+<div class='social-share clearfix'>
+  <ul>
+    <li>
+      <iframe class='twframe' allowtransparency='true' frameborder='0' scrolling='no' src='' via='HealthCare.gov' style='height:20px;' title='{{w.[page.lang].social.twittertext}}'></iframe>
+    </li>
+    <li>
+      <iframe src='' class='fbframe' frameborder='0' style='border:none; overflow:hidden; height:25px;' allowTransparency='true' title='{{w.[page.lang].social.facebooktext}}'></iframe>
+    </li>
+    <li>
+      {% if page.lang == "es" %}
+      <a href='mailto:?subject={{page.title}} - HealthCare.gov&body=Me gustaría compartir este enlace con usted: http://HealthCare.gov/es/{{page.url}}' class='mailto' title='Enviar este página por correo electrónico'><span class='icon-envelope icon-white'></span>Email</a>
+      {% else %}
+      <a href='mailto:?subject={{page.title}} - HealthCare.gov&body=I would like to share this link with you: http://HealthCare.gov{{page.url}}' class='mailto' title='Email this page'><span class='icon-envelope icon-white'></span>Email</a>
+      {% endif %}
+    </li>
+  </ul>
+</div>
+<!--googleon: all-->
+
+<script>
+$(window).load(function(){
+  
+  $('.social-share').each(function(){
+
+    if($(this).parent().attr('data-url')){
+      
+      var url = $(this).parent().attr('data-url');
+      var title = $(this).parent().attr('data-title');
+
+      $(this).find('.fbframe').attr('src','https://www.facebook.com/plugins/like.php?href=healthcare.gov' + url + '&layout=button_count&show_faces=false&width=450&action=like&font&amp;colorscheme=light&amp;height=25&amp;xfbml=true;');
+
+      $(this).find('.twframe').attr('src','https://platform.twitter.com/widgets/tweet_button.html?text=' + title + '&url=https://healthcare.gov' + url + '&via=HealthCare.gov&counturl=https://www.healthcare.gov'+ url +'');
+
+      $(this).find('.mailto').attr('href','mailto:?subject=' + title + ' - HealthCare.gov&body=I would like to share this link with you: https://HealthCare.gov/'+ url + '')
+
+    }else{
+
+      $('.fbframe').attr('src','https://www.facebook.com/plugins/like.php?href=healthcare.gov{{page.url | replace:"'","\'" | uri_escape}}&layout=button_count&show_faces=false&width=450&action=like&font&amp;colorscheme=light&amp;height=25&amp;xfbml=true;');
+
+      $('.twframe').attr('src','https://platform.twitter.com/widgets/tweet_button.html?text={{page.title | replace:"'","\'" | uri_escape}}&url=https://www.healthcare.gov{{page.url | replace:"'","\'" | uri_escape}}&via=HealthCare.gov&counturl=https://www.healthcare.gov{{page.url | replace:"'","\'" | uri_escape}}');
+
+    }
+  });
+});
+</script>

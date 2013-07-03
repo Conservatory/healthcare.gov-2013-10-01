@@ -1,0 +1,76 @@
+{% assign t = site.tags.translations[0] %}
+<!--googleoff: all-->
+<div id='siderail'>
+  {% if page.class == 'blog' %}
+      <ul id='blog-home-link'>
+        <li>
+          {% if page.lang == 'en' %}
+            <a href='{{site.baseurl}}/blog'>Blog Home</a>
+          {% elsif page.lang == 'es' %}
+            <a href='{{site.baseurl}}/es/blog'>Página Principal del Blog</a>
+          {% endif %}
+        </li>
+      </ul>
+    <div id='blog-recent' role='complementary'>
+      <h2 class='header4'>{{t.[page.lang].blog.recent}}</h2>
+      {% include blog-recent.html %}
+    </div>
+  {% endif %}
+  {% if page.class == 'blog' or page.class == 'blog-index' %}
+    <div id='blog-categories' role='complementary'>
+      <h2 class='header4'>{{t.[page.lang].blog.category-label}}</h2>
+      {% include blog-tags-list.html %}
+    </div>
+    <div id='blog-top' role='complementary'>
+      <h2 class='header4'>{{t.[page.lang].blog.top-posts}}</h2>
+      {% include blog-top.html %}
+      <script>if({{count}} === 0) $('#blog-top').hide();</script>
+    </div>
+  {% else %}
+    <script>
+    app.sidebar.defer(function(cb) {
+
+      //IE CORS
+      jQuery.support.cors = true;
+      if ($.browser.msie  && parseInt($.browser.version, 10) <= 8) {
+          $.ajaxSetup({ cache: false });
+      }
+        $.getJSON('{{site.baseurl}}/api/index.json', function(d) {
+            app.sidebarData = d;
+            if (typeof cb === 'function') cb();
+        });
+    });
+    </script>
+    {% include related.html %}
+    {% include interested.html %}
+    {% include popular.html %}
+  {% endif %}
+</div>
+<!--googleon: all-->
+
+<script type='text/javascript'>
+$(function() {
+    if(!isMobile.any()){
+        // Sticky siderail
+        var top = $('#siderail').offset().top - 20;
+
+        $(window).on('scroll', function () {
+            var y = $(this).scrollTop(),
+                height = $('#siderail').height(),
+                articleHeight = $('.article').height() || $('.blog-list').height(),
+                footerTop = $('#footer').offset().top;
+                
+            if (y >= top && height < articleHeight) {
+                $('#siderail').addClass('fixed');
+                if (y > footerTop - height - 25) {
+                    $('#siderail').addClass('bottom');
+                } else {
+                    $('#siderail').removeClass('bottom');
+                }
+            } else {
+                $('#siderail').removeClass('fixed');
+            }
+        });
+    }
+});
+</script>

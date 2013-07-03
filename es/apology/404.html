@@ -1,0 +1,23 @@
+---
+layout: default
+lang: es
+experience: learn
+---
+
+{% assign post = site.tags.fourofour[0].[page.lang].fourofour %}
+{% assign u = site.tags.translations[0] %}
+<div class='basic-container fourofour'>
+  <div class='center'>
+    <h1 class='header2'>{{post.top.title}}</h1>
+    <p>{{post.top.subtitle}}</p>
+    <hr class='dark pad'>
+    <h2 class='header4'>{{post.search.title}}</h3>
+    <div class='input-append'>
+      <form name='gsearch' method='get' action='{{site.baseurl}}{% unless page.lang == "en" %}/{{page.lang}}{% endunless %}/search'>
+        <input id='404-search' title='{{t.[page.lang].utility.altsearch}}' class='nav-search span5' name='q' type='search' placeholder='{{post.search.title}}' autocomplete='off'>
+        {% include searchoptions.html %}
+      </form>
+    </div>
+  </div>
+</div>
+</div>

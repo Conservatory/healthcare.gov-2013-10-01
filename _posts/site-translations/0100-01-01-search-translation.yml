@@ -1,0 +1,27 @@
+---
+en:
+    search:
+        title: 'Search'
+        clear: 'Clear'
+        resultsfor: 'results for'
+        form:
+            placeholder: 'type your text here'
+            filter: 'Show Results for:'
+            checkbox:
+              - 'Individuals'
+              - 'Businesses'
+              - 'Seniors'
+es:
+    search:
+        title: 'Buscar'
+        clear: 'Borrar'
+        resultsfor: 'resultados para'
+        form:
+            placeholder: 'Escriba Su Texto Aquí'
+            filter: 'Mostrar resultados de:'
+            checkbox:
+              - 'Las personas'
+              - 'Negocios'
+              - 'Seniors'
+tag: search
+---

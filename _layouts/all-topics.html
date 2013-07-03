@@ -1,0 +1,91 @@
+---
+layout: default
+experience: learn
+---
+{% assign t = site.tags.translations[0] %}
+
+{% if page.lang == 'en' %}
+  {% assign lang = '' %}
+{% else %}
+  {% capture lang %}/{{page.lang}}{% endcapture %}
+{% endif %}
+
+{% include topics-sort.html %}
+
+<div class='basic-container all-topics' role='main'>
+  <h1 class='header2'>{{page.title}}</h1>
+  {{content}}
+  {% include social.html %}
+  <hr class='dark-thick'>
+  <div class='row-fluid'>
+    {% for i in (1..topicCount) %}
+    {% capture tag %}{{ topics_sort | findByIndex:forloop.index0 | split:'_' | last}}{% endcapture %}
+    {% assign tagIndex = topics_sort | findByIndex:forloop.index0 | split:'_' | join:' ' | findByIndex:1 | times:1 %}
+    <div class='span6 card {% if i <=9 %}display{%elsif i > 9%}nodisplay{% endif %}' data-topic='{{i}}'>
+      <h2 class='header4'><a href='{{site.baseurl}}{{lang}}/{{tag}}'>{{site.tags.topic[tagIndex].title}}</a></h2>
+      <ul>
+        {% assign count = 0 %}
+        {% for post in site.tags.promote %}
+        {% unless post.categories contains 'blog' %}
+        {% if post.topics contains tag and post.lang == page.lang and count < 3 %}
+          <li class='promote transition' data-article='{{count | plus: 1}}'><a href='{{site.baseurl}}{{post.url}}' title='{{post.title-short | replace:"'","\'"}}'><span class='header3'>{{post.title-short}}</span></a></li>
+        {% assign count = count | plus: 1 %}
+        {% endif %}
+        {% endunless %}
+        {% endfor %}
+
+        {% for post in site.topics[tag] %}
+        {% unless post.tags contains 'promote' or post.categories contains 'blog' %}
+        {% if post.lang == page.lang and count < 3 %}
+          <li class='transition' data-article='{{count | plus: 1}}'><a href='{{site.baseurl}}{{post.url}}' title='{{post.title-short | replace:"'","\'"}}'><span class='header3'>{{post.title-short}}</span></a></li>
+        {% assign count = count | plus: 1 %}
+        {% endif %}
+        {% endunless %}
+        {% if count == 3 %}{% break %}{% endif %}
+        {% endfor %}
+      </ul>
+      {% if count == 3 %}
+      <p class='seemore'><a href='{{site.baseurl}}{{lang}}/{{tag}}'>{{t.[page.lang].topics.more}} <em>{{site.tags.topic[tagIndex].title}}</em></a></p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if topicCount > 9 %}
+    {% include next-ten.html %}
+  {% endif %}
+{% include was-this-helpful.html %}
+</div>
+<script>
+
+if(isMobile.any()){
+  $('.card li').remove();
+  $('p.seemore').remove();
+  $('.social-share').remove();
+  $('span.header3').first().remove();
+  $('p').first().remove();
+}
+
+$('.card.span6 ul li').click(function() {
+    window.location = $(this).children('a').attr('href');
+});
+
+$(window).load(function() {
+    $('.card.span6').each(function() {
+        var topicNum = parseInt($(this).attr('data-topic'));
+        if (topicNum % 2 == 1) {
+            $(this).find('li').each(function(i) {
+                var cardNum = $(this).attr('data-article');
+                var $rightCard = $('.card.span6[data-topic=' + (topicNum + 1) + '] li[data-article=' + cardNum + ']');
+                var thisHeight = $(this).outerHeight();
+                var thatHeight = $rightCard.outerHeight();
+                
+                if (thisHeight > thatHeight) {
+                    $rightCard.css({'height': thisHeight});
+                } else if (thatHeight > thisHeight) {
+                    $(this).css({'height': thatHeight});
+                }
+            });
+        }
+    });
+});
+</script>

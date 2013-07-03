@@ -1,0 +1,13 @@
+{% if page.lang == 'en' %}
+  <div class='span9 poll-embed hidden-phone'>
+    <noscript><a href='https://cmsnewmedia.polldaddy.com/s/was-this-page-helpful'>Take Our Survey!</a></noscript>
+    <script type='text/javascript' src='https://polldaddy.com/survey.js' charset='UTF-8'></script>
+    <script type="text/javascript">
+        polldaddy.add(
+            { type: 'iframe', auto: true, domain: 'cmsnewmedia.polldaddy.com/s/', id: 'was-this-page-helpful', scroll: false, callback: function(){
+                $('.poll-embed iframe').attr('title', 'Was this post helpful? Take a short survey.');
+            } }
+        );
+    </script>
+  </div>
+{% endif %}

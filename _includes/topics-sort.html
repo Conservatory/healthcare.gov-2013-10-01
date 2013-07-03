@@ -1,0 +1,16 @@
+{% assign topicCount = 0 %}
+{% capture alltopics %}
+  {% for topic in site.tags.topic %}
+    {% if topic.lang == page.lang %}
+      {% if topic.order == 'undefined' %}
+        {% assign order = null %}
+      {% else %}
+        {% assign order = topic.order | plus: 0 %}
+      {% endif %}
+      {% if order == null %}99{% endif %}{% if order < 10 %}0{% endif %}{{order}}_{{forloop.index0}}_{{topic.url | split:'/' | last}}
+      {% assign topicCount = topicCount | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% capture topics_sort %}{{alltopics | split:' ' | sort | join:' '}}{% endcapture %}

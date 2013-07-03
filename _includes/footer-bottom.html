@@ -1,0 +1,35 @@
+  <div class='footer-bottom row-fluid' role='navigation'>
+    <div class='span5 pull-left links'>
+      {% for nav in f.[page.lang].footer.linksbottom-left %}
+        {% if nav.link contains 'http://' or nav.link contains 'https://' %}
+        <a target='_blank' href='{{nav.link}}'>{{nav.item}}</a>
+        {% else %}
+        <a href='{{site.baseurl}}{{nav.link}}'>{{nav.item}}</a>
+        {% endif %}
+      {% unless forloop.last %} | {% endunless %}
+      {% endfor %}
+    </div>
+    <div class='span7 text-right links'>
+      {% for nav in f.[page.lang].footer.linksbottom-right %}
+        {% if nav.link contains 'http://' or nav.link contains 'https://' %}
+        <a target='_blank' href='{{nav.link}}'>{{nav.item}}</a>
+        {% else %}
+        <a href='{{site.baseurl}}{{nav.link}}'>{{nav.item}}</a>
+        {% endif %}
+      {% unless forloop.last %} | {% endunless %}
+      {% endfor %}
+    </div>
+    <hr class='dark remove'>
+    <div class='span4 bottom-text pull-left'>
+      <a class='span4 icon eagle' href='http://www.hhs.gov/' target="_blank">HHS.gov</a>
+      {{f.[page.lang].footer.address}}
+    </div>
+    <div class='footer-icons pull-right'>
+      <a class='icon whitehouse pull-left' target='_blank' href='http://www.whitehouse.gov/' target="_blank">Whitehouse.gov</a>
+      {% if page.lang == 'es' %}
+      <a class='icon gobiernousa pull-right' target='_blank' href='http://www.usa.gov/gobiernousa/index.shtml' target="_blank">gobiernoUSA</a>
+      {% else %}
+      <a class='icon usagov pull-right' target='_blank' href='http://www.usa.gov/' target="_blank">USA.gov</a>
+      {% endif %}
+   </div>
+  </div>

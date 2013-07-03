@@ -1,0 +1,43 @@
+---
+layout: default
+experience: learn
+---
+<div class='basic-container page'>
+  {% include topictop.html %}
+  <div class='row-fluid'>
+    <div class='span9 article' role='main'>
+      <h1 class='header2'>{{page.title}}</h1>
+      <hr class='dark top'>
+      {% include social.html %}
+      {% include print.html %}
+      <hr class='dark bottom'>
+      
+      {{content}}
+
+      {% if page.state-dropdown %}
+        {% include state-dropdown.html %}
+      {% endif %}
+
+      {% if page.questions %}
+        {% include questions.html %}
+      {% endif %}
+    </div>
+    {% include was-this-helpful.html %}
+    <div class='span3'>
+      {% include siderail.html %}
+    </div>
+  </div>
+</div>
+
+<script>
+  {% include js/article-router.js %}
+  {% if page.title == 'Help Center' or page.title == 'Centro de Ayuda' %}
+    {% include js/webchat.js %}
+    startChat('#start-chat');
+  {% endif %}
+  if(isMobile.any()){
+      var topic = $('.article-topic');
+      $('.span9.article').after(topic)
+      topic.append("<hr class='dark-thick'>")
+  }
+</script>

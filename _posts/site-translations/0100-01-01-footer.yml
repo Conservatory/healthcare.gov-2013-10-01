@@ -1,0 +1,77 @@
+---
+published: true
+en: 
+  footer: 
+    daysleft: "DAYS LEFT UNTIL<br>OPEN ENROLLMENT"
+    timeline:
+      - title: "Open Enrollment Closes"
+        link: "/what-key-dates-do-i-need-to-know/#part=2"
+      - title: "Coverage Begins"
+        link: "/what-key-dates-do-i-need-to-know/#part=3"
+      - title: "Open Enrollment Begins"
+        link: "/what-key-dates-do-i-need-to-know/#part=4"
+    email: 
+      title: Get Email Updates
+      subscriber: "Already a subscriber?"
+      settings: Manage Your Subscriptions
+      "settings-url": "https://public-dc2.govdelivery.com/accounts/USCMSHIM/subscriber/new?preferences=true"
+      policy: Privacy Policy
+      "policy-url": /privacy
+    "linksbottom-left": 
+      - item: Sitemap
+        link: /sitemap
+      - item: Glossary
+        link: /glossary
+      - item: Help Center
+        link: "/help-center"
+      - item: Archive
+        link: "http://archive-it.org/collections/3626"
+    "linksbottom-right": 
+      - item: Accessibility
+        link: /accessibility
+      - item: Privacy Policy
+        link: /privacy
+      - item: Plain Writing
+        link: "http://www.hhs.gov/open/recordsandreports/plainwritingact/index.html"
+      - item: "Viewers & Players"
+        link: "http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Help.html"
+    address: "A federal government website managed by the U.S. Centers for Medicare & Medicaid Services. 7500 Security Boulevard, Baltimore, MD 21244"
+es: 
+  footer: 
+    daysleft: "DÍAS PARA<br>INSCRIPCIÓN ABIERTA"
+    timeline:
+      - title: "Inscripción abierta Cierra"
+        link: "/es/what-key-dates-do-i-need-to-know/#part=2"
+      - title: "Comienza la Cobertura"
+        link: "/es/what-key-dates-do-i-need-to-know/#part=3"
+      - title: "Comienza la Inscripción Abierta"
+        link: "/es/what-key-dates-do-i-need-to-know/#part=4"
+    email: 
+      title: Reciba Actualizaciones por Correo Electrónico
+      subscriber: "¿Está inscrito?"
+      settings: Control de suscripciones
+      "settings-url": "https://public-dc2.govdelivery.com/accounts/USCMSHIMESP/subscriber/new?preferences=true"
+      policy: Política de privacidad
+      "policy-url": /es/privacy
+    "linksbottom-left": 
+      - item: Mapa del sitio
+        link: /es/sitemap
+      - item: Glosario
+        link: /es/glossary
+      - item: Ayudar
+        link: "/es/help-center"
+      - item: Archivo
+        link: "http://wayback.archive-it.org/3688/*/http:/www.cuidadodesalud.gov/"
+    "linksbottom-right": 
+      - item: Accesibilidad
+        link: /es/accessibility
+      - item: Política de Privacidad
+        link: /es/privacy
+      - item: Lenguaje Sencillo
+        link: "http://espanol.hhs.gov/open/recordsandreports/plainwritingact/index.html"
+      - item: Los visores y reproductores
+        link: "http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Help.html"
+    address: "Un sitio Web del gobierno federal administrado por los Centros de Servicios de Medicare y Medicaid. 7500 Security Boulevard, Baltimore, MD 21244"
+tag: footer
+---
+

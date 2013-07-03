@@ -1,0 +1,74 @@
+{% assign t = site.tags.translations[0] %}
+
+<div class='extras' role='complementary'>
+  
+  {% if page.question-header %}
+    <h2 class='header3'>{{page.question-header}}</h2>
+  {% else %}
+    <h2 class='header3'>{{t.[page.lang].questions.title}}</h2>
+  {% endif %}
+
+  <label for='question-dropdown' class='accessibility'>{{t.[page.lang].questions.select}}</label>
+  <select id='question-dropdown' class='question-selector'>
+    <option disabled selected>{{t.[page.lang].questions.select}}</option>
+    {% for question_grp in page.questions %}{% if question_grp[1] %}
+      {% for q_item in question_grp[1] %}
+      {% capture question %}{{q_item | downcase}}{% endcapture %}{% assign post = site.match[page.lang][question] %}
+      {% if post.title and post.title != 'undefined' %}
+      <option data-section='part{{question_grp[0]}}' value='{{post.url | split:"/" | last}}'>{{post.title}}</option>
+      {% endif %}
+      {% endfor %}
+    {% else %}
+      {% capture question %}{{question_grp | downcase}}{% endcapture %}{% assign post = site.match[page.lang][question] %}
+      {% if post.title and post.title != 'undefined' %}
+      <option value='{{post.url | split:"/" | last}}'>{{post.title}}</option>
+      {% endif %}
+    {% endif %}{% endfor %}
+  </select>
+
+  {% for question_grp in page.questions %}{% if question_grp[1] %}
+    {% for q_item in question_grp[1] %}
+    {% capture question %}{{q_item | downcase}}{% endcapture %}{% assign post = site.match[page.lang][question] %}
+    {% if post.content %}
+    <div id='q{{forloop.index}}-{{question_grp[0]}}' class='extra-text {{post.url | split:"/" | last}}'>
+      <h3 class='header3'>{{post.title}}</h3>
+      {{post.content | markdownify}}
+    </div>
+    {% endif %}
+    {% endfor %}
+  {% else %}
+    {% capture question %}{{question_grp | downcase}}{% endcapture %}{% assign post = site.match[page.lang][question] %}
+    {% if post.content %}
+    <div id='q{{forloop.index}}' class='extra-text {{post.url | split:"/" | last}}'>
+      <h3 class='header3'>{{post.title}}</h3>
+      {{post.content | markdownify}}
+    </div>
+    {% endif %}
+  {% endif %}{% endfor %}
+</div>
+  
+<script>
+$(function () {
+    if ($('select.question-selector option').length <= 1) {
+        $('.extras').remove();
+    }
+    
+    // Remove duplicate question text
+    $('.extra-text').each(function() {
+        var q = $(this).attr('class').replace(' ','.');
+        $('.' + q).slice(1).remove();
+    });
+
+    //Open question when selected and update url
+    $('select.question-selector').change(function(e) {
+        e.preventDefault();
+
+        var question = $(this).val();
+
+        $('.extra-text').css('display','none');
+        $('.extra-text.' + question).css('display','block');
+        $('.extras h2').css('display','none');
+        app.router.set('question', question);
+    });
+});
+</script>

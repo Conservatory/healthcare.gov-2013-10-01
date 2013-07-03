@@ -1,0 +1,6 @@
+# robots.txt for healthcare.gov
+User-agent: *
+# Directories
+Disallow: /api/
+Disallow: /es/
+Sitemap: https://www.healthcare.gov/sitemap.xml

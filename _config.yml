@@ -1,0 +1,504 @@
+# Sitewide configuration settings. Set `title` to the site title, which
+# will be appended to the URL following {{page.title}} |
+
+title: HealthCare.gov
+auto: true
+server: true
+baseurl: 
+permalink: /:categories/:title
+markdown: rdiscount
+exclude:
+  - .gitignore
+  - README.md
+  - privatekey.p12
+  - Gemfile
+  - Gemfile.lock
+languages: &languages
+  - name: 'English'
+    value: 'en'
+  - name: 'Español'
+    value: 'es'
+audience: &audience
+  - name: 'Individuals'
+    value: 'individuals'
+  - name: 'Businesses'
+    value: 'businesses'
+status: &status
+  - name: 'Insured'
+    value: 'insured'
+  - name: 'Not Insured'
+    value: 'not-insured'
+siteurl: 'https://www.healthcare.gov'
+searchurl: 'https://search.healthcare.gov'
+searchproxy: 'https://www.healthcare.gov'
+ 
+# Custom Collections
+# Creates a globally accessible list of posts based on these specified metadata variables
+jekyll_collect:
+  - topics
+
+# Settings for Google Analytics post sorting
+jekyll_ga:
+  host: 'insert_host'
+  port: 'insert_port'
+  service_account_email: insert_email
+  key_file: insert_key_file
+  key_secret: insert_key_secret
+  profileID: insert_profileID
+  start: last month         # Beginning of report
+  end: now                  # End of report
+  metric: ga:pageviews      # Metric code
+  segment:                  # optional
+  filters:                  # optional
+  sort: true                # Sort posts by this metric
+
+# Advanced list sorting
+jekyll_sort:
+  - src: posts
+    by: date
+    direction: down
+    dest: blogposts
+    include_categories:
+    - blog
+  - src: posts
+    by: title
+    direction: up
+    dest: glossary
+    include_categories:
+    - glossary
+
+# Prose settings
+prose:
+  media: 'assets'
+  rooturl: "_posts"
+  siteurl: "https://www.healthcare.gov/"
+  relativeLinks: "https://www.healthcare.gov/resources/prose/relativeLinks.jsonp"
+  site:
+    tags: "https://www.healthcare.gov/api/tags.jsonp"
+  metadata:
+    _posts/articles:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "meta-title"
+        field:
+          element: "text"
+          label: "Meta Title"
+          value: ""
+      - name: "meta-description"
+        field:
+          element: "text"
+          label: "Meta Description" 
+          value: ""
+      - name: "title-short"
+        field:
+          element: "text"
+          label: "Title Short"
+          value: ""
+      - name: "bite"
+        field:
+          element: "text"
+          label: "Bite"
+          value: ""
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "layout"
+        field:
+          element: "select"
+          label: "Select a layout"
+          placeholder: "Default"
+          options:
+            - name: "article"
+              value: "basic"
+            - name: "multi-part article"
+              value: "basic-nav-left"
+            - name: "article, no sidebar"
+              value: "basic-full-page"
+          selected: "basic"
+      - name: "state-dropdown"
+        field:
+          element: "select"
+          label: "Include state dropdown"
+          placeholder: "Select value"
+          options:
+            - name: "None"
+              value: ""
+            - name: "CHIP"
+              value: "CHIP in"
+            - name: "Consumer Assistance"
+              value: "Consumer Assistance in"
+            - name: "Health Insurance Marketplace"
+              value: "Health Insurance Marketplace in"
+            - name: "Medicaid"
+              value: "Medicaid in"
+      - name: "topics"
+        field:
+          element: "multiselect"
+          label: "Topics"
+          options: "https://www.healthcare.gov/resources/topics.jsonp?callback=topics"
+      - name: "questions"
+        field:
+          element: "multiselect"
+          label: "Related questions"
+          options: "https://www.healthcare.gov/resources/questions.jsonp?callback=questions"
+      - name: "question-header"
+        field:
+          element: "text"
+          label: "Custom header text for questions"
+          placeholder: "More answers"
+          value: ""
+      - name: "related"
+        field:
+          element: "multiselect"
+          label: "Related"
+          options: "https://www.healthcare.gov/resources/articles.jsonp?callback=articles"
+      - name: "audience"
+        field:
+          element: "multiselect"
+          label: "Select audience"
+          placeholder: ""
+          options: *audience
+          selected: ""
+      - name: "insurance-status"
+        field:
+          element: "multiselect"
+          label: "Insurance Status"
+          placeholder: ""
+          options: *status
+          selected: ""
+      - name: "segment"
+        field:
+          element: "text"
+          label: "Segment"
+          value: ""
+      - name: "barrier"
+        field:
+          element: "text"
+          label: "Barrier"
+          value: ""
+      - name: "seo-keywords"
+        field:
+          element: "text"
+          label: "SEO Keywords"
+          value: ""
+      - name: "target-population"
+        field:
+          element: "text"
+          label: "Target Population"
+          value: ""
+      - name: "life-event"
+        field:
+          element: "text"
+          label: "Life Event"
+          value: ""
+      - name: "condition"
+        field:
+          element: "text"
+          label: "Condition"
+          value: ""
+      - name: "legislation"
+        field:
+          element: "text"
+          label: "Legislation"
+          value: ""
+      - name: "plan"
+        field:
+          element: "text"
+          label: "Plan"
+          value: ""
+      - name: "process-step"
+        field: 
+          element: "text"
+          label: "Process Step"
+          value: ""
+      - name: "named-document"
+        field: 
+          element: "text"
+          label: "Named Document"
+          value: ""
+      - name: "other-subject"
+        field:
+          element: "text"
+          label: "Other Subject"
+          value: ""
+    _posts/glossary:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "layout"
+        field:
+          element: "select"
+          label: "Select a layout"
+          placeholder: "Default"
+          options:
+            - name: "glossary"
+              value: "glossary-word"
+          selected: "glossary-word"
+      - name: "tags"
+        field:
+          element: "select"
+          label: "Post type"
+          placeholder: ""
+          options:
+            - name: "glossary"
+              value: "glossary"
+          selected: "glossary"
+      - name: "categories"
+        field:
+          element: "hidden"
+          value:
+            - "glossary"
+    _posts/questions:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "tags"
+        field:
+          element: "hidden"
+          value:
+            - "question"
+      - name: "categories"
+        field:
+          element: "hidden"
+          value:
+            - "question"
+    _posts/states:
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "tags"
+        field:
+          element: "select"
+          label: "Post type"
+          placeholder: ""
+          options:
+            - name: "state"
+              value: "state"
+          selected: "state"
+      - name: "stateurl"
+        field:
+          element: "text"
+          label: "State Marketplace URL"
+    _posts/topics:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "meta-title"
+        field:
+          element: "text"
+          label: "Meta Title"
+          value: ""
+      - name: "seo-keywords"
+        field:
+          element: "text"
+          label: "SEO Keywords"
+          value: ""
+      - name: "meta-description"
+        field:
+          element: "text"
+          label: "Meta Description"
+          value: ""
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "layout"
+        field:
+          element: "select"
+          label: "Select a layout"
+          placeholder: "Default"
+          options:
+            - name: "topic"
+              value: "topic"
+          selected: "topic"
+      - name: "tags"
+        field:
+          element: "select"
+          label: "Post type"
+          placeholder: ""
+          options:
+            - name: "topic"
+              value: "topic"
+          selected: "topic"
+      - name: "order"
+        field:
+          element: "number"
+          placeholder: "Numeric value for ordering landing pages"
+          label: "Order"
+          value: ""
+    _posts/blog:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "meta-title"
+        field:
+          element: "text"
+          label: "Meta Title"
+          value: ""
+      - name: "meta-description"
+        field:
+          element: "text"
+          label: "Meta Description"
+          value: ""
+      - name: "author"
+        field:
+          element: "text"
+          label: "Author"
+          value: ""
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "seo-keywords"
+        field:
+          element: "text"
+          label: "SEO Keywords"
+          value: ""
+      - name: "layout"
+        field:
+          element: "select"
+          label: "Select a layout"
+          placeholder: "Default"
+          options:
+            - name: "blog"
+              value: "blog"
+      - name: "categories"
+        field:
+          element: "hidden"
+          value:
+            - "blog"
+      - name: "topics"
+        field:
+          element: "multiselect"
+          label: "Topics"
+          options: "https://www.healthcare.gov/resources/topics.jsonp?callback=topics"
+    _posts/help:
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "lang"
+        field:
+          element: "select"
+          label: "Select language"
+          placeholder: "English"
+          options: *languages
+          selected: "en"
+      - name: "bite"
+        field:
+          element: "text"
+          label: "Bite"
+          value: ""
+      - name: "snack"
+        field:
+          element: "text"
+          label: "Snack"
+          value: ""
+      - name: "categories"
+        field:
+          element: "hidden"
+          value:
+            - "help"
+states:
+  - Alabama
+  - Alaska
+  - American Samoa
+  - Arizona
+  - Arkansas
+  - California
+  - Colorado
+  - Connecticut
+  - Delaware
+  - District of Columbia
+  - Florida
+  - Georgia
+  - Guam
+  - Hawaii
+  - Idaho
+  - Illinois
+  - Indiana
+  - Iowa
+  - Kansas
+  - Kentucky
+  - Louisiana
+  - Maine
+  - Maryland
+  - Massachusetts
+  - Michigan
+  - Minnesota
+  - Mississippi
+  - Missouri
+  - Montana
+  - Nebraska
+  - Nevada
+  - New Hampshire
+  - New Jersey
+  - New Mexico
+  - New York
+  - North Carolina
+  - North Dakota
+  - Northern Mariana Islands
+  - Ohio
+  - Oklahoma
+  - Oregon
+  - Pennsylvania
+  - Puerto Rico
+  - Rhode Island
+  - South Carolina
+  - South Dakota
+  - Tennessee
+  - Texas
+  - Utah
+  - Vermont
+  - Virginia
+  - Virgin Islands
+  - Washington
+  - West Virginia
+  - Wisconsin
+  - Wyoming
+territories:
+  - American Samoa
+  - Guam
+  - Northern Mariana Islands
+  - Puerto Rico
+  - Virgin Islands

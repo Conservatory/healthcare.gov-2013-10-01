@@ -1,0 +1,140 @@
+/** Footer **/
+/*Horizontal dividers*/
+#footer hr {
+  margin:30px 0;
+  }
+#footer hr.dark {
+  margin:10px 0;   
+  border:0;    
+  border-top:1px solid #ccc;   
+  width:100%;    
+  overflow:hidden;
+  }
+
+/** Layout **/
+#footer {
+  font:16px/24px 'Open Sans',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding:20px 0;
+  background:url(../images/bg-footer.png) 0 0 repeat;
+  color:#333;
+  }
+#footer .limiter {
+  position:relative;
+  width:90%;
+  margin:0 auto;
+  }
+#footer a,
+#footer a:hover {
+  text-decoration:none;
+  color:#333;
+  }
+#footer input {
+  padding:10px;
+  font-size:18px;
+  margin-bottom:10px;
+  }
+.no-touch #footer a:hover,
+.no-touch #footer a:focus {
+  color:#063346;
+  text-decoration: underline;
+  }
+.no-touch #footer a.btn:hover {
+  color:white;
+  }
+#footer .sections .span4:nth-child(4) {
+  margin-left:0;
+  }
+#footer .span4:nth-child(2) .span10{
+  padding-left:0;
+  }
+#footer .post-month, .footer-bottom, .subscriber, .account-links {
+  font-size:10px;
+  line-height:16px;
+  }
+#footer .footer-bottom {
+  padding-top:14px;
+  padding-bottom: 25px;
+  border-top:1px solid #d3d3d3;
+  }
+#footer .bottom-text {
+  line-height:14px;
+  margin-left:0;
+  }
+#footer .footer-bottom a, .account-links {
+  text-transform:uppercase;
+  font-weight:600;
+  }
+#footer .footer-bottom a  {
+  margin:0 6px;
+  }
+html[lang='es'] #footer .footer-bottom a {
+  margin:0;
+  }
+#footer .footer-bottom hr {
+  float:left;
+  margin:0 0 20px 0;
+  border-top:1px solid #d3d3d3;
+  width:100%;
+  }
+
+/*Icons using sprite*/
+.footer-bottom .icon {
+  background:transparent url('../images/sprite.png') no-repeat 0 0;
+  display:block;
+  text-indent:-999em;
+  text-align:left;
+  width:10px;
+  height:10px;
+  border:1px solid rgba(255, 255, 255, 0);
+  }
+.footer-bottom .icon-large {
+  width:32px;
+  height:32px;
+  }
+.footer-bottom .icon.icon-inline { 
+  display:inline-block;
+  padding-right:20px;
+  }
+
+/* footer icons */
+.icon.eagle {
+  width:50px;
+  height:70px;
+  background-position:-20px -266px;
+  margin-right:20px;
+  }
+.icon.whitehouse {
+  width:60px;
+  height:42px;
+  background-position:-404px -268px;
+  }
+.icon.usagov {
+  width:100px;
+  height:40px;
+  background-position:-76px -270px;
+  }
+.icon.gobiernousa {
+  width:135px;
+  height:44px;
+  background-position:-200px -270px;
+  }
+
+/*sprite@2x*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .icon,
+  .card .new.active
+  /*input[type="checkbox"] + label span */{
+    background: url('../images/sprite@2x.png') no-repeat 0 0;
+    background-size: 900px 320px;
+  }
+}
+/* Utilities */
+.accessibility { 
+  position:absolute!important;
+  display:block!important;
+  text-indent:-999em!important;
+  border:none!important;
+  }
+  

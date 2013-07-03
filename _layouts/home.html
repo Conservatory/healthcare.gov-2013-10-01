@@ -1,0 +1,74 @@
+---
+layout: default
+experience: learn
+class: hero
+---
+{% assign t = site.tags.translations[0] %}
+{% include banner.html %}
+<div class='hero' role='main'>
+  <div class='container'>
+    <div class='intro'>
+      {{content}}
+      {% if page.lang == 'es' %}
+      <a type='button' class='btn btn-large btn-green qa-btn' href='{{site.baseurl}}/es/quick-answers'>{{t.[page.lang].email.answer}}</a>
+      {% else %}
+      <a type='button' class='btn btn-large btn-green qa-btn' href='{{site.baseurl}}/quick-answers'>{{t.[page.lang].email.answer}}</a>
+      {% endif %}
+    </div>
+    <div class='linear-bg hidden-phone'>
+      <!--googleoff: all-->
+      <div class='container'>
+        <div class='limiter'>
+          <form class='form-inline row-fluid'>
+            <label for='signup-hero'>{{t.[page.lang].email.title}}</label>
+            <input name='email-signup' title='{{t.[page.lang].utility.altemailsignup}}' id='signup-hero' placeholder='{{t.[page.lang].email.address}}' type='text' data-email>
+            <button class='btn btn-inverse signup'>{{t.[page.lang].email.action}}</button>
+          </form>
+        </div>
+      </div>
+      <!--googleon: all-->
+    </div>
+    <!--googleoff: all-->
+    <h2 class='accessibility'>{{t.[page.lang].utility.taskbar}}</h2>
+    <div id='taskbar'>
+      <div class='container'>
+        <span id='left' class='icon arrow' href='#' tabindex='-1'></span>
+        <span id='right' class='icon arrow' href='#' tabindex='-1'></span>
+        <div class='inner-strip'>
+          <div class='row-fluid caro'>
+            <ul class='equal-height items'>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--googleon: all-->
+  </div>
+</div>
+
+<script type='text/javascript'>
+$('.intro li').each(function(i,d) {
+    var link = $('a',d).attr('href');
+    $('a',d).attr('href','{{site.baseurl}}' + link);
+    $(d).addClass('span2 task-item');
+    $('#taskbar ul.equal-height').append(d);
+    $('.intro ul').remove();
+});
+
+if (!isMobile.any()) {
+    $('.caro').jCarouselLite({
+        btnNext: '#right.icon',
+        btnPrev: '#left.icon',
+        visible: 5,
+        auto: false,
+        circular: false
+    });
+    $('#left.icon').addClass('disabled');
+} else {
+    $('.intro a').wrap('<div class="start-mobile"></div>');
+}
+
+if ($.cookie('qa-complete')) {
+    $('.qa-btn').attr('href',$.cookie('qa-complete').path);
+}
+</script>

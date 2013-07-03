@@ -1,0 +1,13 @@
+{% assign t = site.tags.translations[0] %}
+
+<ul>
+  {% assign count = 0 %}
+  {% for post in site.blogposts %}
+  {% if post.lang == page.lang and count < 3 %}
+  <li><a href='{{site.baseurl}}{{post.url}}'>{{post.title}}</a></li>
+  {% assign count = count | plus: 1 %}
+  {% endif %} 
+  {% if count == 3 %}{% break %}{% endif %}
+  {% endfor %}
+</ul>
+{% assign blog_recent = true %}

@@ -1,0 +1,19 @@
+---
+published: true
+en: 
+  fourofour: 
+    top: 
+      title: "Sorry, we can't find that page<br>on HealthCare.gov"
+      subtitle: "We've recently reorganized our site, and that may explain it.<br>It's also possible that you typed the address incorrectly."
+    search: 
+      title: Search HealthCare.gov
+es: 
+  fourofour: 
+    top: 
+      title: "Lo sentimos, no podemos encontrar la página<br>en HealthCare.gov"
+      subtitle: "Recientemente hemos reorganizado nuestro sitio, y que pueden explicarlo.<br>También es posible que haya escrito la dirección incorrectamente"
+    search: 
+      title: Buscar HealthCare.gov
+tag: fourofour
+---
+

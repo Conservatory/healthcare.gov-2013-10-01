@@ -1,0 +1,123 @@
+{% assign qa = site.tags['quick-answers'][0] %}
+
+<script id='qa-topinfo-template' type='text/template'>
+  <h4 class='header3'><%= title %></h4>
+  <p><%= bite %></p>
+  <p><b>{{qa.results.response.learn.[page.lang]}} <a href='{{site.baseurl}}<%= url %><% if (hash){ %>/#<%=hash %><% } %>'><%= title %></a></b></p>
+</script>
+
+<script id='qa-menu-template' type='text/template'>
+  <li data-audience='all'>
+    <div class='row-fluid'>
+      <div class='span8'>
+        <h3 class='header4'>{{qa.results.response.answered.[page.lang]}}</h3>
+      </div>
+      <div class='span4'>
+        <a href='#' class='pull-right qa-reset reset-filter'>{{qa.results.response.start.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='all'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.type.[page.lang]}}</h4>
+        <span class='qa-value'><%= label('audience', audience) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#step-1' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='all'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.state.[page.lang]}}</h4>
+        <span class='qa-value'><%= state %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#<%= audience %>-2' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='family shop'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.age.[page.lang]}}</h4>
+        <span class='qa-value'><%= label('age', age) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#family-2' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='family shop'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.gender.[page.lang]}}</h4>
+        <span class='qa-value'><%= label('gender', gender) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#family-2' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='family shop'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.insured.[page.lang]}}</h4>
+        <span class='qa-value'><%= label('status', status) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#family-3' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='family shop'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.condition.[page.lang]}}</h4>
+        <span class='qa-value'><%= label('condition', condition) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#family-4' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='family shop'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>{{qa.results.response.more.[page.lang]}}.</h4>
+        <% var adds = [];
+            _(additional).each(function(v,i) {
+                adds.push(label('additional', v));
+        }); %>
+        <span class='qa-value'><%= adds.join(', ') %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#family-4' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='business'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>Full-time Employees</h4>
+        <span class='qa-value'><%= label('employees', employees) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#business-2' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+  <li data-audience='business'>
+    <div class='row-fluid'>
+      <div class='span9'>
+        <h4 class='header4'>Currently Offer</h4>
+        <span class='qa-value'><%= label('currently', currently) %></span>
+      </div>
+      <div class='span3'>
+        <a href='{{site.baseurl}}/{% if page.lang == "es" %}es/{% endif %}quick-answers/#business-2' class='pull-right icon qa-edit{% if page.lang == "es" %}ar{% endif %}'>{{qa.results.response.edit.[page.lang]}}</a>
+      </div>
+    </div>
+  </li>
+</script>

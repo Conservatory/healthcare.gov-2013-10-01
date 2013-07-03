@@ -1,0 +1,6 @@
+# robots.txt for cuidadodesalud.gov
+User-agent: *
+# Directories
+Disallow: /api/
+Sitemap: https://www.cuidadodesalud.gov/es/sitemap.xml
+

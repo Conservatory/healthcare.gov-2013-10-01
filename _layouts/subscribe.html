@@ -1,0 +1,291 @@
+---
+layout: default
+experience: learn
+title: "Subscribe"
+---
+<div class='basic-container subscribe page'>
+    <div class='card signup-form'>
+    {% assign b = site.tags.subscribe[0] %}
+    <div id='subscribe' tabindex='-1'>
+    {% for top in b.[page.lang].subscribe.desktop %} 
+    <h1 class='header2'>{{top.title}}</h1>
+    </div>
+    <form class='group' id='subscribe-page-form'>
+      {% if page.lang == 'es' %}
+      <input type='hidden' name='t' value='USCMSHIMESP_1'/>
+      <input type='hidden' name='a' value='2'/>
+      {% else %}
+      <input type='hidden' name='t' value='USCMSHIM_19'/>
+      <input type='hidden' name='a' value='1'/>
+      {% endif %}
+      <div class='forms screen' id='screen1'>
+          <div class='subscribe-type group'>
+            {% for top in b.[page.lang].subscribe.desktop %}
+            <p>{{top.subscribe.address.explain}}</p>
+            <hr class='dark'>
+            <div class='row-fluid'>
+              <div class='span6'>
+                <h2 class='header4'>{{top.subscribe.address.title}}</h2>
+                <label for='address' class='accessibility'>{{top.subscribe.address.label}}</label>
+                <input placeholder='{{top.subscribe.address.title}}' id='address' name='e' type='email' value=''/><span class="help-inline">{{top.subscribe.required}}</span>
+              </div>
+            </div>
+            <div class='row-fluid'>
+              <div class='span6'>
+                <h2 class='header4'>{{top.subscribe.select-state}}</h2>
+                  <div class='dropdown'>
+                    <label for='state-dropdown' class='accessibility'>{{top.subscribe.select-state-label}}</label>
+                    {% if page.lang == 'es' %}
+                    <select id='state-dropdown' name='q_23596' class='state'>
+                    {% else %}
+                    <select id='state-dropdown' name='q_23536' class='state'>
+                    {% endif %}
+                      <option disabled selected>{{top.subscribe.select-state}}</option>
+                      {% if page.lang == 'es'%}
+                        <option selected='selected' value='state'>{{top.subscribe.state}}</option>
+                        <option value="58834">Alabama</option>
+                        <option value="58835">Alaska</option>
+                        <option value="58836">Arizona</option>
+                        <option value="58837">Arkansas</option>
+                        <option value="58838">California</option>
+                        <option value="58839">Colorado</option>
+                        <option value="58840">Connecticut</option>
+                        <option value="58841">Delaware</option>
+                        <option value="58842">District Of Columbia</option>
+                        <option value="58843">Florida</option>
+                        <option value="58844">Georgia</option>
+                        <option value="58845">Hawaii</option>
+                        <option value="58846">Idaho</option>
+                        <option value="58847">Illinois</option>
+                        <option value="58848">Indiana</option>
+                        <option value="58849">Iowa</option>
+                        <option value="58850">Kansas</option>
+                        <option value="58851">Kentucky</option>
+                        <option value="58852">Louisiana</option>
+                        <option value="58853">Maine</option>
+                        <option value="58854">Maryland</option>
+                        <option value="58855">Massachusetts</option>
+                        <option value="58856">Michigan</option>
+                        <option value="58857">Minnesota</option>
+                        <option value="58858">Mississippi</option>
+                        <option value="58859">Missouri</option>
+                        <option value="58860">Montana</option>
+                        <option value="58861">Nebraska</option>
+                        <option value="58862">Nevada</option>
+                        <option value="58863">New Hampshire</option>
+                        <option value="58864">New Jersey</option>
+                        <option value="58865">New Mexico</option>
+                        <option value="58866">New York</option>
+                        <option value="58867">North Carolina</option>
+                        <option value="58868">North Dakota</option>
+                        <option value="58869">Ohio</option>
+                        <option value="58870">Oklahoma</option>
+                        <option value="58871">Oregon</option>
+                        <option value="58872">Pennsylvania</option>
+                        <option value="58873">Rhode Island</option>
+                        <option value="58874">South Carolina</option>
+                        <option value="58875">South Dakota</option>
+                        <option value="58876">Tennessee</option>
+                        <option value="58877">Texas</option>
+                        <option value="58878">Utah</option>
+                        <option value="58879">Vermont</option>
+                        <option value="58880">Virginia</option>
+                        <option value="58881">Washington</option>
+                        <option value="58882">West Virginia</option>
+                        <option value="58883">Wisconsin</option>
+                        <option value="58884">Wyoming</option>
+                        <option value="58885">American Samoa</option>
+                        <option value="58886">Guam</option>
+                        <option value="58887">Northern Mariana Islands</option>
+                        <option value="58888">Puerto Rico</option>
+                        <option value="58889">Virgin Islands</option>
+                      {% else %}
+                        <option selected='selected' value='state'>{{top.subscribe.state}}</option>
+                        <option value="58659">Alabama</option>
+                        <option value="58660">Alaska</option>
+                        <option value="58661">Arizona</option>
+                        <option value="58662">Arkansas</option>
+                        <option value="58663">California</option>
+                        <option value="58664">Colorado</option>
+                        <option value="58665">Connecticut</option>
+                        <option value="58666">Delaware</option>
+                        <option value="58667">District Of Columbia</option>
+                        <option value="58668">Florida</option>
+                        <option value="58669">Georgia</option>
+                        <option value="58670">Hawaii</option>
+                        <option value="58671">Idaho</option>
+                        <option value="58672">Illinois</option>
+                        <option value="58673">Indiana</option>
+                        <option value="58674">Iowa</option>
+                        <option value="58675">Kansas</option>
+                        <option value="58676">Kentucky</option>
+                        <option value="58677">Louisiana</option>
+                        <option value="58678">Maine</option>
+                        <option value="58679">Maryland</option>
+                        <option value="58680">Massachusetts</option>
+                        <option value="58681">Michigan</option>
+                        <option value="58682">Minnesota</option>
+                        <option value="58683">Mississippi</option>
+                        <option value="58684">Missouri</option>
+                        <option value="58685">Montana</option>
+                        <option value="58686">Nebraska</option>
+                        <option value="58687">Nevada</option>
+                        <option value="58688">New Hampshire</option>
+                        <option value="58689">New Jersey</option>
+                        <option value="58690">New Mexico</option>
+                        <option value="58691">New York</option>
+                        <option value="58692">North Carolina</option>
+                        <option value="58693">North Dakota</option>
+                        <option value="58694">Ohio</option>
+                        <option value="58695">Oklahoma</option>
+                        <option value="58696">Oregon</option>
+                        <option value="58697">Pennsylvania</option>
+                        <option value="58698">Rhode Island</option>
+                        <option value="58699">South Carolina</option>
+                        <option value="58700">South Dakota</option>
+                        <option value="58701">Tennessee</option>
+                        <option value="58702">Texas</option>
+                        <option value="58703">Utah</option>
+                        <option value="58704">Vermont</option>
+                        <option value="58705">Virginia</option>
+                        <option value="58706">Washington</option>
+                        <option value="58707">West Virginia</option>
+                        <option value="58708">Wisconsin</option>
+                        <option value="58709">Wyoming</option>
+                        <option value="58710">American Samoa</option>
+                        <option value="58711">Guam</option>
+                        <option value="58712">Northern Mariana Islands</option>
+                        <option value="58713">Puerto Rico</option>
+                        <option value="58714">Virgin Islands</option>
+                      {% endif %}
+                    </select><!-- display: inline-block hack
+                    --><span class="help-inline">{{top.subscribe.required}}</span>
+                  </div>
+              </div></div>
+              <div class='row-fluid'><div class='span6'>
+                <h2 class='header4'>{{top.subscribe.number}}</h2>
+                <label for='number' class='accessibility'>{{top.subscribe.phone-label}}</label>
+                <input title='Phone Number' placeholder='{{top.subscribe.number}}' id='number' name='w' type='tel'/><span class="help-inline number-help">{{top.subscribe.optional}}</span>
+                <p class='header5'><a class='privacy' href='{{top.subscribe.privacy-link}}'>{{top.subscribe.privacy}}</a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!--complete-->
+      <div class='complete screen' id='screen2'>
+        <div class='emphasize'>
+          <h2 class='header2'><span class='icon icon-large icon-inline checkmark'>checkmark</span>{{top.subscribe.complete.name}}</h2>
+          <p>{{top.subscribe.complete.explain}}</p>
+          {% endfor %}
+          {% endfor %}
+        </div>
+        <p class='header5'><a class='privacy' href='{{top.subscribe.privacy-link}}'>{{top.subscribe.privacy}}</a></p>
+      </div>
+      <div class='row-fluid'>
+        <div class='span6'>
+        {% for top in b.[page.lang].subscribe.desktop %}
+        <input title='{{top.subscribe.submit}}' class='btn btn-large btn-green next valid submit' type='submit' value='{{top.subscribe.submit}}'>
+        {% if page.lang == 'es' %}
+        <a href='{{site.baseurl}}/es' id='return-home' class='btn btn-large btn-green next valid' data-loading-text='Submitting'>{{top.subscribe.return}}</a>
+        {% else %}
+        <a href='{{site.baseurl}}/' id='return-home' class='btn btn-large btn-green next valid' data-loading-text='Submitting'>{{top.subscribe.return}}</a>
+        {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% for top in b.[page.lang].subscribe.desktop %}
+<script>
+$('.complete.screen').hide();
+$('#return-home').hide();
+
+$('#number').keyup(function() {
+    var number = $('#number').val();
+    var regexObj = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (regexObj.test(number) || number === '') {
+        number.replace(regexObj, '($1) $2-$3');
+        $('.number-help').html('{{top.subscribe.valid}}');
+    } else {
+        $('.number-help').html('{{top.subscribe.invalid}}');
+    }
+});
+$('#subscribe-page-form').submit(function(e) {
+    var email = $('#address', this).val();
+    var state = $('select.state', this).val();
+    var number = $('#number', this).val();
+    var regexObj = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    
+    {% if page.lang == 'es' %}
+      var languageNum = 'USCMSHIMESP_1'
+    {% else %}
+      var languageNum = 'USCMSHIM_19'
+    {% endif %}
+
+    if (regexObj.test(number) || number === '') {
+        number.replace(regexObj, '($1) $2-$3');
+
+        if(state !== 'state') {
+    
+            if (IsEmail(email)) {
+            
+                var url =  "https://api-dc2.govdelivery.com/api/add_script_subscription";
+            
+                var values = {};
+                $.each($(this).serializeArray(), function(i, field) {
+                  if (field.value.length > 0) {
+                    values[field.name] = field.value;
+                  };
+                });
+
+                switch(values["a"]) {
+                  case "1":
+                    values["k"] = key1;
+                  break;
+                  case "2":
+                    values["k"] = key2;
+                  break;
+                }
+                
+                $("input[type=submit]", this).attr("disabled", "disabled");
+                $.ajax({
+                  url: url,
+                  data: values,
+                  complete: function(d) {
+                    $('.subscribe-type').hide();
+                    $('#subscribe h1.header2').hide();
+                    $('.complete.screen').show();
+                    $('#return-home').show();
+                    $('.submit.valid').hide();
+                  },
+                  dataType: "jsonp",
+                });
+
+            } else {
+                alert('{{top.subscribe.email-invalid}}');
+            }
+        } else {
+            alert('{{top.subscribe.select-state}}');
+        }
+    } else {
+        alert('{{top.subscribe.invalid}}');
+    }
+    return false;
+});
+
+$('input[data-email]').keyup(function(){
+    var value = $(this).val();
+    $('#address').val(value);
+});
+
+if (window.location.hash != '') {
+    var params = window.location.hash.substr(1).split('/');
+    $.each(params,function(i,p) {
+        var param = p.split('=');
+        if ($('#' + param[0]).length) $('#' + param[0]).val(param[1]);
+    });
+}
+</script>
+{% endfor %}

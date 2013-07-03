@@ -1,0 +1,66 @@
+#widget {
+  width:300px;
+  height:250px;
+  overflow:hidden;
+  }
+#widget .logo-header {
+  position:relative;
+  height:45px;
+  border-bottom:4px solid #e0e0e0;
+  }
+#widget #content {
+  padding:6px 10px;
+  }
+#widget h3 {
+  font-size:14px;
+  line-height:18px;
+  font-weight:700;
+  margin:0;
+  }
+#widget legend,
+#widget label {
+  font-size:13px;
+  line-height:13px;
+  }
+#widget legend {
+  font-weight:700;
+  border-bottom:none;
+  margin-bottom:10px;
+  }
+#widget .btn-widget {
+  font-size:14px;
+  margin-top:5px;
+  width:intrinsic;
+  padding:6px 10px;
+  }
+#widget .btn-widget[data-lang="es"] {
+  line-height:15px;
+  }
+#widget input[type="radio"] + label span {
+  width:18px;
+  height:18px;
+  background-position:-635px -93px;
+  }
+#widget input[type="radio"]:checked + label span,
+#widget input[type="radio"]:checked + label:hover span {
+  background-position:-635px -67px;
+  }
+#widget input[type="radio"] + label:hover span {
+  background-position:-660px -93px;
+  }
+#widget label.radio-label span {
+  padding-right:6px;
+  }
+#widget.subscribe .btn-widget {
+  width:inherit;
+  margin-top:15px;
+  }
+#widget.subscribe input {
+  width:266px;
+  height:32px;
+  }
+#widget.subscribe h3 {
+  font-size:16px;
+  line-height:22px;
+  margin:10px 0;
+  }

@@ -1,0 +1,14 @@
+{% assign u = site.tags.translations[0] %}
+<!--googleoff: all-->
+
+<button title="{{u.[page.lang].utility.printbutton}}" type="submit" class="btn btn-grey print {% if page.lang == 'es' %}es{% endif %}">
+  <span class='icon printer'>{{u.[page.lang].utility.print}}</span>
+</button>
+
+<!--googleon: all-->
+
+<script>
+$('.btn.btn-grey.print').click(function(){
+    window.print();
+})
+</script>

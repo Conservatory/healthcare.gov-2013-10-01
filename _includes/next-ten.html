@@ -1,0 +1,80 @@
+{% assign t = site.tags.translations[0] %}
+{% if firstThree %}
+  {% assign cardCount = cardCount | minus: 3 %}
+  {% assign firstThree = false %}
+{% else %}
+  {% assign cardCount = cardCount | minus: 10 %}
+{% endif %}
+{% if page.tags contains 'topic-index' %}
+    {% assign topicsLeft = topicCount | minus: 10 %}
+        {% if topicsLeft == 1 %}
+            {% assign topicsLeft = '' %}
+            {% assign x = '' %}
+        {% else %}
+            {% assign x = 's' %}
+        {% endif %}
+{% elsif page.class == 'blog-index' %}
+    {% assign x = 'Blog Posts' %}
+{% else %}
+    {% if cardCount == 1 %}
+        {% assign cardCount = '' %}
+        {% assign x = '' %}
+    {% else %}
+        {% assign x = 's' %}
+    {% endif %}
+{% endif %}
+{% if page.tags contains 'topic-index' %}
+    <div class='fluid-row'>
+    <a href='#' class='next-ten center transition clearfix'>{{t.[page.lang].topics.next}}{% if page.lang == 'es' %}{{x}}{% endif %}<span class='next-count'> {{topicsLeft}}</span> {{t.[page.lang].topics.topic}}{{x}}</a>
+    </div>
+{% else %}
+    <div class='fluid-row'>
+    <a href='#' class='next-ten center transition clearfix'>{{t.[page.lang].topics.next}}{% if page.lang == 'es' %}{{x}}{% endif %} <span class='next-count'> {% if cardCount == '' %}{% elsif cardCount >= 10 %} 10{% else %} {{cardCount}}{% endif %}</span> {{t.[page.lang].topics.result}}{{x}}</a>
+    </div>
+{% endif %}
+
+<script>
+var $nodisplay = $('.card.nodisplay'),
+    countStr = '{{cardCount}}',
+    cardCount = (countStr === '') ? null : parseInt(countStr);
+
+$('a.next-ten').bind('click',function(e){
+    e.preventDefault();
+    cardCount -= 10;
+    var $nodisplay = $('.card.nodisplay');
+    // get rid of the nodisplay class for the next ten elements
+
+    $.each($nodisplay,function(i,el){
+        if (i < 10) {
+            el.className = el.className.replace('nodisplay','display');
+        }
+    });
+    
+    // detect if there is more to load, if not hide next-ten button
+    if (cardCount <= 0) {
+        $('a.next-ten').addClass('nodisplay');
+    } else if (cardCount >= 10) {
+        $('.next-count').html('10');
+    } else {
+        $('.next-count').html(cardCount);
+    }
+    // only applicable to all topics page
+    var totalTopicNum = '{{topicCount}}',
+        $visibleTopics = $('.card.all-topics.display'),
+        visibleTopicNum = 4;
+        
+    totalTopicNum = (totalTopicNum === '') ? null : parseInt(totalTopicNum);
+    
+    if (totalTopicNum > visibleTopicNum ) {
+        $visibleTopics.removeClass('noborder');
+    }
+    
+    var visibleTopics = $('.card.all-topics.display');
+    if (totalTopicNum % 2 === 0) {
+        visibleTopics.last().addClass('noborder');
+        visibleTopics.last().prev().addClass('noborder');
+    } else {
+        visibleTopics.last().addClass('noborder');
+    }
+});
+</script>

@@ -1,0 +1,182 @@
+{
+    
+    "PARAM": {
+    "q": {
+      "value": "can-i-still-use-fsa-to-offset-my-costs",
+      "original_value": "can-i-still-use-fsa-to-offset-my-costs"
+    },
+    "output": {
+      "value": "xml_no_dtd",
+      "original_value": "xml_no_dtd"
+    },
+    "site": {
+      "value": "healthcare_collection",
+      "original_value": "healthcare_collection"
+    },
+    "getfields": {
+      "value": "*",
+      "original_value": "*"
+    },
+    "ie": {
+      "value": "UTF-8",
+      "original_value": "UTF-8"
+    },
+    "ulang": {
+      "value": "en",
+      "original_value": "en"
+    },
+    "ip": {
+      "value": "158.73.65.73",
+      "original_value": "158.73.65.73"
+    },
+    "access": {
+      "value": "p",
+      "original_value": "p"
+    },
+    "sort": {
+      "value": "date:D:L:d1",
+      "original_value": "date:D:L:d1"
+    },
+    "start": {
+      "value": "0",
+      "original_value": "0"
+    },
+    "num": {
+      "value": "6",
+      "original_value": "6"
+    },
+    "requiredfields": {
+      "value": "topics:the-health-care-law-and-you",
+      "original_value": "topics:the-health-care-law-and-you"
+    }},
+    "Q": "can-i-still-use-fsa-to-offset-my-costs",
+    "RES": {
+    "SN": "1",
+    "EN": "5",
+    "XT": true,
+    "M": "20",
+    
+    "R": [{
+    "CRAWLDATE": "1 May 2013",
+    "FS": [
+    { "date": "2013-05-01" }],
+    "HAS": {"L": true,"C": {
+    "SZ": "33k",
+    "CID": "rvOECHo_v2oJ"
+  }},
+    
+    "LANG": "en",
+    "MT": [
+    { "viewport": "width=device-width, initial-scale=1.0" },
+    { "content-type": "article" },
+    { "topics": "the-health-care-law-and-you" }],
+    "RK": 9,
+    "S": "<b>...</b> The Health Care Law and You. <b>Can I Still Use FSA To Offset My Costs</b>? PRINT<br> Share632 Shares | 2 days ago. Related Topics. May Interest You. <b>...</b>  ","T": "<b>Can I Still Use FSA To Offset My Costs</b>? | HealthCare.gov",
+    "U": "http://cmsnet.cms.hhs.gov/hhs-site/can-i-still-use-fsa-to-offset-my-costs/",
+    "UD": "",
+    "UE": "http://cmsnet.cms.hhs.gov/hhs-site/can-i-still-use-fsa-to-offset-my-costs/"
+  },{
+    "CRAWLDATE": "1 May 2013",
+    "FS": [
+    { "date": "2013-05-01" }],
+    "HAS": {"L": true,"C": {
+    "SZ": "34k",
+    "CID": "NyhZDS5UjzEJ"
+  }},
+    
+    "LANG": "es",
+    "MT": [
+    { "viewport": "width=device-width, initial-scale=1.0" },
+    { "content-type": "article" },
+    { "topics": "the-health-care-law-and-you" }],
+    "RK": 8,
+    "S": "","T": "¿Puedo seguir utilizando FSA Para compensar mis costos? <b>...</b>",
+    "U": "http://cmsnet.cms.hhs.gov/hhs-site/es/can-i-still-use-fsa-to-offset-my-costs/",
+    "UD": "",
+    "UE": "http://cmsnet.cms.hhs.gov/hhs-site/es/can-i-still-use-fsa-to-offset-my-costs/"
+  },{
+    "CRAWLDATE": "1 May 2013",
+    "FS": [
+    { "date": "2013-05-01" }],
+    "HAS": {"L": true,"C": {
+    "SZ": "39k",
+    "CID": "cve-CFnrtD4J"
+  }},
+    
+    "LANG": "en",
+    "MT": [
+    { "viewport": "width=device-width, initial-scale=1.0" },
+    { "content-type": "index" }],
+    "RK": 8,
+    "S": "<b>...</b> my adult ... How can I provide insurance fo... <b>Can I Still Use FSA To</b><br> <b>Offset My Costs</b>? Can I Still Use FSA To Offset ... How <b>...</b>  ","T": "All Topics | HealthCare.gov",
+    "U": "http://cmsnet.cms.hhs.gov/hhs-site/all-topics/",
+    "UD": "",
+    "UE": "http://cmsnet.cms.hhs.gov/hhs-site/all-topics/"
+  },{
+    "CRAWLDATE": "1 May 2013",
+    "FS": [
+    { "date": "2013-05-01" }],
+    "HAS": {"L": true,"C": {
+    "SZ": "40k",
+    "CID": "S6m4mQ1eSdYJ"
+  }},
+    
+    "LANG": "en",
+    "MT": [
+    { "viewport": "width=device-width, initial-scale=1.0" },
+    { "content-type": "index" }],
+    "RK": 7,
+    "S": "<b>...</b> How can I get a break on costs? <b>Can I Still Use FSA To Offset My Costs</b>?<br> How are Insurance Companies Being Held Accountable? <b>...</b>  ","T": "Families | HealthCare.gov",
+    "U": "http://cmsnet.cms.hhs.gov/hhs-site/families/",
+    "UD": "",
+    "UE": "http://cmsnet.cms.hhs.gov/hhs-site/families/"
+  },{
+    "CRAWLDATE": "1 May 2013",
+    "FS": [
+    { "date": "2013-05-01" }],
+    "HAS": {"L": true,"C": {
+    "SZ": "48k",
+    "CID": "m_ypac2uOxIJ"
+  }},
+    
+    "LANG": "en",
+    "MT": [
+    { "viewport": "width=device-width, initial-scale=1.0" },
+    { "content-type": "index" }],
+    "RK": 7,
+    "S": "<b>...</b> Share632 Shares | 2 days ago. <b>Can I Still Use FSA To Offset My Costs</b>?<br> Share632 Shares | 2 days ago. How are Insurance <b>...</b>  ","T": "The Health Care Law and You | HealthCare.gov",
+    "U": "http://cmsnet.cms.hhs.gov/hhs-site/the-health-care-law-and-you/",
+    "UD": "",
+    "UE": "http://cmsnet.cms.hhs.gov/hhs-site/the-health-care-law-and-you/"
+  },{
+    "CRAWLDATE": "1 May 2013",
+    "FS": [
+    { "date": "2013-05-01" }],
+    "HAS": {"L": true,"C": {
+    "SZ": "33k",
+    "CID": "rvOECHo_v2oJ"
+  }},
+    
+    "LANG": "en",
+    "MT": [
+    { "viewport": "width=device-width, initial-scale=1.0" },
+    { "content-type": "article" },
+    { "topics": "insurance-basics" }],
+    "RK": 9,
+    "S": "","T": "insurance-basics 1",
+    "U": "http://cmsnet.cms.hhs.gov/hhs-site/can-i-still-use-fsa-to-offset-my-costs/",
+    "UD": "",
+    "UE": "http://cmsnet.cms.hhs.gov/hhs-site/can-i-still-use-fsa-to-offset-my-costs/"
+  }],
+    "PARM": {
+      "PMT": [{
+        "NM": "topics",
+        "PV": {
+          "the-health-care-law-and-you": 2,
+          "insurance-basics": 2
+        }
+      }]
+    }
+  },
+    "TM": 0.053372
+  }

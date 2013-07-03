@@ -1,0 +1,66 @@
+---
+layout: basic-full-page
+class: sitemap
+---
+
+{% assign t = site.tags.translations[0] %}
+
+{% if page.lang == 'en' %}
+  {% assign langUrl = '' %}
+{% else %}
+  {% capture langUrl %}{{page.lang}}/{% endcapture %}
+{% endif %}
+
+<h1 class='header2'>{{page.title}}</h1>
+<div class='row-fluid'>
+  <div class='span4'>
+    <h4><a href='/{{langUrl}}'>{{t.[page.lang].utility.sitename}}</a></h4>
+    <ul>
+      <li><a href='{{site.baseurl}}/{{langUrl}}families'>{{t.[page.lang].learn.families}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}small-businesses'>{{t.[page.lang].learn.businesses}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}all-topics'>{{t.[page.lang].learn.all}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}marketplace'>{{t.[page.lang].global.insurance}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}blog'>{{t.[page.lang].blog.title}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}quick-answers'>{{t.[page.lang].utility.qatitle}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}glossary'>{{t.[page.lang].glossary.title}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}search'>{{t.[page.lang].learn.search}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}connect'>{{t.[page.lang].utility.connect}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}subscribe'>{{t.[page.lang].utility.subscribe}}</a></li>
+    </ul>
+    <h4><a href='{{site.baseurl}}/{{langUrl}}help-center'>{{t.[page.lang].utility.help}}</a></h4>
+    <ul>
+      <li><a href='{{site.baseurl}}/{{langUrl}}help-center'>{{t.[page.lang].utility.helpcenter}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}language-resource'>{{t.[page.lang].languages.title}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}accessibility'>{{t.[page.lang].utility.accessibility}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}privacy'>{{t.[page.lang].utility.privacy}}</a></li>
+      <li><a href='{{site.baseurl}}/{{langUrl}}developers'>{{t.[page.lang].utility.developers}}</a></li>
+    </ul>
+    <h4><a href='{{site.baseurl}}/{{langUrl}}glossary'>{{t.[page.lang].glossary.title}}</a></h4>
+    <ul>
+      {% for post in site.categories.glossary %}
+      {% if post.lang == page.lang %}
+      <li><a href='{{site.baseurl}}{{post.url}}'>{{post.title}}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class='span4'>
+  {% for topic in site.tags.topic %}
+  {% capture tag %}{{topic.url | split:'/' | last}}{% endcapture %}
+  {% if topic.lang == page.lang %}
+    <h4><a href='{{site.baseurl}}{{topic.url}}'>{{topic.title}}</a></h4>
+    <ul>
+      {% for post in site.topics[tag] %}
+      {% if post.lang == page.lang %}
+      <li><a href='{{site.baseurl}}{{post.url}}'>{{post.title}}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% if forloop.index == 12 %}
+  </div>
+  <div class='span4'>
+  {% endif %}
+  {% endfor %}
+  </div>
+</div>

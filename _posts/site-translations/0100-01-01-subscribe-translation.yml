@@ -1,0 +1,91 @@
+---
+en:
+    subscribe:
+        desktop:
+            - title: 'Get Email Updates'
+              placeholder: 'Email Address'
+              action: 'Sign up'
+              createaccount: 'Create an Account'
+              subscribe:
+                name: 'Email New Subscriber'
+                explain: 'To sign up for updates or to access your subscriber preferences, please enter your contact informaiton below.'
+                type:
+                  title: 'Subscription Type'
+                  dropdown:
+                    - 'Select a type'
+                    - 'Type1'
+                    - 'Type2'
+                    - 'Type3'
+                    - 'Type4'
+                    - 'Type5'
+                address:
+                  title: 'Email Address'
+                  explain: 'Learn more about new health insurance options and benefits.'
+                  label: 'Enter Email Address (required)'
+                username: 'User Name'
+                select-state: 'Select a State'
+                select-state-label: 'Select a State (required)'
+                state: 'State'
+                number: 'For Text Messages'
+                text-message: 'For Text Messages'
+                phone-number: 'Phone Number'
+                phone-label: 'Provide Phone Number for text messages (optional)'
+                optional: 'Optional'
+                required: 'Required'
+                privacy: 'Privacy Policy'
+                privacy-link: '/privacy'
+                valid: 'Number is Valid'
+                invalid: 'Number is invalid'
+                email-invalid: 'Your E-Mail is invalid'
+                complete:
+                  name: 'Subscription Complete!'
+                  explain: 'You have successfully subscribed to updates from Health Insurance Marketplace. Confirmation of your preferences will be sent to your email address. To make additional changes or to unsubscribe, visit your Subscriber Preferences page.'
+                back: 'BACK'
+                submit: 'Submit'
+                return: 'RETURN HOME'
+es:
+    subscribe:
+        desktop:
+            - title: 'Obtener actualizaciones'
+              placeholder: 'Dirección de correo electrónico'
+              action: 'Contratar'
+              createaccount: 'Crear una cuenta'
+              subscribe:
+                name: 'Email New Subscriber'
+                explain: 'Para suscribirse a las actualizaciones o para acceder a las preferencias de suscriptor, por favor introduzca su informaiton contacto de abajo.'
+                type:
+                  title: 'Tipo de suscripción'
+                  dropdown:
+                    - 'Seleccione un Tipo'
+                    - 'Type1'
+                    - 'Type2'
+                    - 'Type3'
+                    - 'Type4'
+                    - 'Type5'
+                address:
+                  title: 'Dirección de Correo Electrónico'
+                  explain: 'Aprenda más acerca de las nuevas opciones y beneficios de seguro de salud.'
+                  label: 'Enter Email Address (required)'
+                username: 'Nombre de usuario'
+                select-state: 'Seleccione un Estado'
+                select-state-label: 'from the list below'
+                state: 'Estado'
+                number: 'Para Mensajes de Texto'
+                text-message: 'Para los mensajes de texto'
+                phone-number: 'Phone Number'
+                phone-label: 'Provide Phone Number for text messages (optional)'
+                optional: 'Opcional'
+                required: 'Necesario'
+                privacy: 'Política de privacidad'
+                privacy-link: '/es/privacy/'
+                valid: 'El número es válido'
+                invalid: 'Número no es válida'
+                email-invalid: 'Tu e-mail no es válida'
+                complete:
+                  name: 'Suscripción Complete!'
+                  explain: 'Se ha suscrito a las actualizaciones del mercado de seguros de salud. La confirmación de sus preferencias se enviará a su correo eletrónico. Para realizar cambios adicionales o darse de baja visite la página Preferencias de suscriptor.'
+                back: 'VOLVER'
+                submit: 'Presentar'
+                return: 'VOLVER AL INICIO'
+tag: subscribe
+---

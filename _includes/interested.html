@@ -1,0 +1,98 @@
+{% assign t = site.tags.translations[0] %}
+<div id='interested-content' role='complementary'>
+  <h2 class='header4'>{{t.[page.lang].siderail.interest}}</h2>
+  <ul></ul>
+</div>
+
+<script type='text/javascript'>
+$(function() {
+    if (app.history.length <= 1) {
+        app.interested = 'na';
+    } else {
+        var lang = '{{page.lang}}',
+            title = (lang === 'es') ? 'es-title' : 'title',
+            langUrl = (lang === 'es') ? '/es' : '',
+            interestIndex = {};
+            
+        var historicUrls = _(app.history).map(function(p){ return p.url });
+            
+        var interestCount = _.chain(app.history)
+                .map(function(t){ return t.data; })
+                .reduce(function(res, v, k) {
+                    _.each(v, function(val,key) {
+                        res[key] = (res[key]) ? res[key].concat(val) : val;
+                    });
+                    return res;
+                }, {})
+                .reduce(function(res, v, k) {
+                    res[k] = {};
+                    _.each(v, function(val,key) {
+                        res[k][val] = (res[k][val] + 1) || 1;
+                    });
+                    return res;
+                }, {})
+                .value();
+                
+        // Generate interested content based on browsing history
+        app.sidebar.defer(function(cb) {
+            var data = app.sidebarData;
+            $.each(data, function(i,post) {
+                var duplicate = historicUrls.indexOf(post.url) > -1,
+                    article = (post) ? post.topics.length : false;
+                
+                if (post && '{{page.url}}' != langUrl + post.url && !duplicate && article) {
+                
+                    _(interestCount).each(function(v,k) {
+                        if (post[k]) {
+                            _(post[k]).each(function(p,j) {
+                                var weight = v[p] || 0;
+                                interestIndex[i] = (interestIndex[i] + weight) || weight;
+                            });
+                        }
+                    });
+                } else {
+                    return;
+                }
+            });
+            
+            var interestSort = sortByValue(interestIndex).slice(0,6);
+            
+            function insertLinks(item) {
+                $.each(item, function(i,p) {
+                    $('#interested-content ul').append(
+                        '<li><a href="{{site.baseurl}}'
+                        + langUrl + data[p].url + '">'
+                        + data[p][title] + '</a></li>'
+                    );
+                });
+                
+                $('#interested-content').show();
+                app.interested = interestSort;
+            }
+            
+            function waitForRelated() {
+                if (!app.related) {
+                    setTimeout(function(){ waitForRelated(); }, 100);
+                } else {
+                    interestSort = _(interestSort).chain().difference(app.related).first(3).value();
+                    insertLinks(interestSort);
+                }
+            }
+            
+            if ($('#related-content').length) {
+                waitForRelated();
+            } else {
+                interestSort = interestSort.slice(0,3);
+                insertLinks(interestSort);
+            }
+            if (typeof cb === 'function') cb();
+        });
+    }
+    
+    function sortByValue(object) {
+        var tuples = _.map(object, function (value, key) { return [key, value]; });
+        tuples = _.sortBy(tuples, function (tuple) { return -tuple[1]; });
+        return _.map(tuples, function(t){ return parseInt(t[0]); });
+    }
+});
+</script>

@@ -1,0 +1,358 @@
+{% capture l %}footer-{{page.lang}}{% endcapture %}
+{% assign footer = site.tags[l][0] %}
+{% assign f = site.tags.footer[0] %}
+{% assign T = site.tags.translations[0] %}
+
+<!--googleoff: all-->
+<div id='footer' role='complementary'>
+<h2 class='accessibility'>{{T.[page.lang].utility.footerheader}}</h2>
+<div class='container'>
+  <div class='limiter hidden-phone'>
+    <div class='footer-top row-fluid'>
+      {% if page.lang == 'es' %}
+      <a href='{{site.baseurl}}/es/marketplace/individual/' class="icon marketplace es pull-left">{{T.[page.lang].utility.marketplacename}}</a>
+      {% else %}
+      <a href='{{site.baseurl}}/marketplace/individual/' class="icon marketplace pull-left">{{T.[page.lang].utility.marketplacename}}</a>
+      {% endif %}
+      <hr class='dark visible-phone'>
+      <div class="calendar-container">
+        <div class='timespan'>
+          <span class='pull-left countdown'></span>{{f.[page.lang].footer.daysleft}}
+        </div>      
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.timeline[0].link}}' class="span2 calendar">
+          <div class="calendar-box">
+            <span class="top"><abbr title="{{T.[page.lang].blog.October}}">{{T.[page.lang].blog.abbr.October}}</abbr></span>
+            <span class="bottom">1</span>
+          </div>
+            <p class='calendar-text span3'>{{f.[page.lang].footer.timeline[0].title}}</p>
+        </a>      
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.timeline[1].link}}' class="span2 calendar">
+          <div class="calendar-box">
+            <span class="top"><abbr title="{{T.[page.lang].blog.January}}">{{T.[page.lang].blog.abbr.January}}</abbr></span>
+            <span class="bottom">1</span>
+          </div>
+            <p class='calendar-text span3'>{{f.[page.lang].footer.timeline[1].title}}</p>
+        </a>
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.timeline[2].link}}' class="span2 calendar">
+          <div class="calendar-box">
+            <span class="top"><abbr title="{{T.[page.lang].blog.March}}">{{T.[page.lang].blog.abbr.March}}</abbr></span>
+            <span class="bottom">31</span>
+          </div>
+            <p class='calendar-text span3'>{{f.[page.lang].footer.timeline[0].title}}</p>
+        </a>
+      </div>
+    </div>
+    <div class='row-fluid equal-height sections' role='complementary'>
+      <h3 class='header5'><a href="{{site.baseurl}}{% if page.lang == 'es' %}/{{page.lang}}{% endif %}/blog">{{T.[page.lang].blog.title}}</a></h3>
+      <ul title='Most recent blog posts'>
+        {% assign count = 0 %}
+        {% for post in site.blogposts %}
+        {% if post.lang == page.lang and count < 3 %}
+        <li>
+          {% capture fullmonth %}{{post.date | date: "%B"}}{% endcapture %}
+          <a title='{{post.date | date: "%d"}} {{t.[page.lang].blog.[fullmonth]}} {{post.title}}' class='row-fluid equal-height clearfix' href='{{site.baseurl}}{{post.url}}'>
+            <div class='span2'>
+              <div class='date'>
+                <div class='post-day'>{{post.date | date: "%d"}}</div>
+                {% capture month %}{{post.date | date: "%B"}}{% endcapture %}
+                <div class='post-month'><abbr title='{{t.[page.lang].blog.[fullmonth]}}'>{{t.[page.lang].blog.abbr.[month]}}</abbr></div>
+              </div>
+            </div>
+            <div class='span10'>
+              {{post.title}}
+            </div>
+          </a>
+        </li>
+        {% assign count = count | plus: 1 %}
+        {% endif %}
+        {% if count == 3 %}{% break %}{% endif %}
+        {% endfor %}
+      </ul>
+      {{footer.content}}
+      <div class='span4 quicklinks sign-up'>
+        <form id='footer-email'>
+        <label for='signup-footer'><h3 class='header5'>{{f.[page.lang].footer.email.title}}</h3></label>
+        <input title='{{T.[page.lang].utility.altemailsignup}}' id='signup-footer' placeholder='{{t.[page.lang].email.address}}' type='text' data-email>
+        <input type='submit' class='btn btn-large btn-green signup' value='{{t.[page.lang].email.action}}' href='{{site.baseurl}}/subscribe'>
+      </form>
+
+      <div class='subscriber'>
+        <p>{{f.[page.lang].footer.email.subscriber}}</p>
+      </div>
+      <div class='account-links'>
+        <a href='{{f.[page.lang].footer.email.settings-url}}'>{{f.[page.lang].footer.email.settings}}</a> | 
+        <a href='{{site.baseurl}}{{f.[page.lang].footer.email.policy-url}}'>{{f.[page.lang].footer.email.policy}}</a>
+      </div>
+    </div>
+
+    </div>
+  {% include footer-bottom.html %}
+  </div>
+  </div>
+
+  <div class='limiter visible-phone'>
+    <div class='footer-top row-fluid'>
+      {% if page.lang == 'es' %}
+      <a href='{{site.baseurl}}/es/marketplace/individual/' class='icon marketplace-mobile es pull-left'>{{T.[page.lang].utility.sitename}}</a>
+      {% else %}
+      <a href='{{site.baseurl}}/marketplace/individual/' class='icon marketplace-mobile pull-left'>{{T.[page.lang].utility.sitename}}</a>
+      {% endif %}
+      <hr class='dark'>
+        <div class="span2 calendar">
+          <div class="calendar-box">
+            <span class="top">{{T.[page.lang].blog.abbr.October}}</span>
+            <span class="bottom">1</span>
+          </div>
+            <p class='calendar-text span3'>{{q.[page.lang].audience.timeline.enrollment}}</p>
+        </div>
+        <div class="span2 calendar">
+          <div class="calendar-box">
+            <span class="top">{{T.[page.lang].blog.abbr.January}}</span>
+            <span class="bottom">1</span>
+          </div>
+            <p class='calendar-text span3'>{{q.[page.lang].audience.timeline.coverage}}</p>
+        </div>
+      <div class="span2 calendar">
+          <div class="calendar-box">
+            <span class="top">{{T.[page.lang].blog.abbr.March}}</span>
+            <span class="bottom">31</span>            
+          </div>
+            <p class='calendar-text span3'>{{q.[page.lang].audience.timeline.closes}}</p>
+        </div>        
+        <a href="#" class='timespan pull-right'>
+          <span class='pull-left countdown'></span>{{f.[page.lang].footer.daysleft}}
+        </a>
+      <hr class='dark visible-phone'>
+      
+    </div>
+    <div class='row-fluid sections'>
+      <h3><a href="{{site.baseurl}}{% if page.lang == 'es' %}/{{page.lang}}{% endif %}/blog">{{T.[page.lang].blog.title}}</a></h3>
+      <ul>
+        {% assign count = 0 %}
+        {% for post in site.blogposts %}
+        {% if post.lang == page.lang and count < 3 %}
+        <li>
+          <a class='row-fluid equal-height' href='{{site.baseurl}}{{post.url}}'>
+            <div class='span2'>
+              <div class='date'>
+                <div class='post-day'>{{post.date | date: "%d"}}</div>
+                {% capture month %}{{post.date | date: "%B"}}{% endcapture %}
+                <div class='post-month'>{{t.[page.lang].blog.abbr.[month]}}</div>
+              </div>
+            </div>
+            <div class='span10'>
+              {{post.title}}
+            </div>
+          </a>
+        </li>
+        {% assign count = count | plus: 1 %}
+        {% endif %} 
+        {% if count == 3 %}{% break %}{% endif %}
+        {% endfor %}
+      </ul>
+      {{footer.content}}
+      <div class='span4 feed sign-up'>
+        <form>
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading email">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse6">
+                  <span for='footer-email'><h3 class='header5'>
+                    {{f.[page.lang].footer.email.title}}<i class='pull-right icon-chevron-down'></i></h3></span>
+                </a>
+              </div>
+              <div id="collapse6" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <a type='button' class='btn btn-large btn-green signup' href='{{site.baseurl}}/subscribe'>{{t.[page.lang].email.action}}</a>
+
+                <div class='subscriber'>
+                  <p>{{f.[page.lang].footer.email.subscriber}}</p>
+                </div>
+                <div class='account-links'>
+                  <a href='{{f.[page.lang].footer.email.settings-url}}'>{{f.[page.lang].footer.email.settings}}</a> | 
+                  <a href='{{site.baseurl}}{{f.[page.lang].footer.email.policy-url}}'>{{f.[page.lang].footer.email.policy}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <div class='footer-bottom row-fluid' role='navigation'>
+      <div class='span5 pull-left links'>
+        {% for nav in f.[page.lang].footer.linksbottom-left %}
+          {% if nav.link contains 'http://' or nav.link contains 'https://' %}
+          <a target='_blank' href='{{nav.link}}'>{{nav.item}}</a>
+          {% else %}
+          <a href='{{site.baseurl}}{{nav.link}}'>{{nav.item}}</a>
+          {% endif %}
+        {% unless forloop.last %} | {% endunless %}
+        {% endfor %}
+      </div>
+      <div class='span7 text-right links'>
+        {% for nav in f.[page.lang].footer.linksbottom-right %}
+          {% if nav.link contains 'http://' or nav.link contains 'https://' %}
+          <a target='_blank' href='{{nav.link}}'>{{nav.item}}</a>
+          {% else %}
+          <a href='{{site.baseurl}}{{nav.link}}'>{{nav.item}}</a>
+          {% endif %}
+        {% unless forloop.last %} | {% endunless %}
+        {% endfor %}
+      </div>
+      <hr class='dark remove'>
+      <div class='span4 bottom-text pull-left'>
+        <a class='span4 icon eagle' href='http://www.hhs.gov/' target="_blank">HHS.gov</a>
+        {{f.[page.lang].footer.address}}
+      </div>
+      <div class='footer-icons pull-right'>
+        <a class='icon whitehouse' target='_blank' href='http://www.whitehouse.gov/' target="_blank">Whitehouse.gov</a>
+        {% if page.lang == 'es' %}
+        <a class='icon gobiernousa pull-right' target='_blank' href='http://www.usa.gov/gobiernousa/index.shtml' target="_blank">gobiernoUSA</a>
+        {% else %}
+        <a class='icon usagov pull-right' target='_blank' href='http://www.usa.gov/' target="_blank">USA.gov</a>
+        {% endif %}
+     </div>
+    </div>
+  </div>
+</div>
+<!--googleon: all-->
+
+<script type='text/javascript'>
+$(window).load(function(){
+    $('#footer .visible-phone .sections ul').each(function(i,d) {
+        $(d).wrap("<div id='collapse"+i+"' class='accordion-body collapse'><div class='accordion-inner'></div></div>");
+    });
+
+    //None Mobile
+    $('#footer .hidden-phone .sections h3').each(function(i,d) {
+        if (i === 5) return;
+        var section = document.createElement('div'),
+            list = $(d).next();
+
+        $(d).addClass('header5');
+
+        if (i < 3) {
+            section.setAttribute('class', 'span4 feed');
+            $('a',list).addClass('row-fluid clearfix');//$('a',list).addClass('row-fluid,equal-height');
+            if (i !== 0) {
+                $('a',list).each(function(j,item) {
+                    if (i === 1) {
+                        $(item).wrapInner('<div></div>');
+                    } else {
+                        $(item).wrapInner('<div class="span10"></div>');
+                    }
+
+                    if ($('img',item).length) {
+                        var iconType = $('img',item).attr('alt'),
+                            icon = document.createElement('span'),
+                            left = document.createElement('div');
+
+                        left.setAttribute('class', 'span2');
+                        icon.setAttribute('class', 'icon icon-large icon-inline ' + iconType);
+                        $(left).append(icon);
+                        $(item).prepend(left);
+                        $('img',item).remove();
+                    } else {
+                        if (i !== 1) {
+                            $(item).prepend('<div class="span2"></div>');
+                        }
+                    }
+                });
+            }
+        } else if (i === 4) {
+            section.setAttribute('class', 'span4 quicklinks languages');
+        } else {
+            section.setAttribute('class', 'span4 quicklinks');
+        }
+        
+        section.setAttribute('role', 'complementary');
+        $(section).append(d);
+        $(section).append(list);
+        $('#footer .hidden-phone .sections').append(section);
+    });
+
+    //Mobile
+    $('#footer .visible-phone .sections h3').each(function(i,d) {
+        if (i === 5) return;
+        var section = document.createElement('div'),
+            list = $(d).next();
+
+        $(d).addClass('header5');
+
+        $(d).wrapInner("<div class='accordion' id='accordion2'><div class='accordion-group'><div class='accordion-heading'><a class='accordion-toggle' data-toggle='collapse' data-parent='#accordion2' href='#collapse"+i+"'><div class='pull-right'><i class='icon-chevron-down'></a></div>");
+
+        if (i < 3) {
+            section.setAttribute('class', 'span4 feed');
+            section.setAttribute('role', 'complementary');
+            $('a',list).addClass('row-fluid');//$('a',list).addClass('row-fluid,equal-height');
+            if (i !== 0) {
+                $('a',list).each(function(j,item) {
+                    $(item).wrapInner('<div class="span10"></div>');
+
+                    if ($('img',item).length) {
+                        var iconType = $('img',item).attr('alt'),
+                            icon = document.createElement('span'),
+                            left = document.createElement('div');
+
+                        left.setAttribute('class', 'span2');
+                        icon.setAttribute('class', 'icon icon-large icon-inline ' + iconType);
+                        $(left).append(icon);
+                        $(item).prepend(left);
+                        $('img',item).remove();
+                    } else {
+                        $(item).prepend('<div class="span2"></div>');
+                    }
+                });
+            }
+        } else {
+            section.setAttribute('class', 'span4 feed');
+            section.setAttribute('role', 'complementary');
+        }
+
+        $(section).append(d);
+        $(section).append(list);
+        $('#footer .visible-phone .sections').append(section);
+    });
+
+    var signup = $('.visible-phone .span4.sign-up');
+    $('#footer .visible-phone .span4.feed:last-child').after(signup);
+    var signupOne = $('.hidden-phone .span4.sign-up');
+    $('#footer .hidden-phone .quicklinks:last-child').after(signupOne);
+
+    var topContent = $('#footer .visible-phone .sections .span4:nth-child(2)');
+    $('#footer .visible-phone .sections .span4:first').before(topContent);
+
+    $('#footer .visible-phone .sections .span4:nth-child(41)').remove();
+
+    {% include js/countdown.js %}
+
+    $('#collapse1').addClass('in');
+
+    //Add top content and remove more than 3
+    var content = app.topContent['{{page.lang}}'];
+
+    $('#footer .hidden-phone .feed.span4:nth-child(2) ul').append(content);
+    $('#footer .hidden-phone .feed.span4:nth-child(2) ul li:gt(2)').remove();
+    $('#footer .visible-phone .sections .span4:nth-child(1) ul').append(content);
+    $('#footer .visible-phone .sections .span4:nth-child(1) ul li:gt(2)').remove();
+
+    $(window).on('resize',function() {
+        $('.hidden-phone .equal-height .span4').attr('style','height:');//Resets equal-height
+        $('.hidden-phone .equal-height').equalHeights();
+    }).resize();
+
+    {% if page.lang == 'es' %}
+      $('#footer .hidden-phone .feed:last ul').append("<li class='social-icon'><a class='icon icon-large twitter' href='https://twitter.com/CuidadoDeSalud/'>Twitter</a><a class='icon icon-large facebook' href='https://www.facebook.com/Cuidadodesaludgov'>Facebook</a><a class='icon icon-large youtube' href='http://www.youtube.com/playlist?list=PLUslxKz-YuCjM_0-hByKRcmc5mzRV-cDu'>Youtube</a></li>");
+      $('#footer .visible-phone .feed #collapse2 ul').append("<li class='social-icon'><span class='icon icon-large twitter'><a href='https://twitter.com/CuidadoDeSalud/'>Twitter</a></span><span class='icon icon-large facebook'><a href='https://www.facebook.com/Cuidadodesaludgov'>Facebook</a></span><span class='icon icon-large youtube'><a href='http://www.youtube.com/playlist?list=PLUslxKz-YuCjM_0-hByKRcmc5mzRV-cDu'>Youtube</a></span></li>");
+    {% else %}
+      $('#footer .hidden-phone .feed:last ul').append("<li class='social-icon'><a class='icon icon-large twitter' href='https://twitter.com/HealthCareGov'>Twitter</a><a class='icon icon-large facebook' href='https://www.facebook.com/Healthcare.gov'>Facebook</a><a class='icon icon-large youtube' href='http://www.youtube.com/HealthCareGov'>Youtube</a></li>");
+      $('#footer .visible-phone .feed #collapse2 ul').append("<li class='social-icon'><span class='icon icon-large twitter'><a href='https://twitter.com/HealthCareGov'>Twitter</a></span><span class='icon icon-large facebook'><a href='https://www.facebook.com/Healthcare.gov'>Facebook</a></span><span class='icon icon-large youtube'><a href='http://www.youtube.com/HealthCareGov'>Youtube</a></span></li>");
+    {% endif %}
+
+    $('#footer .hidden-phone .sections .feed:nth-child(2) .span2').remove();
+    $('#footer .hidden-phone .sections .feed:nth-child(2) .span10').css({ width: '100%', margin: '0' });
+
+});
+</script>

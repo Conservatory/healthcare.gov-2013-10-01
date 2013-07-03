@@ -1,0 +1,36 @@
+---
+layout: default
+experience: learn
+---
+{% assign t = site.tags.translations[0] %}
+
+<div class='temp-content'>{{content}}</div>
+  <div class='basic-container language-resource'>
+  <h1 class='header2'>{{t.[page.lang].languages.title}}</h1>
+  <hr class='dark-thick top'>
+  <div class='language-list row-fluid'></div>
+  <hr class='dark bottom'>
+  <div class='language-cards row-fluid'></div>
+  {% include was-this-helpful.html %}
+</div>
+<script>
+function makeLangCards(callback){
+  $('.temp-content h2').each(function(i,d){
+    // make language index
+    var lang = $(d).next().text().toLowerCase();
+    $('.language-resource .language-list').append('<a href="#'+ lang +'">'+ lang + '</a>');
+    // move to card
+    $(d).nextUntil('h2').andSelf().appendTo('.language-resource .language-cards').wrapAll('<div class="span12 card" id="'+ lang +'"></div>');
+    $(d).next().andSelf().wrapAll('<div class="span4"></div>');
+  });
+
+    //Add back to top
+  $("<a href=#top class='pull-right back-top'><span class='icon icon-inline arrow-up'>up</span>{% if page.lang == "es" %}Regresar al principio{% else %}Back to top{% endif %}</a>").insertAfter('.card');
+
+  callback();
+};
+
+makeLangCards(function(){
+  $('.temp-content').remove();
+});
+</script>

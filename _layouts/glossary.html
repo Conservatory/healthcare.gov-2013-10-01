@@ -1,0 +1,90 @@
+---
+layout: default
+experience: learn
+---
+{% assign t = site.tags.translations[0] %}
+<div class='basic-container glossary' role='main'>
+  <h1 class='header2'>{{t.[page.lang].glossary.title}}</h1>
+  {% include social.html %}
+  <hr class='dark-thick'>
+  <ul class='glossary-index'></ul>
+  <hr class='dark'>
+  <div class='row-fluid' id='sort'>
+    {% for post in site.glossary %}
+      {% if post.lang == page.lang %}
+        <li class='span4 word'><a href='{{site.baseurl}}{{post.url}}'>{{post.title}}</a></li>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% include was-this-helpful.html %}
+</div>
+
+<script type='text/javascript'>
+$(function() {
+
+    if (isMobile.any()) {
+        $('ul.glossary-index').append('<select class="drop span5"></select>');
+    }
+    $('.basic-container.glossary').prepend("<a name='top' />");
+    
+    //Make top letters
+    function iterateAlphabet() {
+        var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        for (var i=0; i<str.length; i++) {
+            var nextChar = str.charAt(i);
+            if (isMobile.any()) {
+                $('.drop').append('<option class="inactive' + nextChar + '">' + nextChar + '</a></option>');
+            } else {
+                $('ul.glossary-index').append('<li><a class="inactive '+ nextChar +'letter" href="#' + nextChar + '">' + nextChar + '</a></li>');
+            }
+        }
+    }
+
+    iterateAlphabet();
+
+    //Make top letters active
+    $('.word').each(function() {
+        var secondLetter = $(this).text().substr(1,1);
+        var letter = $(this).text().substr(0,1).replace(/\W/g, secondLetter);
+        $(this).addClass(letter);
+        $('a.'+ letter + 'letter').attr('class','active');
+        $('.inactive'+letter).addClass('active');
+    });
+
+    //Remove inactive letters from mobile dropdown
+    $('option:not(.active)').remove();
+
+    //Create cards
+    function cards() {
+        var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        for(var i=0; i<str.length; i++) {
+            var nextChar = str.charAt(i);
+            $('.'+nextChar).wrapAll('<div class="span12 card" id="' + nextChar + '" ><ul>').first().parent('ul').parent().prepend('<h2 class="header1 big-letter">' + nextChar + '</h2>').wrap('<div class="attach">');
+        }
+    }
+
+    cards();
+
+    //Sort
+    var mylist = $('#sort');
+    var listitems = mylist.children('.attach').get();
+    listitems.sort(function(a, b) {
+        return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+    });
+    $.each(listitems, function(idx, itm) { mylist.append(itm); });
+
+    //Add back to top
+    $("<a href=#top class='pull-right back-top'><span class='icon icon-inline arrow-up'>up</span>{% if page.lang == "es" %}Regresar al principio{% else %}Back to top{% endif %}</a>").insertAfter('.card');
+
+    //Add go to functionality with mobile dropdown
+    $.fn.gotoAnchor = function(anchor) {
+        location.href = this.selector;
+    }
+    $('.drop').change(function() {
+        var value = $(this).val();
+        $('#'+value).gotoAnchor();
+    });
+    $('.drop').prepend("{% if page.lang == 'en' %}<option selected='selected'>Jump to letter of alphabet</option>{% else %}<option selected='selected'>Ir a letra del alfabeto</option>{% endif %}");
+
+});
+</script>

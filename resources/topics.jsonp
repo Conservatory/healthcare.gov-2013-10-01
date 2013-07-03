@@ -1,0 +1,11 @@
+---
+---
+topics([
+{% for post in site.tags.topic %}
+  {
+    "name": "{{post.url | split: '/' | last | replace: '-',' ' | capitalize}}",
+    "value": "{{post.url | split: '/' | last}}",
+    "lang": "{{post.lang}}"
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+])

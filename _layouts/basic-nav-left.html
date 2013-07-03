@@ -1,0 +1,156 @@
+---
+layout: default
+experience: learn
+---
+{% assign t = site.tags.translations[0] %}
+<div class='basic-container nav-left page'>
+  {% include topictop.html %}
+  <div class='row-fluid'>
+    <div class='span9 article'>
+      <div class='row-fluid'>
+        <h1 class='header2'>{{page.title}}</h1>
+        {% if page.subtitle %}
+        <h2 class='header4'>{{page.title}}</h2>
+        {% endif %}
+        <ul class='nav-tabs'>
+        </ul>
+        <div class='span11 tab-content'>
+          <hr class='dark'>
+          {% include social.html %}
+          {% include print.html %}
+          <hr class='dark bottom'>
+          <select title='Select article section' class='part-dropdown span5 visible-phone'></select>
+          <div class='tbs'></div>
+          {% if page.state-dropdown %}
+            {% include state-dropdown.html %}
+          {% endif %}
+          {% if page.questions %}
+            {% include questions.html %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class='span9 article button-next'>
+      <a id='next' href='#' class='btn btn-large btn-green signup pull-right' id='next' data-section='2'>{{t.[page.lang].utility.gotobutton}} 2</a>
+    </div>
+    {% include was-this-helpful.html %}
+    <div class='span3'>
+      {% include siderail.html %}
+    </div>
+  </div>
+</div>
+
+<div id='temp-content'>
+{{content}}
+</div>
+
+<script type='text/javascript'>
+{% include js/article-router.js %}
+
+$('#temp-content h2').each(function(i,d) {
+    var text = $(d).nextAll(),
+        section = document.createElement('div');
+
+    section.setAttribute('class', 'tab-pane');
+    section.setAttribute('id', 'part' + (i + 1));
+    if (i == 0) section.className += ' active';
+
+    $(section).append('<div class="print-only header3">{{t.[page.lang].utility.part}} '+(i+1)+'</div>').append(d).append(text);
+    $('.tab-content .tbs').append(section);
+
+    $('.part-dropdown').append(
+        '<option ' + ((i == 0) ? ' class="active"' : '') + 'value='+(i+1)+' id='+i+'><a href="' + '#part' + (i+1) + '" '
+        + 'data-toggle="tab" id='+ (i+1) + '>'+ (i+1) + '. ' + $(d).html() + '</a></li>'
+    );
+
+    $('.nav-tabs').append(
+        '<li' + ((i == 0) ? ' class="active"' : '') + '><a href="' + '#part' + (i+1) + '" '
+        + 'data-toggle="tab" id='+ (i+1) + '><span>{{t.[page.lang].utility.part}} '+ (i+1) + '</span><span class="partTitle">' + $(d).html() + '</span></a></li>'
+    );
+});
+
+$(function() {
+    var $tabs = $('.nav-tabs li'),
+        len = $tabs.length;
+        
+    function manageQuestions(part) {
+        $('select.question-selector, .extras .extra-text').hide();
+        $('select.question-selector[data-section="part' + part + '"], .extras extra-text[data-section="part' + part + '"]').show();
+    }
+
+    $('.nav-tabs li a').click(function(e,trigger) {
+        var part = $(this).attr('id');
+            n = parseInt(part);
+
+        if (n < len) {
+          $('#next').html('{{t.[page.lang].utility.gotobutton}} ' + (n + 1));
+          $('#next').attr('data-section',(n + 1));
+        } else {
+          $('#next').html('{{t.[page.lang].utility.gotobutton}} 1');
+          $('#next').attr('data-section',1);
+        }
+        
+        manageQuestions(part);
+
+        if (!trigger) app.router.set('part', part);
+    });
+
+    $('#next').click(function(e) {
+        e.preventDefault();
+        $('a#' + $(this).attr('data-section')).trigger('click');
+        $('body,html').animate({scrollTop: $('.tab-content').offset().top-10}, 'fast');
+
+        var n = $('.active').find('a[data-toggle="tab"]').attr('id');
+        $('.part-dropdown').val(n);
+
+    });
+
+    $('.part-dropdown').change(function() {
+        var value = parseInt($(this).val());
+
+        $('.nav-tabs li:eq('+ (value - 1) +') a').tab('show');
+  
+        var n = $('.active').find('a[data-toggle="tab"]').attr('id'),
+            number = parseInt(n);
+
+        if (number <= len) {
+            $tabs.filter('.active').find('a[data-toggle="tab"]').tab('show');
+            $('#next').html('{{t.[page.lang].utility.gotobutton}} ' + (number + 1 ));
+            $('#next').attr('data-section',(number + 1));
+        } else {
+            $('#next').html('{{t.[page.lang].utility.gotobutton}} 2');
+            $('.nav-tabs li:eq(0) a').tab('show');
+        }
+
+        if (number == len) {
+            $('#next').html('{{t.[page.lang].utility.gotobutton}} 1');
+            $('#next').attr('data-section',1);
+        }
+    });
+
+    if (window.location.hash === '') manageQuestions(1);
+
+    if (isMobile.any()) {
+
+        var topic = $('.article-topic');
+        $('.span9.article').after(topic);
+        topic.append("<hr class='dark-thick'>");
+        $('.article-topic:first').remove();
+
+    } else {
+
+        function waitForTabHeight(){
+            var tabLength = $('ul.nav-tabs').length;
+          if(!tabLength){
+              setTimeout(function(){ runAgain()},100);
+          }else{
+              var tabHeight = $('ul.nav-tabs').height();
+              $('.tab-content').css('min-height',tabHeight);
+          }
+        };
+
+        waitForTabHeight();
+
+    }
+});
+</script>

@@ -1,0 +1,95 @@
+{% assign t = site.tags.translations[0] %}
+
+<!--googleoff: all-->
+<div class='state-dropdown {% if page.class == "hero" %}span6{% endif %}' role='complementary'>
+  {% if page.class !='hero' %}
+  <h2 class='header4'><span class='glyphicons google_maps'>
+    <i></i>
+    </span>{{t.[page.lang].state.title}}
+  </h2>
+  {% endif %}
+  <label for='state-dropdown' class='accessibility'>{{t.[page.lang].state.select}}</label>
+  <select id='state-dropdown' name='select' class='state-selector'>
+    <option disabled selected>{{t.[page.lang].state.select}}</option>
+    {% for state in site.states %}
+    <option value='{{state | replace:' ','-' | downcase}}'>{{state}}</option>
+    {% endfor %}
+  </select>
+{% if page.class == 'hero' %}
+</div>
+<!--googleon: all-->
+
+<div class='span12 marketplace-state'>
+  <div class='answer'>
+  </div>
+</div>
+{% else %}
+  <div class='answer'></div>
+</div>
+{% endif %}
+
+<script type="text/javascript">
+  $(function () {
+      if ($('.extras').length) $('.state-dropdown').css('margin-bottom','40px');
+      $('.marketplace-state').hide();
+
+      $('select.state-selector').change(function(e) {
+          e.preventDefault();
+          $('.answer').removeClass('span7').empty();
+          $('.marketplace-state a').remove();
+
+          var stateCap = $('option:selected', this).text(),
+              state = $(this).val();
+
+          {% for option in t.en.state.options %}
+            {% if option contains page.state-dropdown %}
+              {% if page.lang == 'es' %}
+              var requestedType = '{{t.es.state.options[forloop.index0]}}' + ' ' + stateCap;
+              {% else %}
+              var requestedType = '{{option}}' + ' ' + stateCap;
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% if page.lang == 'es' %}
+          $.getJSON('{{site.baseurl}}/es/' + state + '.json', function(d){
+          {% else %}
+          $.getJSON('{{site.baseurl}}/' + state + '.json', function(d){
+          {% endif %}
+              var url = d.stateurl;
+              $('.marketplace-state').show();
+              $('.answer').append(d.content);
+              $('.answer h3').each(function(){
+                  var h3 = $(this).text();
+                  if( requestedType == h3){
+                      $(this).one().show();
+
+                      $(this).one().next('p').show();
+                  } else {
+                      $(this).one().hide();
+                      $(this).one().next('p').hide();
+                  }
+              });
+
+              $('.marketplace-state .answer h3').addClass('header4');
+              if (url !== "none") {
+                  $('.marketplace-state .answer').addClass('span7')
+                  {% if page.lang == 'es' %}
+                    $('.marketplace-state').append('<a class="btn btn-large btn-green span4" href="' + url + '">Visite el sitio web de ' + stateCap + '</a>');
+                  {% else %}
+                    $('.marketplace-state').append('<a class="btn btn-large btn-green span4" href="' + url + '">Go to ' + stateCap + ' Website</a>');
+                  {% endif %}
+                 
+              };
+
+              // Set cookie
+              app.quickAnswers = app.quickAnswers || {};
+              app.quickAnswers.state = stateCap;
+              $.cookie('quickAnswers', app.quickAnswers, { expires: 30, path: '/' });
+
+              // Set route
+              app.router.set('state', state);
+          });
+      });
+  });
+</script>

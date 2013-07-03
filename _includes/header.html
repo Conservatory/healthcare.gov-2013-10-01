@@ -1,0 +1,39 @@
+{% if page.lang == 'en' %}
+  {% assign lang = '' %}
+{% else %}
+  {% capture lang %}/{{page.lang}}{% endcapture %}
+{% endif %}
+
+<!--googleoff: all-->
+<div id='header' role='banner'>
+  <div class='container'>
+
+  <div class='visible-phone mobile-main-top' id='mobile-nav'>
+    <a href='#' class='mobile-drop-btn pull-left'></a>
+    <a href='{{site.baseurl}}{{lang}}/' title='Healthcare.gov' class='icon mobile-logo {% if page.lang == 'es' %}es{% endif %}' href='{{site.baseurl}}{{lang}}/'>{{t.[page.lang].utitlity.sitename}}</a>
+    {% if page.lang == 'en' %}
+    <a class='pull-right lang es' data-lang='es' href='{{site.baseurl}}/es{{page.url | remove: 'index.html'}}'>En Español</a>
+    {% else %}
+    <a class='pull-right lang'  data-lang='en' href='{{site.baseurl}}{{page.url | replace_first:'/es', ''}}'>English</a>
+    {% endif %}
+  </div>
+
+  {% include header-desktop.html %}
+
+</div>
+</div>
+<!--googleon: all-->
+
+<script type='text/javascript'>
+$(function() {
+  $('.mobile-drop-btn').on('click', function(e) {
+      $('body').toggleClass('menu');
+
+      $('body.menu .container').on('click', function(e) {
+          $('body').removeClass('menu');
+          $('body.menu .container').off('click');
+      });
+      return false;
+  });
+});
+</script>

@@ -1,0 +1,95 @@
+---
+layout: default
+experience: learn
+class: blog
+---
+{% assign t = site.tags.translations[0] %}
+
+<div class='basic-container blog'>
+ <div class='header2'>{{t.[page.lang].blog.title}}</div>
+  <div class='row-fluid'>
+    <div class='span9 article' role='main'>
+      <h1 class='header2 blog-title'>{{page.title}}</h1>
+    
+      {% if page.lang == 'es' %}
+      {% capture day %}{{page.date | date: "%d"}}{% endcapture %}
+      {% capture month %}{{page.date | date: "%B"}}{% endcapture %}
+      {% capture year %}{{page.date | date: "%Y"}}{% endcapture %}
+      <div class='blog-date'>el {{day}} de {{t.[page.lang].blog.[month]}} de {{year}}</div>
+      {% else %}
+      <div class='blog-date'>{{page.date | date: "%B %d, %Y"}}</div>
+      {% endif %}
+    
+      {% if page.author %}
+      <div class='blog-author'>{{t.[page.lang].blog.by}} {{page.author}}</div>
+      {% endif %}
+      <hr class='dark top'>
+      {% include social.html %}
+      {% include print.html %}
+      <hr class='dark bottom'>
+      {{content}}
+    </div>
+    <div class='span9 below-article'>
+      <div class='blog-pagination article'>
+        {% if page.lang == 'es' %}
+        <a href='{{site.baseurl}}/blog' class='round blog-prev pull-left fallback'><span>Volver al Blog</span></a>
+        <a href='#' class='nodisplay es round blog-prev pull-left'><span>entrada de blog anterior</span></a>
+        <a href='#' class='nodisplay es round blog-next pull-right'><span>próxima entrada de blog</span></a>
+        {% else %}
+        <a href='{{site.baseurl}}/blog' class='round blog-prev pull-left fallback'><span>Back to Blog</span></a>
+        <a href='#' class='nodisplay round blog-prev pull-left'><span>Previous blog post</span></a>
+        <a href='#' class='nodisplay round blog-next pull-right'><span>Next blog post</span></a>
+        {% endif %}
+      </div>
+      {% if page.lang =='es' %}
+      <a class='header5 pull-right' href='http://www.hhs.gov/web/socialmedia/policies/comment-policy.html'>Política comentario en tu blog</a>
+      {% else %}
+      <a class='header5 pull-right' href='http://www.hhs.gov/web/socialmedia/policies/comment-policy.html'>Blog Comment Policy</a>
+      {% endif %}
+      <div id='disqus_thread'></div>
+    </div>
+    <div class='span3'>
+      {% include siderail.html %}
+    </div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+  // Set pagination buttons
+  $(function() {
+    $.getJSON('{{site.baseurl}}/api/blog-posts.json', function(d) {
+      var urls = _(d['{{page.lang}}']).chain().pluck('url').compact().value();
+      var index = _(urls).indexOf('{{site.baseurl}}{{page.url}}');
+      if (index > 0) {
+        $('.blog-pagination a.blog-prev').attr('href', urls[index - 1]).removeClass('nodisplay');
+        $('.blog-pagination .fallback').remove();
+      }
+      if (index < urls.length - 1) {
+        $('.blog-pagination a.blog-next').attr('href', urls[index + 1]).removeClass('nodisplay');
+        $('.blog-pagination .fallback').remove();
+      }
+    });
+  });
+
+  if(isMobile.any()){
+      var topic = $('.article-topic');
+      $('.span9.article').after(topic);
+      topic.append("<hr class='dark-thick'>");
+  }
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'hcgov'; // required: replace example with your forum shortname
+
+    function disqus_config() {
+        this.callbacks.onReady = [function() {
+            $('#disqus_thread iframe').attr('title', 'A form to post and read comments.');
+        }];
+    }
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view comments.</noscript>

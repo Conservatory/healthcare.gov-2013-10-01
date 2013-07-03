@@ -1,0 +1,29 @@
+---
+en:
+    audience:
+       top:
+         already-family: 'Already have insurance?'
+         already-business: 'Already offering insurance to your employees?'
+         find-family: 'Find out what the health care law is doing for you.'
+         find-family-link: 'how-does-the-health-care-law-protect-me/'
+         find-business: 'Here is what you need to know.'
+         find-business-link: 'what-if-i-already-insure-my-employees/'
+         action: 'Start Now'
+       marketplace-family: 'the Marketplace'
+       marketplace-business: 'the Shop Marketplace'
+es:
+    audience:
+       top:
+         already-family: '¿Ya tiene seguro?'
+         already-business: 'Ya ofrecer seguro a sus empleados?'
+         find-family: 'Averigüe cuál es la ley de salud está haciendo por usted.'
+         find-family-link: 'es/how-does-the-health-care-law-protect-me/'
+         find-business: 'Aquí es lo que usted necesita saber.'
+         find-business-link: 'es/what-if-i-already-insure-my-employees/'
+         action: 'Empieza Ahora'
+       marketplace-family: 'el Mercado'
+       marketplace-business: 'Mercado SHOP'
+tag: audience
+published: true
+---
+

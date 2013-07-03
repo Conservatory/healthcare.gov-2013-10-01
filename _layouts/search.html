@@ -1,0 +1,292 @@
+---
+layout: default
+experience: learn
+---
+{% assign t = site.tags.search[0] %}
+{% assign u = site.tags.translations[0] %}
+<div class='basic-container search'>
+  <div class='row-fluid'>
+    <h1 class='span3 header2'>{{t.[page.lang].search.title}}</h1>
+    <form class='span9' name='gsearch' method='get' action='{{site.baseurl}}{% unless page.lang == "en" %}/{{page.lang}}{% endunless %}/search'>
+      <input title='{{u.[page.lang].utility.altsearch}}' id='page-search' class='nav-search span12 pull-right' placeholder='{{t.[page.lang].search.title}}' name='q' type='search' autocomplete='off'>
+      {% include searchoptions.html %}
+    </form>
+  </div>
+  <div id='search-content'>
+    <hr class='dark-thick'>
+    <div class='row-fluid'>
+      <div class='span3'>
+        <form class='search-filter'>
+          <fieldset>
+            <ul id='search-filter'>
+              <legend class='header4 search-for'>{{t.[page.lang].search.form.filter}}</legend>
+            </ul>
+          </fieldset>
+        </form>
+        <a href='#' class='reset-filter' style='display:none;'>{{t.[page.lang].search.clear}}</a>
+      </div>
+      
+      <div class='span9' role='main'>
+        <h2 class='results-header'><span class='search-stat'><span class='search-count'></span> {{t.[page.lang].search.resultsfor}} <b class='search-term'></b></span></h2>
+      
+        <div id='search-results'>
+        </div>
+  
+        <div class='row-fluid'>
+          <div class='span12'>
+            <div class='fluid-row'>
+              <a href='#' class='next-ten center transition clearfix'>{{u.[page.lang].learn.search-next}} <span class='next-count'></span> {{u.[page.lang].learn.search-results}}</a>
+            </div>
+          </div>
+        </div>
+        {% include was-this-helpful.html %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id='search-filter-template' type='text/template'>
+  <li>
+    <a class='clearfix' href='<%= url %>' title='<%= topic %>'>
+      <input title='Filter on <%= topic %>' type='checkbox' name='<%= topic %>' <% if (active) { %>checked <% } %>/>
+      <div class='checkbox-label' for='<%= topic %>'><div class='pull-left'><span></span></div><%= topic %></div>
+    </a>
+  </li>
+</script>
+
+<script id='search-result-template' type='text/template'>
+  <div class='row-fluid'>
+    <div class='span12 card <%= content %>'>
+      <% if (content.indexOf('glossary') > -1) { %>
+      <h3 class='header4 definition'>Definition</h3>
+      <h4 class='header3'><a href='<%= url %>'><%= title %></a></h4>
+      <% } else { %>
+      <h3 class='header3'><a href='<%= url %>'><%= title %></a></h3>
+      <% if (snippet) { %><hr class='dark'><% } %>
+      <% } %>
+      <p><%= snippet %></p>
+    </div>
+  </div>
+</script>
+
+<script>
+if(isMobile.any()){
+    $('.search-area').parent('.span3').remove();
+    $("<hr class='dark'>").insertAfter('.search-results');
+}
+
+{% if page.lang == 'en' %}
+  {% assign otherLang = 'es' %}
+  {% assign collLang = '_es' %}
+{% else %}
+  {% assign otherLang = 'en' %}
+  {% assign collLang = '' %}
+{% endif %}
+
+var searchString = window.location.search;
+
+if (searchString != '') {
+    $('#search-content').show();
+    
+    var searchUrl = '/search-server/search' + searchString,
+        langUrl = $('.btn-lang').attr('href'),
+        collection = searchString.match(/&site=[a-z]+/)[0],
+        dataType = 'json';
+
+    /* If dev */
+    if (window.location.host.indexOf('-t.healthcare.gov') !== -1) {
+        dataType = 'jsonp';
+        searchUrl = '{{site.searchproxy}}' + searchUrl;
+    /* If production */
+    } else if (window.location.host.indexOf('healthcare.gov') !== -1 ||
+        window.location.host.indexOf('cuidadodesalud.gov') !== -1) {
+    /* Other */
+    } else {
+        dataType = 'jsonp';
+        searchUrl = '{{site.searchproxy}}' + searchUrl;
+    }
+
+    $('.btn-lang').attr('href',langUrl + searchString
+            .replace('lang_{{page.lang}}','lang_{{otherLang}}')
+            .replace(/&site=[a-z_]+/,collection + '{{collLang}}')
+    );
+    
+    $('a.reset-filter').attr('href',window.location.href.replace(/&requiredfields=.+/,''));
+    
+    var resultTemplate = _.template($('#search-result-template').html()),
+        filterTemplate = _.template($('#search-filter-template').html());
+
+    $.ajax({
+        cache: true,
+        dataType: dataType,
+        url: searchUrl,
+        success: function(d) {
+            $('#page-search').attr('value',d.Q);
+            if (!d.RES && !d.GM) {
+                $('.search-stat').html('{{u.[page.lang].learn.no-results}}');
+                $('.next-ten').hide();
+            } else {
+                var resultCount = 0,
+                    keymatchCount = 0;
+                $('.search-term').text('"' + d.Q + '"');
+                if (d.GM) {
+                    keymatchCount = d.GM.length;
+                    
+                    if (d.PARAM.start.value === '0') {
+                        // Render keymatches
+                        $.each(d.GM, function(i,r) {
+                            var snippet,
+                                type = 'keymatch',
+                                keyUrl = r.GL,
+                                base = keyUrl.indexOf('.gov/'),
+                                hash = keyUrl.lastIndexOf('#');
+
+                            // Remove key matches that are the wrong lang
+                            if ($('html').attr('lang') === 'es') {
+                                if (keyUrl.indexOf('healthcare.gov/') !== -1) return;
+                            } else {
+                                if (keyUrl.indexOf('cuidadodesalud.gov/') !== -1) return;
+                            }
+
+                            if (hash > -1) keyUrl = keyUrl.substr(0, hash-1);
+                            keyUrl = (keyUrl + '.json').replace('/.','.');
+                            
+                            $.getJSON('{{site.baseurl}}' + keyUrl.substr(base+4), function(post) {
+                                snippet = post.bite || post.excerpt.replace('<p>','').replace('</p>','');
+                                if (post.layout === 'glossary-word') type = type + ' glossary';
+                                buildResult();
+                            })
+                            .error(function() { buildResult(); });
+                            
+                            function buildResult() {
+                                var templateData = {
+                                    title: r.GD,
+                                    snippet: snippet,
+                                    url: r.GL,
+                                    content: type
+                                };
+                                
+                                $('#search-results').prepend(resultTemplate(templateData));
+                            }
+                        });
+                    }
+                }
+                if (!d.RES) {
+                    $('.next-ten').hide();
+                } else {
+                        resultCount = parseInt(d.RES.M);
+                    var start = parseInt(d.PARAM.start.value) + parseInt(d.PARAM.num.value),
+                        num = 10,
+                        remaining = resultCount - parseInt(d.PARAM.start.value) - parseInt(d.PARAM.num.value);
+                        
+                    var nextParams = searchString.split('&'),
+                        numIndex = nextParams.indexOf('num=' + d.PARAM.num.value);
+                        
+                    nextParams[numIndex - 1] = 'start=' + start;
+                    nextParams[numIndex] = 'num=' + num;
+                    
+                    $('.next-ten').attr('href',nextParams.join('&'));
+                    
+                    if (remaining >= 10) {
+                        $('.next-count').text(10);
+                    } else if (remaining > 0) {
+                        $('.next-count').text(remaining);
+                    } else {
+                        $('.next-ten').hide();
+                    }
+                    
+                    $('#search-results').empty();
+                    
+                    // Render results
+                    $.each(d.RES.R, function(i,r) {
+                        var orig_title = r.MT['search-title'] || r.T,
+                            title = boldWord(orig_title, d.Q);
+                        
+                        var templateData = {
+                            title: title,
+                            snippet: r.S,
+                            url: r.UE,
+                            content: r.MT['content-type'] || ''
+                        };
+                        
+                        function dupCheck() {
+                            if (d.GM && d.PARAM.start.value === '0') {
+                                return _(d.GM).any(function(v,k) {
+                                    var keyUrl = v.GL,
+                                        hash = keyUrl.lastIndexOf('#');
+                                
+                                    if (hash > -1) keyUrl = keyUrl.substr(0, hash-1);
+                                    
+                                    return r.UE === keyUrl;
+                                });
+                            } else {
+                                return false;
+                            }
+                        }
+                            
+                        if (!dupCheck()) $('#search-results').append(resultTemplate(templateData));
+                    });
+                        
+                    // Dynamic Navigation
+                    if (d.RES.PARM) {
+                        $('#search-filter').show();
+                        if (d.PARAM.requiredfields) $('a.reset-filter').show();
+                        
+                        $.each(d.RES.PARM.PMT[0].PV, function(i,r) {
+                            //var filters = d.PARAM.requiredfields.value.split('.'), //get filters from here when live
+                            var searchParams = searchString.split('&'),
+                                urlTopic = i.replace(/-/g, '%252D'),
+                                required = searchParams[searchParams.length - 1].split('=')[0] === 'requiredfields';
+                                
+                            if (required) {
+                                filters = searchParams[searchParams.length - 1].split('=')[1].split('.');
+                            } else {
+                                filters = [];
+                            }
+                            
+                            var index = filters.indexOf('topics:' + urlTopic),
+                                active = index > -1;
+                            
+                            if (active) {
+                                filters.splice(index,1);
+                            } else {
+                                filters.push('topics:' + urlTopic);
+                            }
+                            
+                            var filterUrl = filters.join('.');
+                            if (filterUrl.length) {
+                                if (required) {
+                                    searchParams[searchParams.length - 1] = 'requiredfields=' + filterUrl;
+                                } else {
+                                    searchParams.push('requiredfields=' + filterUrl);
+                                }
+                            } else {
+                                if (required) searchParams.pop();
+                            }
+                        
+                            var templateData = {
+                                topic: app.topics.{{page.lang}}[i],
+                                count: r,
+                                url: searchParams.join('&'),
+                                active: active
+                            };
+                            
+                            if (templateData.topic) {
+                                $('#search-filter').append(filterTemplate(templateData));
+                            }
+                        });
+                    }
+                }
+                $('.search-count').text(resultCount + keymatchCount);
+            }
+        }
+    });
+}
+
+$(function() {
+    $('#content-start').focus();
+    $('#search-filter').on('change', 'input', function(e) {
+        $(this).parent()[0].click();;
+    });
+});
+</script>

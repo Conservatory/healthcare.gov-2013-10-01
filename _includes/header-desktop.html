@@ -1,0 +1,20 @@
+{% assign t = site.tags.translations[0] %}
+
+<div class='limiter hidden-phone desktop-nav' id='desktop-nav'>
+    <div class='row-fluid'>
+      <div class='span4'>
+        <a href='{{site.baseurl}}{{lang}}/'><img class='logo{% unless page.lang == 'en' %} {{page.lang}}{% endunless %}' src='{{site.baseurl}}/images/logo{% unless page.lang == 'en' %}-{{page.lang}}{% endunless %}.png' alt='{{t.[page.lang].utility.sitename}}' /></a>
+      </div>
+      <div class='span7 middle'>
+        <a href='{{site.baseurl}}{{t.[page.lang].global.learn-url}}' class='topnav{% if view == 'learn' %} active{% endif %}'>{{t.[page.lang].global.learn}}</a>
+        <a href='{{site.baseurl}}{{t.[page.lang].global.insurance-url}}' class='topnav{% if view == 'marketplace' %} active{% endif %}'>{{t.[page.lang].global.insurance}}</a>
+      </div>
+      <div class='span1'>
+        {% if page.lang == 'en' %}
+          <a class='btn-mini btn-lang' data-lang='es' href='{{site.baseurl}}/es{{page.url | remove: 'index.html'}}'>Español</a>
+        {% else %}
+          <a class='btn-mini btn-lang' data-lang='en' href='{{site.baseurl}}{{page.url | replace_first:'/es', ''}}'>English</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>

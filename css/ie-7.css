@@ -1,0 +1,27 @@
+html{
+	overflow-x:hidden;
+	}
+/*topics*/
+.row-fluid .span6.card {
+	margin-left:2px!important;
+	width:44%;
+	}
+.all-topics .card ul li .header3 {
+	font-size:14px;
+	}
+/*footer*/
+#footer .sections h3  {
+	position:relative;
+	width:33%;
+	}
+#footer .sections .span2 {
+	width: 20px!important;
+	}
+#footer .sections img {
+	display: none!important;
+	}
+#footer .sections .span4.quicklinks{
+	float: left!important;
+	margin:0!important;
+	padding:20px 0 0 0!important;
+	}

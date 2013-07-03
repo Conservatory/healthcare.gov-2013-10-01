@@ -1,0 +1,14 @@
+{% assign t = site.tags.translations[0] %}
+
+<div class='banner hidden-phone' role='complementary'>
+  <div class='container'>
+    <div class='limiter'>
+      <div class='row-fluid'>
+        <div class='header3 span3'>{{t.[page.lang].global.banner-title}}</div>
+        <div class='span9'>
+          {{t.[page.lang].global.banner | markdownify}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

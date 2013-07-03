@@ -1,0 +1,196 @@
+{% assign t = site.tags.translations[0] %}
+<!DOCTYPE html>
+<html lang='{{page.lang}}'>
+<head>
+  <meta charset='UTF-8' />
+  <title>{% if page.meta-title %}{{page.meta-title}}{% else %}{{page.title}}{% endif %} | {{site.title}}</title>
+  <meta name='viewport' content='initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no'/>
+  <meta name='msvalidate.01' content='598A98B6EDF7624D92A421A892DC3A45'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <link rel='shortcut icon' href='{{site.baseurl}}/images/favicon.ico' type='image/x-icon' />
+  {% if page.url contains '/blog/' or page.url == '/' or page.url == '/es/' %}{% if page.lang == 'en' %}{% capture rsslink %}{{site.baseurl}}/blog{% endcapture %}{% else %}{% capture rsslink %}{{site.baseurl}}/{{page.lang}}/blog{% endcapture %}{% endif %}
+  <link rel="alternate" type="application/rss+xml" title="{{t.[page.lang].blog.title | replace: '"', '\"'}} - {{t.[page.lang].utility.sitename | replace: '"', '\"'}}" href="{{rsslink}}/blog.rss" />
+  {% endif %}
+  <link href="https://plus.google.com/112755994883163074657" rel="publisher" />
+  <link rel='stylesheet' href='{{site.baseurl}}/css/all.css' type='text/css' />
+  <link rel='stylesheet' media='(max-width: 767px)' href='{{site.baseurl}}/css/style-mobile.css' type='text/css' />
+  <link rel='stylesheet' href='{{site.baseurl}}/css/print.css' type='text/css' media='print' />
+  <!--[if IE]><link rel='stylesheet' href='{{site.baseurl}}/css/ie.css' type='text/css' /><![endif]-->
+  <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/ie-lt-9.css" /><![endif]-->
+  <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/ie-8.css" /><![endif]-->
+  <!--[if IE 7]><link rel="stylesheet" type="text/css" href="{{site.baseurl}}/css/ie-7.css" /><![endif]-->
+  <script src='//assets.healthcare.gov/global/js/lib/jquery-1.8.2.js'></script>
+  <script src='{{site.baseurl}}/js/all.js'></script>
+  <script>{% include js/cookie.js %}</script>
+  <script src="//cdn.optimizely.com/js/166688199.js"></script>
+  <script>
+    var _prum = [['id', '51acbb94abe53d0435000000'],
+    ['mark', 'firstbyte', (new Date()).getTime()]];
+    (function() {
+      var s = document.getElementsByTagName('script')[0], p = document.createElement('script'); p.async = 'async'; p.src = '//rum-static.pingdom.net/prum.min.js'; s.parentNode.insertBefore(p, s);})();
+  </script>
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+  {% if page.class == 'qat' %}<script type="text/javascript">{% include qat/qat.js %}</script>{% endif %}
+  <meta name='search-title' content="{{page.title | replace:'"','\"'}}" />
+  <meta name='content-type' content='{% if page.tags contains "glossary" %}glossary{% elsif page.categories contains "blog" %}blog{% elsif page.topics %}article{% else %}index{% endif %}' />
+  {% if page.topics %}
+  <meta name='topics' content='{% for topic in page.topics %}{{topic}}{% unless forloop.last %}, {% endunless %}{% endfor %}' />
+  {% endif %}
+  <meta name='description' content="{% if page.meta-description %}{{page.meta-description | replace:'"','\"'}}{% else %}{{page.bite | replace:'"','\"'}}{% endif %}" />
+  {% if page.seo-keywords %}
+  <meta name='keywords' content="{{page.seo-keywords | replace:'"','\"'}}" />
+  {% endif %}
+  <link rel="P3Pv1" href="{{site.baseurl}}/w3c/p3p.xml">
+  {% if page.class == 'widget' %}<base target="_blank" />{% endif %}
+</head>
+
+{% assign view = page.experience %}
+<body class='no-touch{% if page.experience %} {{page.experience}}{% endif %}'>
+
+{% include js/gtm.html %}
+
+{% if page.class == 'widget' %}
+  {{content}}
+{% else %}
+
+<div id='wrapper'>
+  <!-- mobile -->
+  <div id='sidr' class='visible-phone' role='navigation'>
+    <!--googleoff: all-->
+    <div class='mobile-bg'>
+      <div class='span5 center top-bar'>
+        <a href='{{site.baseurl}}{{t.[page.lang].global.learn-url}}' class='topnav-mobile learn'><span class='header4'>{{t.[page.lang].global.learn}}</span></a>
+        <a href='{{site.baseurl}}{{t.[page.lang].global.insurance-url}}' class='topnav-mobile marketplace'><span class='header4'>{{t.[page.lang].global.insurance}}</span></a>
+      </div>
+      <div class='mobile-pad'>
+        <form role='search' class='span3 gsearch' name='gsearch' method='get' action='{{site.baseurl}}{% unless page.lang == "en" %}/{{page.lang}}{% endunless %}/search'>
+          <input id='mobile-search' name='q' class='mobile-search' placeholder='{{t.[page.lang].learn.search}}' title='{{t.[page.lang].utility.altsearchtext}}'  type='search' autocomplete='off'/>
+          {% assign mobile = true %}
+          {% include searchoptions.html %}
+          {% assign mobile = false %}
+        </form>
+        <ul class='clearfix'>
+          <li><a href='{{site.baseurl}}/families'>{{t.[page.lang].learn.families}}</a></li>
+          <li><a href='{{site.baseurl}}/small-businesses'>{{t.[page.lang].learn.businesses}}</a></li>
+          <li><a href='{{site.baseurl}}/all-topics'>{{t.[page.lang].learn.all}}</a></li>
+        </ul>
+      </div>
+      <div class='mobile-buttons'>
+        <a href='{{site.baseurl}}/subscribe' class='btn btn-large btn-block btn-success btn-green signup'>{{t.[page.lang].email.action}}</a>
+      </div>
+    </div>
+  </div>
+  <!--googleon: all-->
+  <!-- desktop -->
+  {% assign topicCount = 0 %}
+  {% for topic in site.tags.topic %}
+    {% if topic.lang == page.lang %}
+      {% assign topicCount = topicCount | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  <!--googleoff: all-->
+  <a href='#content-start' id='skip-nav' class='accessibility'>{{t.[page.lang].utility.skipnav}}</a>
+  <img alt='{{t.[page.lang].utility.sitename}}' class='print-only logo' src='{{site.baseurl}}/images/logo.png' />
+  <!--googleon: all-->
+
+  <div class='container-whole'>
+  {% include header.html %}
+  {% if view == 'learn' %}
+  <!--googleoff: all-->
+  <div id='learn-nav' class='subnav hidden-phone' role='navigation'>
+  <h2 class='accessibility'>Main Menu</h2>
+  <div class='container'>
+    <div class='limiter'>
+      <div class='row-fluid'>
+        <div class="span9 nav {% if page.lang == 'es' %}es{% endif %}">
+          <li class='nav-btn'>
+            <a class='{% if page.title == "Families" %}active{% endif %} round' href='{{site.baseurl}}{{t.[page.lang].learn.families-url}}'>{{t.[page.lang].learn.families}}</a>
+          </li>
+          <li class='nav-btn'>
+            <a class='{% if page.title == "Small Businesses" %}active{% endif %} round' href='{{site.baseurl}}{{t.[page.lang].learn.businesses-url}}'>{{t.[page.lang].learn.businesses}}</a>
+          </li>
+          <li class='nav-btn dropdown clearfix'>
+            <a class='clearfix' data-toggle='' href='{{site.baseurl}}{{t.[page.lang].learn.all-url}}'>{{t.[page.lang].learn.all}} <span class='accessibility'>{{t.[page.lang].utility.altdropdown}}</span><span class='icon icon-inline arrow-down'></span></a>          
+            <div class='dropdown-menu row-fluid column2'>
+              {% include topics-sort.html %}
+              {% assign cols = topicCount | divided_by:5 %}
+              {% assign remainder = topicCount | modulo:5 %}
+              {% if remainder > 0 %}{% assign cols = cols | plus:1 %}{% endif %}
+
+              {% for c in (1..cols) %}
+              {% capture start %}{{c | times:5 | minus:4}}{% endcapture %}
+              {% capture end %}{{c | times:5}}{% endcapture %}
+              <div class='ul span{{12 | divided_by:cols}}'>
+                {% for i in (start..end) %}
+                {% unless i > topicCount %}
+                {% assign ii = i | minus:1 %}
+                {% capture tag %}{{ topics_sort | findByIndex:ii | split:'_' | last}}{% endcapture %}
+                {% assign tagIndex = topics_sort | findByIndex:ii | split:'_' | join:' ' | findByIndex:1 | times:1 %}
+                <span class='li clearfix'>
+                  <a class='clearfix' href='{{site.baseurl}}{{lang}}/{{tag}}'>{{site.tags.topic[tagIndex].title}}</a>
+                </span>
+                {% endunless %}
+                {% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+          </li>
+        </div>
+        <form role='search' class='span3 gsearch' name='gsearch' method='get' action='{{site.baseurl}}{% unless page.lang == "en" %}/{{page.lang}}{% endunless %}/search'>
+          <label for='nav-search' class='accessibility'>{{t.[page.lang].utility.altsearch}}</label>
+          <input autocomplete='off' id='nav-search' class='span11 pull-right nav-search' title='{{t.[page.lang].utility.altsearchtext}}' placeholder='{{t.[page.lang].learn.search}}' name='q' type='search' />
+          {% include searchoptions.html %}
+        </form>
+      </div>
+    </div>
+  </div>
+  {% elsif view == 'marketplace' %}
+    {% include marketplace-nav.html%}
+  {% endif %}
+  </div>
+  <!--googleon: all-->
+  <a id="content-start" href="#">{{t.[page.lang].utility.begincontent}}</a>
+  <div id='content'>
+    {% if page.class != 'hero' %}
+    <div class='container'>
+    {% endif %}
+      {{content}}
+    {% if page.class != 'hero' %}
+    </div>
+    {% endif %}
+  </div>
+    {% include footer.html %}
+    {% include subscribe.html %}
+    {% unless page.url == '/' or page.url =='/es/' %}
+      {% include webchat.html %}
+    {% endunless %}
+  </div>
+</div><!-- wrapper -->
+
+<script type='text/javascript'>
+{% include js/language-check.js %}
+
+$('.dropdown .nav-btn .dropdown-menu').dropdown();
+$('.nav .dropdown.nav-btn').accessibleDropDown();
+
+$('#skip-nav').click(function () {
+  $($(this).attr('href')).focus();
+  return false;
+});
+
+$('#learn-nav a, #learn-nav input').focus(function(e) {
+    if (!$(this).closest('.dropdown').length) {
+        $('#learn-nav .dropdown').removeClass('hover open');
+    }
+});
+
+if(isMobileDevice.any()) {
+  $('#learn-nav .dropdown-menu').css('display','none');
+}
+</script>
+
+{% endif %}
+
+</body>
+</html>

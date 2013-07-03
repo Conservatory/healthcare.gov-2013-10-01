@@ -1,0 +1,15 @@
+{
+  "tags":[{% for tag in item.tags %}"{{tag | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "categories":[{% for cat in item.categories %}"{{cat | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "topics":[{% for topic in item.topics %}"{{topic | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "title":"{{item.title | replace:'"','\"'}}",
+  "es-title":"{% capture u %}{{item.url | split:'/' | last}}{% endcapture %}{% assign post = site.match['es'][u] %}{{post.title | replace:'"','\"'}}",
+  "url":"{{item.url}}",
+  "bite":{% if item.bite %}"{{item.bite | replace:'"','\"'}}"{% else %}"{{item.content | strip_html | truncate:160 | strip_newlines | replace:'"','\"'}}"{% endif %},
+  "es-bite":{% capture u %}{{item.url | split:'/' | last}}{% endcapture %}{% assign post = site.match['es'][u] %}{% if post.bite %}"{{post.bite | replace:'"','\"'}}"{% else %}"{{post.content | strip_html | truncate:160 | strip_newlines | replace:'"','\"'}}"{% endif %},
+  "audience":[{% for aud in item.audience %}"{{aud | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "segment":[{% for seg in item.segment %}"{{seg | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "insurance-status":[{% for status in item['insurance-status'] %}"{{status | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "state":[{% for state in item.state %}"{{state | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "condition":[{% for cond in item.condition %}"{{cond | replace:'"','\"'}}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+}
