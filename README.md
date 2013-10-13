@@ -1,3 +1,14 @@
+# Restored HealthCare.gov repository from 1 Oct 2013.
+
+This repository originally lived at [github.com/CMSgov/healthcare.gov](https://github.com/CMSgov/healthcare.gov), but apparently disappeared from there sometime on 12 Oct 2013.  I believe its owners pulled it down only temporarily, while they fix the commit history -- the repository as originally posted (i.e., what this is a clone of) contained only one commit, a "top-skim" style import of the code, and was thus missing the true commit history.  An issue (number #12) had been opened against it, asking for the problem to be fixed.
+
+So my best guess is that the repository was pulled down while they restore the history, and if so, we can expect a properly historicized version to appear soon at the original location.  (It probably would have been better for them to [rename](https://help.github.com/articles/renaming-a-repository) the repository and respond in the issue to explain the plan, though.)
+
+In the meantime, the repository's disappearance was widely noticed.  Alexander Howard saw a [tweet](https://twitter.com/kfogel/status/389134395694526464) of mine asking about it, and [replied](https://twitter.com/digiphile/status/389198586099277824) that there was a git bundle at [archive.org/details/healthcare-gov-gitrepo](https://archive.org/details/healthcare-gov-gitrepo) preserving this repository as of 1 Oct 2013.  That's what's imported here.  The contents of the original README.md follow.
+
+-Karl Fogel (@kfogel), 12 Oct 2013
+
+--------------------------------------------------------------------------
 # HealthCare.gov-Open-Source-Release
 
 This project includes the source code and content for the healthcare.gov website. For more information, please visit https://www.healthcare.gov/developers
