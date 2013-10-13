@@ -4,7 +4,7 @@ This repository originally lived at [github.com/CMSgov/healthcare.gov](https://g
 
 So my best guess is that the repository was pulled down while they restore the history, and if so, we can expect a properly historicized version to appear soon at the original location.  (It probably would have been better for them to [rename](https://help.github.com/articles/renaming-a-repository) the repository and respond in the issue to explain the plan, though.)
 
-In the meantime, the repository's disappearance was widely noticed.  Alexander Howard saw a [tweet](https://twitter.com/kfogel/status/389134395694526464) of mine asking about it, and [replied](https://twitter.com/digiphile/status/389198586099277824) that there was a git bundle at [archive.org/details/healthcare-gov-gitrepo](https://archive.org/details/healthcare-gov-gitrepo) preserving this repository as of 1 Oct 2013.  That's what's imported here.  The contents of the original README.md follow.
+In the meantime, the repository's disappearance was widely noticed.  Lauren C. Still saw a [tweet](https://twitter.com/kfogel/status/389134395694526464) of mine asking about it, and [replied](https://twitter.com/laurencstill/status/389181641689534464) that there was a git bundle at [archive.org/details/healthcare-gov-gitrepo](https://archive.org/details/healthcare-gov-gitrepo) preserving this repository as of 1 Oct 2013.  That's what's imported here.  The contents of the original README.md follow.
 
 -Karl Fogel (@kfogel), 12 Oct 2013
 
