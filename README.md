@@ -1,12 +1,14 @@
 # Restored HealthCare.gov repository from 1 Oct 2013.
 
-This repository originally lived at [github.com/CMSgov/healthcare.gov](https://github.com/CMSgov/healthcare.gov), but apparently disappeared from there sometime on 12 Oct 2013.  I believe its owners pulled it down only temporarily, while they fix the commit history -- the repository as originally posted (i.e., what this is a clone of) contained only one commit, a "top-skim" style import of the code, and was thus missing the true commit history.  An issue (number #12) had been opened against it, asking for the problem to be fixed.
+This repository originally lived at [github.com/CMSgov/healthcare.gov](https://github.com/CMSgov/healthcare.gov), but apparently disappeared from there sometime on 12 Oct 2013.  There is [reason to believe](http://www.wired.com/wiredenterprise/2013/10/obamacare-github/) that the repository's owners pulled it down mainly because they didn't want to handle misdirected bug reports being filed against it -- bug reports that were really about the back-end systems that this code merely interfaced with but had no control over.
 
-So my best guess is that the repository was pulled down while they restore the history, and if so, we can expect a properly historicized version to appear soon at the original location.  (It probably would have been better for them to [rename](https://help.github.com/articles/renaming-a-repository) the repository and respond in the issue to explain the plan, though.)
+(There was also a problem with the original repository's commit history.  The repository as originally posted -- i.e., what this is a clone of -- contained only one commit, a "top-skim" style import of the code, and was thus missing the true commit history.  An issue [had been opened](https://www.google.com/search?q=%22benbalter%22+healthcare.gov+%22contributor+information%22+%22commit+history%22) against it, asking for the problem to be fixed, but the repository was taken down before that had a chance to be addressed.)
+
+A possibly better course would have been for them to [rename](https://help.github.com/articles/renaming-a-repository) the repository to "healthcare.gov-web-front-end" or something like that, and update the README.md file to prominently state which kinds of bug reports would be appropriate to file there and which wouldn't.  I hope that after the brouhaha dies down, the repository is restored, with properly historicized commit history.
 
 In the meantime, the repository's disappearance was widely noticed.  Lauren C. Still saw a [tweet](https://twitter.com/kfogel/status/389134395694526464) of mine asking about it, and [replied](https://twitter.com/laurencstill/status/389181641689534464) that there was a git bundle at [archive.org/details/healthcare-gov-gitrepo](https://archive.org/details/healthcare-gov-gitrepo) preserving this repository as of 1 Oct 2013.  That's what's imported here.  The contents of the original README.md follow.
 
--Karl Fogel (@kfogel), 12 Oct 2013
+-Karl Fogel (@kfogel)
 
 --------------------------------------------------------------------------
 # HealthCare.gov-Open-Source-Release
